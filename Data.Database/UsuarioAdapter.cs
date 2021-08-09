@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    public class UsuarioAdapter:Adapter
+    public class UsuarioAdapter : Adapter
     {
         public List<Usuario> GetAll()
         {
@@ -165,28 +165,6 @@ namespace Data.Database
 
         public void Save(Usuario usuario)
         {
-            /*if (usuario.State == BusinessEntity.States.New)
-            {
-                int NextID = 0;
-                foreach (Usuario usr in Usuarios)
-                {
-                    if (usr.ID > NextID)
-                    {
-                        NextID = usr.ID;
-                    }
-                }
-                usuario.ID = NextID + 1;
-                Usuarios.Add(usuario);
-            }
-            else if (usuario.State == BusinessEntity.States.Deleted)
-            {
-                this.Delete(usuario.ID);
-            }
-            else if (usuario.State == BusinessEntity.States.Modified)
-            {
-                Usuarios[Usuarios.FindIndex(delegate(Usuario u) { return u.ID == usuario.ID; })]=usuario;
-            }
-            usuario.State = BusinessEntity.States.Unmodified;            */
 
             if (usuario.State == BusinessEntity.States.Deleted)
                 this.Delete(usuario.ID);
