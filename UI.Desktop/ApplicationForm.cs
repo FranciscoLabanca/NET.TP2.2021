@@ -16,7 +16,8 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        public enum ModoForm { Alta, Baja, Modificacion, Consulta }
+
+        public enum ModoForm { Alta, Baja, Modificacion, Consulta}
         public ModoForm Modo { set; get; }
 
         public virtual void MapearDeDatos() { }

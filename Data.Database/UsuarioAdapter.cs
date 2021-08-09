@@ -50,7 +50,7 @@ namespace Data.Database
             return usuarios;
         }
 
-        public Business.Entities.Usuario GetOne(int ID)
+        public Usuario GetOne(int ID)
         {
             //return Usuarios.Find(delegate(Usuario u) { return u.ID == ID; });
             Usuario usr = new Usuario();
