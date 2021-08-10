@@ -90,7 +90,7 @@ namespace UI.Desktop
             this.BtnEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // BtnAgregar
@@ -101,6 +101,7 @@ namespace UI.Desktop
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(23, 22);
             this.BtnAgregar.Text = "Agregar Usuario";
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnEditar
             // 
@@ -110,6 +111,7 @@ namespace UI.Desktop
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(23, 22);
             this.BtnEditar.Text = "Editar Usuario";
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // BtnEliminar
             // 
@@ -119,6 +121,7 @@ namespace UI.Desktop
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(23, 22);
             this.BtnEliminar.Text = "Eliminar Usuario";
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnActualizar
             // 
