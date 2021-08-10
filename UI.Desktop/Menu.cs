@@ -33,5 +33,11 @@ namespace UI.Desktop
             Personas per = new Personas();
             per.ShowDialog();
         }
+
+        private void usuariosNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios us = new Usuarios();
+            us.ShowDialog();
+        }
     }
 }

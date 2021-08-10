@@ -95,6 +95,7 @@ namespace UI.Desktop
             this.usuariosNIToolStripMenuItem.Name = "usuariosNIToolStripMenuItem";
             this.usuariosNIToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.usuariosNIToolStripMenuItem.Text = "Usuarios NI";
+            this.usuariosNIToolStripMenuItem.Click += new System.EventHandler(this.usuariosNIToolStripMenuItem_Click);
             // 
             // planesNIToolStripMenuItem
             // 
