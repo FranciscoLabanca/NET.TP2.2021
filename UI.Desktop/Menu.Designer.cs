@@ -41,7 +41,8 @@ namespace UI.Desktop
             this.materiasNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inscripcionesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cursosNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.especialidadesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -52,11 +53,11 @@ namespace UI.Desktop
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(886, 466);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(943, 466);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(886, 490);
+            this.toolStripContainer1.Size = new System.Drawing.Size(943, 490);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -77,10 +78,11 @@ namespace UI.Desktop
             this.materiasNIToolStripMenuItem,
             this.inscripcionesNIToolStripMenuItem,
             this.comisionesNIToolStripMenuItem,
-            this.cursosNIToolStripMenuItem});
+            this.toolStripMenuItem1,
+            this.especialidadesNIToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(886, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(943, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -148,17 +150,24 @@ namespace UI.Desktop
             this.comisionesNIToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.comisionesNIToolStripMenuItem.Text = "Comisiones NI";
             // 
-            // cursosNIToolStripMenuItem
+            // especialidadesNIToolStripMenuItem
             // 
-            this.cursosNIToolStripMenuItem.Name = "cursosNIToolStripMenuItem";
-            this.cursosNIToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.cursosNIToolStripMenuItem.Text = "Cursos NI";
+            this.especialidadesNIToolStripMenuItem.Name = "especialidadesNIToolStripMenuItem";
+            this.especialidadesNIToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.especialidadesNIToolStripMenuItem.Text = "Especialidades";
+            this.especialidadesNIToolStripMenuItem.Click += new System.EventHandler(this.especialidadesNIToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(70, 20);
+            this.toolStripMenuItem1.Text = "Cursos NI";
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 490);
+            this.ClientSize = new System.Drawing.Size(943, 490);
             this.Controls.Add(this.toolStripContainer1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
@@ -187,7 +196,8 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem materiasNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inscripcionesNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionesNIToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cursosNIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem especialidadesNIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

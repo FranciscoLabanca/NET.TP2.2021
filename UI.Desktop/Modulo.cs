@@ -27,8 +27,6 @@ namespace UI.Desktop
         {
             ModuloLogic ml = new ModuloLogic();
             dgvModulos.DataSource = ml.GetAll();
-
-
         }
 
         private void Modulo_Load(object sender, EventArgs e)
