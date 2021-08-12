@@ -33,5 +33,11 @@ namespace UI.Desktop
             Personas per = new Personas();
             per.ShowDialog();
         }
+
+        private void especialidadesNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Especialidades esp = new Especialidades();
+            esp.ShowDialog();
+        }
     }
 }
