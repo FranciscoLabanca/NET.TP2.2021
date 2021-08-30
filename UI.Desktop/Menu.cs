@@ -34,6 +34,12 @@ namespace UI.Desktop
             per.ShowDialog();
         }
 
+        private void usuariosNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios us = new Usuarios();
+            us.ShowDialog();
+        }
+
         private void especialidadesNIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Especialidades esp = new Especialidades();
