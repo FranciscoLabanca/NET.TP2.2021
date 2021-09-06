@@ -12,31 +12,38 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class EspecialidadDesktop : ApplicationForm
+    public partial class PlanDesktop : ApplicationForm
     {
-        public Especialidad EspecialidadActual { set; get; }
-        public EspecialidadDesktop()
+        public Plan PlanActual { set; get; }
+        public PlanDesktop()
         {
             InitializeComponent();
-        }
-
-        public EspecialidadDesktop(ModoForm modo) : this()
-        {
-            Modo = modo;
-        }
-
-        public EspecialidadDesktop(int ID, ModoForm modo) : this()
-        {
-            Modo = modo;
             EspecialidadLogic el = new EspecialidadLogic();
-            EspecialidadActual = el.GetOne(ID);
+            List<Especialidad> especialidades = el.GetAll();
+            cbIdEspecialidad.DataSource = especialidades;
+            cbIdEspecialidad.DisplayMember = "Descripcion";
+            cbIdEspecialidad.ValueMember = "ID";
+
+        }
+
+        public PlanDesktop(ModoForm modo) : this()
+        {
+            Modo = modo;
+        }
+
+        public PlanDesktop(int ID, ModoForm modo) : this()
+        {
+            Modo = modo;
+            PlanLogic pl = new PlanLogic();
+            PlanActual = pl.GetOne(ID);
             MapearDeDatos();
         }
 
         public override void MapearDeDatos()
         {
-            tbId.Text = EspecialidadActual.ID.ToString();
-            tbDesc.Text = EspecialidadActual.Descripcion;
+            tbId.Text = PlanActual.ID.ToString();
+            tbDesc.Text = PlanActual.Descripcion;
+            cbIdEspecialidad.SelectedValue = BuscarEspecialidadPorID(PlanActual.IDEspecialidad).ID;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -62,19 +69,24 @@ namespace UI.Desktop
             switch (Modo)
             {
                 case ModoForm.Alta:
-                    EspecialidadActual = new Especialidad();
-                    EspecialidadActual.Descripcion = tbDesc.Text;
-                    EspecialidadActual.State = BusinessEntity.States.New;
+                    PlanActual = new Plan();
+                    PlanActual.Descripcion = tbDesc.Text;
+                    PlanActual.IDEspecialidad = ((Especialidad)cbIdEspecialidad.SelectedItem).ID;
+                    PlanActual.State = BusinessEntity.States.New;
                     break;
+
                 case ModoForm.Modificacion:
-                    EspecialidadActual.Descripcion = tbDesc.Text;
-                    EspecialidadActual.State = BusinessEntity.States.Modified;
+                    PlanActual.Descripcion = tbDesc.Text;
+                    PlanActual.IDEspecialidad = ((Especialidad)cbIdEspecialidad.SelectedItem).ID;
+                    PlanActual.State = BusinessEntity.States.Modified;
                     break;
+
                 case ModoForm.Baja:
-                    EspecialidadActual.State = BusinessEntity.States.Deleted;
+                    PlanActual.State = BusinessEntity.States.Deleted;
                     break;
+
                 case ModoForm.Consulta:
-                    EspecialidadActual.State = BusinessEntity.States.Modified;
+                    PlanActual.State = BusinessEntity.States.Modified;
                     break;
             }
         }
@@ -82,13 +94,13 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            EspecialidadLogic el = new EspecialidadLogic();
-            el.Save(EspecialidadActual);
+            PlanLogic pl = new PlanLogic();
+            pl.Save(PlanActual);
         }
 
         public override bool Validar()
         {
-            if (tbDesc.Text == null)
+            if(tbDesc.Text == "")
             {
                 Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -106,15 +118,18 @@ namespace UI.Desktop
                 GuardarCambios();
                 Close();
             }
-            else
-            {
-                Notificar("Verifique que todos los campos esten completos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private Especialidad BuscarEspecialidadPorID(int id_esp)
+        {
+            EspecialidadLogic el = new EspecialidadLogic();
+            Especialidad especialidad = el.GetOne(id_esp);
+            return especialidad;
         }
     }
 }

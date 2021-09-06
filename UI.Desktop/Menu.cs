@@ -45,5 +45,11 @@ namespace UI.Desktop
             Especialidades esp = new Especialidades();
             esp.ShowDialog();
         }
+
+        private void accesoAPlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planes p = new Planes();
+            p.ShowDialog();
+        }
     }
 }
