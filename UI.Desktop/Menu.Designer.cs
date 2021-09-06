@@ -34,6 +34,7 @@ namespace UI.Desktop
             this.alumnosNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accesoAPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accesoAModulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,8 +42,8 @@ namespace UI.Desktop
             this.materiasNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inscripcionesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.especialidadesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.especialidadesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -53,11 +54,11 @@ namespace UI.Desktop
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(943, 466);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(941, 466);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(943, 490);
+            this.toolStripContainer1.Size = new System.Drawing.Size(941, 490);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -82,7 +83,7 @@ namespace UI.Desktop
             this.especialidadesNIToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(943, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(941, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -100,9 +101,18 @@ namespace UI.Desktop
             // 
             // planesNIToolStripMenuItem
             // 
+            this.planesNIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accesoAPlanesToolStripMenuItem});
             this.planesNIToolStripMenuItem.Name = "planesNIToolStripMenuItem";
-            this.planesNIToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.planesNIToolStripMenuItem.Text = "Planes NI";
+            this.planesNIToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.planesNIToolStripMenuItem.Text = "Planes";
+            // 
+            // accesoAPlanesToolStripMenuItem
+            // 
+            this.accesoAPlanesToolStripMenuItem.Name = "accesoAPlanesToolStripMenuItem";
+            this.accesoAPlanesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.accesoAPlanesToolStripMenuItem.Text = "Acceso a Planes";
+            this.accesoAPlanesToolStripMenuItem.Click += new System.EventHandler(this.accesoAPlanesToolStripMenuItem_Click);
             // 
             // modulosToolStripMenuItem
             // 
@@ -150,6 +160,12 @@ namespace UI.Desktop
             this.comisionesNIToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.comisionesNIToolStripMenuItem.Text = "Comisiones NI";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(70, 20);
+            this.toolStripMenuItem1.Text = "Cursos NI";
+            // 
             // especialidadesNIToolStripMenuItem
             // 
             this.especialidadesNIToolStripMenuItem.Name = "especialidadesNIToolStripMenuItem";
@@ -157,17 +173,11 @@ namespace UI.Desktop
             this.especialidadesNIToolStripMenuItem.Text = "Especialidades";
             this.especialidadesNIToolStripMenuItem.Click += new System.EventHandler(this.especialidadesNIToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(70, 20);
-            this.toolStripMenuItem1.Text = "Cursos NI";
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 490);
+            this.ClientSize = new System.Drawing.Size(941, 490);
             this.Controls.Add(this.toolStripContainer1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
@@ -198,6 +208,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem comisionesNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem especialidadesNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem accesoAPlanesToolStripMenuItem;
     }
 }
 
