@@ -23,7 +23,6 @@ namespace UI.Desktop
             cbIdEspecialidad.DataSource = especialidades;
             cbIdEspecialidad.DisplayMember = "Descripcion";
             cbIdEspecialidad.ValueMember = "ID";
-
         }
 
         public PlanDesktop(ModoForm modo) : this()

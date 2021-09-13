@@ -14,7 +14,7 @@ namespace UI.Desktop
 {
     public partial class Comisiones : Form
     {
-        public ComisionLogic ComLogic { set; get }
+        public ComisionLogic ComLogic { set; get; }
         public Comisiones()
         {
             InitializeComponent();
@@ -42,6 +42,27 @@ namespace UI.Desktop
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ComisionDesktop cd = new ComisionDesktop(ApplicationForm.ModoForm.Alta);
+            cd.ShowDialog();
+            Listar();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            ComisionDesktop cd = new ComisionDesktop(((Comision)dgvComisiones.SelectedRows[0].DataBoundItem).ID,ApplicationForm.ModoForm.Modificacion);
+            cd.ShowDialog();
+            Listar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ComisionDesktop cd = new ComisionDesktop(((Comision)dgvComisiones.SelectedRows[0].DataBoundItem).ID, ApplicationForm.ModoForm.Baja);
+            cd.ShowDialog();
+            Listar();
         }
     }
 }

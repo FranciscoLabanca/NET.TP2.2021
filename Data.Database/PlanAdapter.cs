@@ -44,6 +44,40 @@ namespace Data.Database
             return planes;
         }
 
+        public List<Plan> GetByIdEspecialidad(int IDEspecialidad)
+        {
+            List<Plan> planes = new List<Plan>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdPlan = new SqlCommand("select * from planes where id_especialidad = @id_especialidad", sqlConn);
+                cmdPlan.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = IDEspecialidad;
+                SqlDataReader drPlan = cmdPlan.ExecuteReader();
+
+                while (drPlan.Read())
+                {
+                    Plan plan = new Plan();
+
+                    plan.ID = (int)drPlan["id_plan"];
+                    plan.IDEspecialidad = (int)drPlan["id_especialidad"];
+                    plan.Descripcion = (string)drPlan["desc_plan"];
+
+                    planes.Add(plan);
+                }
+                drPlan.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar los planes", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return planes;
+        }
+
         public Plan GetOne(int ID)
         {
             Plan plan = new Plan();

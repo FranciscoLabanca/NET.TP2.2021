@@ -51,5 +51,11 @@ namespace UI.Desktop
             Planes p = new Planes();
             p.ShowDialog();
         }
+
+        private void comisionesNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Comisiones c = new Comisiones();
+            c.ShowDialog();
+        }
     }
 }

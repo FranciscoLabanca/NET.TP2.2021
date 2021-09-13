@@ -111,7 +111,7 @@ namespace UI.Desktop
             // accesoAPlanesToolStripMenuItem
             // 
             this.accesoAPlanesToolStripMenuItem.Name = "accesoAPlanesToolStripMenuItem";
-            this.accesoAPlanesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.accesoAPlanesToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.accesoAPlanesToolStripMenuItem.Text = "Acceso a Planes";
             this.accesoAPlanesToolStripMenuItem.Click += new System.EventHandler(this.accesoAPlanesToolStripMenuItem_Click);
             // 
@@ -158,8 +158,9 @@ namespace UI.Desktop
             // comisionesNIToolStripMenuItem
             // 
             this.comisionesNIToolStripMenuItem.Name = "comisionesNIToolStripMenuItem";
-            this.comisionesNIToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.comisionesNIToolStripMenuItem.Text = "Comisiones NI";
+            this.comisionesNIToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.comisionesNIToolStripMenuItem.Text = "Comisiones";
+            this.comisionesNIToolStripMenuItem.Click += new System.EventHandler(this.comisionesNIToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
