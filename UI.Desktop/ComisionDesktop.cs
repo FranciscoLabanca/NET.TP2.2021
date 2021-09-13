@@ -12,37 +12,40 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class PlanDesktop : ApplicationForm
+    public partial class ComisionDesktop : ApplicationForm
     {
-        public Plan PlanActual { set; get; }
-        public PlanDesktop()
+        public Comision ComisionActual { set; get; }
+        public ComisionDesktop()
         {
             InitializeComponent();
             EspecialidadLogic el = new EspecialidadLogic();
             List<Especialidad> especialidades = el.GetAll();
-            cbIdEspecialidad.DataSource = especialidades;
-            cbIdEspecialidad.DisplayMember = "Descripcion";
-            cbIdEspecialidad.ValueMember = "ID";
+            cbEspecialidad.DataSource = especialidades;
+            cbEspecialidad.DisplayMember = "Descripcion";
+            cbEspecialidad.ValueMember = "ID";
         }
 
-        public PlanDesktop(ModoForm modo) : this()
+        public ComisionDesktop(ModoForm modo) : this()
         {
             Modo = modo;
         }
 
-        public PlanDesktop(int ID, ModoForm modo) : this()
+        public ComisionDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            PlanLogic pl = new PlanLogic();
-            PlanActual = pl.GetOne(ID);
+            ComisionLogic cl = new ComisionLogic();
+            ComisionActual = cl.GetOne(ID);
             MapearDeDatos();
         }
 
         public override void MapearDeDatos()
         {
-            tbId.Text = PlanActual.ID.ToString();
-            tbDesc.Text = PlanActual.Descripcion;
-            cbIdEspecialidad.SelectedValue = BuscarEspecialidadPorID(PlanActual.IDEspecialidad).ID;
+            tbId.Text = ComisionActual.ID.ToString();
+            tbDescripcion.Text = ComisionActual.Descripcion;
+            tbAnio.Text = ComisionActual.AnioEspecialidad.ToString();
+            Plan plan = BuscarPlan(ComisionActual.IDPlan);
+            cbEspecialidad.SelectedValue = plan.IDEspecialidad;
+            cbPlan.SelectedValue = plan.ID;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -68,24 +71,26 @@ namespace UI.Desktop
             switch (Modo)
             {
                 case ModoForm.Alta:
-                    PlanActual = new Plan();
-                    PlanActual.Descripcion = tbDesc.Text;
-                    PlanActual.IDEspecialidad = ((Especialidad)cbIdEspecialidad.SelectedItem).ID;
-                    PlanActual.State = BusinessEntity.States.New;
+                    ComisionActual = new Comision();
+                    ComisionActual.Descripcion = tbDescripcion.Text;
+                    ComisionActual.AnioEspecialidad = int.Parse(tbAnio.Text);
+                    ComisionActual.IDPlan = ((Plan)cbPlan.SelectedItem).ID;
+                    ComisionActual.State = BusinessEntity.States.New;
                     break;
 
                 case ModoForm.Modificacion:
-                    PlanActual.Descripcion = tbDesc.Text;
-                    PlanActual.IDEspecialidad = ((Especialidad)cbIdEspecialidad.SelectedItem).ID;
-                    PlanActual.State = BusinessEntity.States.Modified;
+                    ComisionActual.Descripcion = tbDescripcion.Text;
+                    ComisionActual.AnioEspecialidad = int.Parse(tbAnio.Text);
+                    ComisionActual.IDPlan = ((Plan)cbPlan.SelectedItem).ID;
+                    ComisionActual.State = BusinessEntity.States.Modified;
                     break;
 
                 case ModoForm.Baja:
-                    PlanActual.State = BusinessEntity.States.Deleted;
+                    ComisionActual.State = BusinessEntity.States.Deleted;
                     break;
 
                 case ModoForm.Consulta:
-                    PlanActual.State = BusinessEntity.States.Modified;
+                    ComisionActual.State = BusinessEntity.States.Unmodified;
                     break;
             }
         }
@@ -93,13 +98,13 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            PlanLogic pl = new PlanLogic();
-            pl.Save(PlanActual);
+            ComisionLogic cl = new ComisionLogic();
+            cl.Save(ComisionActual);
         }
 
         public override bool Validar()
         {
-            if(tbDesc.Text == "")
+            if(tbAnio.Text == "" || tbDescripcion.Text == "")
             {
                 Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -124,11 +129,20 @@ namespace UI.Desktop
             Close();
         }
 
-        private Especialidad BuscarEspecialidadPorID(int id_esp)
+        protected Plan BuscarPlan(int ID)
         {
-            EspecialidadLogic el = new EspecialidadLogic();
-            Especialidad especialidad = el.GetOne(id_esp);
-            return especialidad;
+            PlanLogic pl = new PlanLogic();
+            Plan plan = pl.GetOne(ID);
+            return plan;
+        }
+
+        private void cbEspecialidad_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = pl.GetByIdEspecialidad(((Especialidad)cbEspecialidad.SelectedItem).ID);
+            cbPlan.DataSource = planes;
+            cbPlan.DisplayMember = "Descripcion";
+            cbPlan.ValueMember = "ID";
         }
     }
 }
