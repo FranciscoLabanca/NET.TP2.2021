@@ -34,7 +34,6 @@ namespace UI.Desktop
             this.alumnosNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.accesoAPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accesoAModulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,18 +101,10 @@ namespace UI.Desktop
             // 
             // planesNIToolStripMenuItem
             // 
-            this.planesNIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accesoAPlanesToolStripMenuItem});
             this.planesNIToolStripMenuItem.Name = "planesNIToolStripMenuItem";
             this.planesNIToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.planesNIToolStripMenuItem.Text = "Planes";
-            // 
-            // accesoAPlanesToolStripMenuItem
-            // 
-            this.accesoAPlanesToolStripMenuItem.Name = "accesoAPlanesToolStripMenuItem";
-            this.accesoAPlanesToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.accesoAPlanesToolStripMenuItem.Text = "Acceso a Planes";
-            this.accesoAPlanesToolStripMenuItem.Click += new System.EventHandler(this.accesoAPlanesToolStripMenuItem_Click);
+            this.planesNIToolStripMenuItem.Click += new System.EventHandler(this.planesNIToolStripMenuItem_Click);
             // 
             // modulosToolStripMenuItem
             // 
@@ -210,7 +201,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem comisionesNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem especialidadesNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem accesoAPlanesToolStripMenuItem;
     }
 }
 

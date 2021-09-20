@@ -41,7 +41,7 @@ namespace UI.Desktop
             this.id_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anio_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tscComisiones.ContentPanel.SuspendLayout();
             this.tscComisiones.TopToolStripPanel.SuspendLayout();
             this.tscComisiones.SuspendLayout();
@@ -92,7 +92,7 @@ namespace UI.Desktop
             this.id_comision,
             this.descripcion,
             this.anio_especialidad,
-            this.id_plan});
+            this.plan});
             this.tspComisiones.SetColumnSpan(this.dgvComisiones, 2);
             this.dgvComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComisiones.Location = new System.Drawing.Point(3, 3);
@@ -182,11 +182,11 @@ namespace UI.Desktop
             this.anio_especialidad.HeaderText = "Año Especialidad";
             this.anio_especialidad.Name = "anio_especialidad";
             // 
-            // id_plan
+            // plan
             // 
-            this.id_plan.DataPropertyName = "IDPlan";
-            this.id_plan.HeaderText = "ID Plan";
-            this.id_plan.Name = "id_plan";
+            this.plan.DataPropertyName = "DescripcionPlan";
+            this.plan.HeaderText = "Plan";
+            this.plan.Name = "plan";
             // 
             // Comisiones
             // 
@@ -224,6 +224,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn id_comision;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn anio_especialidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_plan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plan;
     }
 }
