@@ -32,15 +32,15 @@ namespace UI.Desktop
             this.tscPlanes = new System.Windows.Forms.ToolStripContainer();
             this.tlpPlanes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPlanes = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tscPlanes.ContentPanel.SuspendLayout();
             this.tscPlanes.TopToolStripPanel.SuspendLayout();
             this.tscPlanes.SuspendLayout();
@@ -98,27 +98,6 @@ namespace UI.Desktop
             this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanes.Size = new System.Drawing.Size(794, 390);
             this.dgvPlanes.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "ID";
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.DataPropertyName = "Descripcion";
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
-            // id_especialidad
-            // 
-            this.id_especialidad.DataPropertyName = "IDEspecialidad";
-            this.id_especialidad.HeaderText = "ID Especialidad";
-            this.id_especialidad.Name = "id_especialidad";
-            this.id_especialidad.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -182,6 +161,27 @@ namespace UI.Desktop
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.DataPropertyName = "Descripcion";
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            // 
+            // id_especialidad
+            // 
+            this.id_especialidad.DataPropertyName = "DescripcionEspecialidad";
+            this.id_especialidad.HeaderText = "Especialidad";
+            this.id_especialidad.Name = "id_especialidad";
+            this.id_especialidad.ReadOnly = true;
             // 
             // Planes
             // 
