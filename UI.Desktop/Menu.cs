@@ -63,5 +63,11 @@ namespace UI.Desktop
             Planes p = new Planes();
             p.ShowDialog();
         }
+
+        private void permisosPorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModulosUsuarios mu = new ModulosUsuarios();
+            mu.ShowDialog();
+        }
     }
 }
