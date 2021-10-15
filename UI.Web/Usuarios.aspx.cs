@@ -9,7 +9,7 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Usuarios : ApplicationWeb
     {
         UsuarioLogic _logic;
         private UsuarioLogic Logic
@@ -24,66 +24,12 @@ namespace UI.Web
             }
         }
 
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
-
-        public FormModes FormMode
-        {
-            get
-            {
-                return (FormModes)ViewState["FormMode"];
-            }
-            set
-            {
-                ViewState["FormMode"] = value;
-            }
-        }
-
         private Usuario Entity { get; set; }
 
-        private int SelectedID
-        {
-            get
-            {
-                if(ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-
-            set
-            {
-                ViewState["SelectedID"] = value;
-            }
-        }
-
-        private bool IsEntitySelected
-        {
-            get
-            {
-                return (SelectedID != 0);
-            }
-        }
-
-        private void LoadGrid()
+        override protected void LoadGrid()
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                LoadGrid();
-            }
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,7 +37,7 @@ namespace UI.Web
             SelectedID = (int)gridView.SelectedValue;
         }
 
-        private void LoadForm(int id)
+        override protected void LoadForm(int id)
         {
             Entity = Logic.GetOne(id);
             nombreTextBox.Text = Entity.Nombre;
@@ -161,7 +107,7 @@ namespace UI.Web
             }            
         }
 
-        private void EnableForm(bool enable)
+        override protected void EnableForm(bool enable)
         {
             nombreTextBox.Enabled = enable;
             apellidoTextBox.Enabled = enable;
@@ -197,7 +143,7 @@ namespace UI.Web
             EnableForm(true);
         }
 
-        private void ClearForm()
+        override protected void ClearForm()
         {
             nombreTextBox.Text = string.Empty;
             apellidoTextBox.Text = string.Empty;
@@ -212,7 +158,7 @@ namespace UI.Web
             formPanel.Visible = false;
         }
 
-        private bool Validar()
+        override protected bool Validar()
         {
             bool flag = true;
             if(nombreTextBox.Text == "")
