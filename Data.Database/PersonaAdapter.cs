@@ -18,7 +18,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPersona = new SqlCommand("select * from personas", sqlConn);
+                SqlCommand cmdPersona = new SqlCommand("select * from personas per inner join planes pl on per.id_plan = pl.id_plan", sqlConn);
                 SqlDataReader drPersona = cmdPersona.ExecuteReader();
 
                 while (drPersona.Read())
@@ -35,6 +35,8 @@ namespace Data.Database
                     per.Legajo = (int)drPersona["legajo"];
                     per.Telefono = (string)drPersona["telefono"];
                     per.TipoPersona = (Persona.TiposPersona)drPersona["tipo_persona"];
+                    per.Plan = new Plan();
+                    per.Plan.Descripcion = (string)drPersona["desc_plan"];
 
                     personas.Add(per);
                 }
@@ -96,7 +98,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPersona = new SqlCommand("delete persona where id_persona = @id", sqlConn);
+                SqlCommand cmdPersona = new SqlCommand("delete personas where id_persona = @id", sqlConn);
                 cmdPersona.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdPersona.ExecuteNonQuery();
             }
@@ -116,7 +118,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPersona = new SqlCommand("update persona set " +
+                SqlCommand cmdPersona = new SqlCommand("update personas set " +
                     "nombre = @nombre, apellido=@apellido, direccion=@direccion, email = @email, telefono = @telefono, " + 
                     "fecha_nac = @fecha_nac, legajo = @legajo, tipo_persona = @tipo_persona, id_plan = @id_plan where id_persona = @id", 
                     sqlConn);

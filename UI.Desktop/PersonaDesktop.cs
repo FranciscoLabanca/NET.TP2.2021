@@ -18,6 +18,11 @@ namespace UI.Desktop
         public PersonaDesktop()
         {
             InitializeComponent();
+            cbTipoPersona.DataSource = Enum.GetValues(typeof(Persona.TiposPersona));
+            EspecialidadLogic el = new EspecialidadLogic();
+            cbEspecialidad.DataSource = el.GetAll();
+            cbEspecialidad.DisplayMember = "Descripcion";
+            cbEspecialidad.ValueMember = "ID";
         }
 
         public PersonaDesktop (ModoForm modo) : this()
@@ -43,8 +48,12 @@ namespace UI.Desktop
             tbTelefono.Text = PersonaActual.Telefono;
             dtFechaNac.Value = PersonaActual.FechaNacimiento;
             tbLegajo.Text = PersonaActual.Legajo.ToString();
-            //cbTipoPersona. no se como aplicar esto
-            tbIdPlan.Text = PersonaActual.IDPlan.ToString();
+
+            Plan plan = BuscarPlan(PersonaActual.IDPlan);
+
+            cbEspecialidad.SelectedValue = plan.IDEspecialidad;
+            cbPlan.SelectedValue = plan.ID;
+
 
             switch (Modo)
             {
@@ -78,9 +87,16 @@ namespace UI.Desktop
                     PersonaActual.Direccion = tbDireccion.Text;
                     PersonaActual.Telefono = tbTelefono.Text;
                     PersonaActual.Email = tbDireccion.Text;
-                    PersonaActual.IDPlan = int.Parse(tbIdPlan.Text);
+                    PersonaActual.IDPlan = ((Plan)cbPlan.SelectedItem).ID;
                     PersonaActual.FechaNacimiento = dtFechaNac.Value;
-                    //Falta tipo de persona
+
+
+                    //Fuente: https://stackoverflow.com/questions/906899/binding-an-enum-to-a-winforms-combo-box-and-then-setting-it 
+                    Persona.TiposPersona tiposPersona;
+                    Enum.TryParse<Persona.TiposPersona>(cbTipoPersona.SelectedValue.ToString(), out tiposPersona);
+                    PersonaActual.TipoPersona = tiposPersona;
+
+
                     PersonaActual.State = BusinessEntity.States.New;
                     break;
 
@@ -91,9 +107,11 @@ namespace UI.Desktop
                     PersonaActual.Direccion = tbDireccion.Text;
                     PersonaActual.Telefono = tbTelefono.Text;
                     PersonaActual.Email = tbDireccion.Text;
-                    PersonaActual.IDPlan = int.Parse(tbIdPlan.Text);
+                    PersonaActual.IDPlan = ((Plan)cbPlan.SelectedItem).ID;
                     PersonaActual.FechaNacimiento = dtFechaNac.Value;
-                    //falta tipo persona
+                    Persona.TiposPersona tipoPersona;
+                    Enum.TryParse<Persona.TiposPersona>(cbTipoPersona.SelectedValue.ToString(), out tipoPersona);
+                    PersonaActual.TipoPersona = tipoPersona;
                     PersonaActual.State = BusinessEntity.States.Modified;
                     btnAceptar.Text = "Guardar";
                     break;
@@ -141,6 +159,18 @@ namespace UI.Desktop
             Close();
         }
 
+        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PlanLogic pl = new PlanLogic();
+            cbPlan.DataSource = pl.GetByIdEspecialidad(((Especialidad)cbEspecialidad.SelectedItem).ID);
+            cbPlan.DisplayMember = "Descripcion";
+            cbPlan.ValueMember = "ID";
+        }
 
+        protected Plan BuscarPlan(int ID)
+        {
+            PlanLogic pl = new PlanLogic();
+            return pl.GetOne(ID);
+        }
     }
 }
