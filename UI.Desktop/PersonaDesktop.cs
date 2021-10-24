@@ -137,10 +137,43 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            if (tbNombre.Text == "" || tbApellido.Text == "" || tbLegajo.Text == "" || tbDireccion.Text == "" || tbTelefono.Text == "" || tbEmail.Text == "")
+            if (tbNombre.Text == "")
+            {
+                Notificar("El campo Nombre esta vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            else
-                return true;
+            }
+
+            if (tbApellido.Text == "")
+            {
+                Notificar("El campo Apellido esta vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (tbLegajo.Text == "")
+            {
+                Notificar("El campo Legajo esta vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (tbDireccion.Text == "")
+            {
+                Notificar("El campo Direccion esta vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (tbTelefono.Text == "")
+            {
+                Notificar("El campo Telefono esta vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            PersonaLogic pl = new PersonaLogic();
+            if (!pl.IsValidEmail(tbEmail.Text))
+            {
+                Notificar("El email es invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -150,8 +183,6 @@ namespace UI.Desktop
                 GuardarCambios();
                 Close();
             }
-            else
-                Notificar("Verifique que todos los campos esten completos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
