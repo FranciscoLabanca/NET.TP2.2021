@@ -49,17 +49,11 @@ namespace UI.Desktop
         {
             Listar();
         }
-
         private void Usuarios_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void Listar()
-        {
-            dgvUsuarios.DataSource = new Business.Logic.UsuarioLogic().GetAll();
-        }
-
+        private void Listar() => dgvUsuarios.DataSource = new Business.Logic.UsuarioLogic().GetAll();
         
     }
 }

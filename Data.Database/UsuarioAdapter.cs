@@ -1,7 +1,6 @@
+using Business.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -14,6 +13,7 @@ namespace Data.Database
             //return new List<Usuario>(Usuarios);
 
             List<Usuario> usuarios = new List<Usuario>();
+            SqlDataReader drUsuarios = null;
 
             try
             {
@@ -21,8 +21,7 @@ namespace Data.Database
 
                 SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios", sqlConn);
 
-                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
-
+                /*SqlDataReader*/ drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {
                     Usuario usr = new Usuario();
@@ -47,6 +46,11 @@ namespace Data.Database
                 Exception ExcepcionManejada = new Exception("Error al recuperar la lista de usuarios", Ex);
                 throw ExcepcionManejada;
             }
+            finally 
+            {
+                drUsuarios?.Dispose();
+            }
+            
             return usuarios;
         }
 

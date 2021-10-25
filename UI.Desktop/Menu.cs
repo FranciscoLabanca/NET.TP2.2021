@@ -51,5 +51,10 @@ namespace UI.Desktop
             Planes p = new Planes();
             p.ShowDialog();
         }
+
+        private void materiasNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Materias().ShowDialog();
+        }
     }
 }
