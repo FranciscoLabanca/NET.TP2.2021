@@ -106,12 +106,7 @@ namespace UI.Desktop
             this.planesNIToolStripMenuItem.Name = "planesNIToolStripMenuItem";
             this.planesNIToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.planesNIToolStripMenuItem.Text = "Planes";
-
-            this.accesoAPlanesToolStripMenuItem.Name = "accesoAPlanesToolStripMenuItem";
-            this.accesoAPlanesToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.accesoAPlanesToolStripMenuItem.Text = "Acceso a Planes";
-            this.accesoAPlanesToolStripMenuItem.Click += new System.EventHandler(this.accesoAPlanesToolStripMenuItem_Click);
-            this.planesNIToolStripMenuItem.Click += new System.EventHandler(this.planesNIToolStripMenuItem_Click);
+            this.planesNIToolStripMenuItem.Click += new System.EventHandler(this.planesNIToolStripMenuItem_Click_1);
             // 
             // modulosToolStripMenuItem
             // 
