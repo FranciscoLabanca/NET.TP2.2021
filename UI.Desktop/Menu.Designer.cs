@@ -106,6 +106,11 @@ namespace UI.Desktop
             this.planesNIToolStripMenuItem.Name = "planesNIToolStripMenuItem";
             this.planesNIToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.planesNIToolStripMenuItem.Text = "Planes";
+
+            this.accesoAPlanesToolStripMenuItem.Name = "accesoAPlanesToolStripMenuItem";
+            this.accesoAPlanesToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.accesoAPlanesToolStripMenuItem.Text = "Acceso a Planes";
+            this.accesoAPlanesToolStripMenuItem.Click += new System.EventHandler(this.accesoAPlanesToolStripMenuItem_Click);
             this.planesNIToolStripMenuItem.Click += new System.EventHandler(this.planesNIToolStripMenuItem_Click);
             // 
             // modulosToolStripMenuItem
@@ -139,8 +144,9 @@ namespace UI.Desktop
             // materiasNIToolStripMenuItem
             // 
             this.materiasNIToolStripMenuItem.Name = "materiasNIToolStripMenuItem";
-            this.materiasNIToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.materiasNIToolStripMenuItem.Text = "Materias NI";
+            this.materiasNIToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.materiasNIToolStripMenuItem.Text = "Materias";
+            this.materiasNIToolStripMenuItem.Click += new System.EventHandler(this.materiasNIToolStripMenuItem_Click);
             // 
             // inscripcionesNIToolStripMenuItem
             // 

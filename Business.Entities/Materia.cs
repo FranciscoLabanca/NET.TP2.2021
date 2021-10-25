@@ -56,5 +56,17 @@ namespace Business.Entities
         		_IDPlan = value;
         	}
         }
+        private string _DescripcionPlan;
+        public string DescripcionPlan {
+            get 
+            {
+                return _DescripcionPlan;
+            } 
+            set
+            {
+                _DescripcionPlan = value;
+            } 
+        }
+
     }
 }

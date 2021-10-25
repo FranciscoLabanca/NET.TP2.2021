@@ -52,6 +52,10 @@ namespace UI.Desktop
             p.ShowDialog();
         }
 
+        private void materiasNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Materias().ShowDialog();
+
         private void comisionesNIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Comisiones c = new Comisiones();
@@ -68,6 +72,7 @@ namespace UI.Desktop
         {
             ModulosUsuarios mu = new ModulosUsuarios();
             mu.ShowDialog();
+
         }
     }
 }

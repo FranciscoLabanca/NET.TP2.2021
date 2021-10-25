@@ -172,45 +172,51 @@ namespace UI.Desktop
             // 
             // tbID
             // 
+            this.tbID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbID.Enabled = false;
             this.tbID.Location = new System.Drawing.Point(133, 3);
             this.tbID.Name = "tbID";
-            this.tbID.Size = new System.Drawing.Size(100, 20);
+            this.tbID.Size = new System.Drawing.Size(124, 20);
             this.tbID.TabIndex = 7;
             // 
             // tbNombreUsuario
             // 
+            this.tbNombreUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNombreUsuario.Location = new System.Drawing.Point(133, 30);
             this.tbNombreUsuario.Name = "tbNombreUsuario";
-            this.tbNombreUsuario.Size = new System.Drawing.Size(100, 20);
+            this.tbNombreUsuario.Size = new System.Drawing.Size(124, 20);
             this.tbNombreUsuario.TabIndex = 8;
             // 
             // tbNombre
             // 
+            this.tbNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNombre.Location = new System.Drawing.Point(133, 57);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(100, 20);
+            this.tbNombre.Size = new System.Drawing.Size(124, 20);
             this.tbNombre.TabIndex = 9;
             // 
             // tbApellido
             // 
+            this.tbApellido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbApellido.Location = new System.Drawing.Point(133, 84);
             this.tbApellido.Name = "tbApellido";
-            this.tbApellido.Size = new System.Drawing.Size(100, 20);
+            this.tbApellido.Size = new System.Drawing.Size(124, 20);
             this.tbApellido.TabIndex = 10;
             // 
             // tbEmail
             // 
+            this.tbEmail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbEmail.Location = new System.Drawing.Point(393, 3);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 20);
+            this.tbEmail.Size = new System.Drawing.Size(124, 20);
             this.tbEmail.TabIndex = 11;
             // 
             // tbClave
             // 
+            this.tbClave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbClave.Location = new System.Drawing.Point(393, 30);
             this.tbClave.Name = "tbClave";
-            this.tbClave.Size = new System.Drawing.Size(100, 20);
+            this.tbClave.Size = new System.Drawing.Size(124, 20);
             this.tbClave.TabIndex = 12;
             // 
             // btnCancelar
