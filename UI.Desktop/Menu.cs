@@ -55,6 +55,24 @@ namespace UI.Desktop
         private void materiasNIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Materias().ShowDialog();
+
+        private void comisionesNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Comisiones c = new Comisiones();
+            c.ShowDialog();
+        }
+
+        private void planesNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planes p = new Planes();
+            p.ShowDialog();
+        }
+
+        private void permisosPorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModulosUsuarios mu = new ModulosUsuarios();
+            mu.ShowDialog();
+
         }
     }
 }

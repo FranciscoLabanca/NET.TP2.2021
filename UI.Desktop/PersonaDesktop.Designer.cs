@@ -30,8 +30,6 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.lbID = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
             this.lbDireccion = new System.Windows.Forms.Label();
@@ -41,7 +39,6 @@ namespace UI.Desktop
             this.lbFechaNac = new System.Windows.Forms.Label();
             this.lbLegajo = new System.Windows.Forms.Label();
             this.lbTipoPersona = new System.Windows.Forms.Label();
-            this.lbIdPlan = new System.Windows.Forms.Label();
             this.tbID = new System.Windows.Forms.TextBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.tbDireccion = new System.Windows.Forms.TextBox();
@@ -50,8 +47,13 @@ namespace UI.Desktop
             this.tbTelefono = new System.Windows.Forms.TextBox();
             this.tbLegajo = new System.Windows.Forms.TextBox();
             this.cbTipoPersona = new System.Windows.Forms.ComboBox();
-            this.tbIdPlan = new System.Windows.Forms.TextBox();
             this.dtFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblEspecialidad = new System.Windows.Forms.Label();
+            this.lblPlan = new System.Windows.Forms.Label();
+            this.cbEspecialidad = new System.Windows.Forms.ComboBox();
+            this.cbPlan = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,8 +64,6 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.lbID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbNombre, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbDireccion, 0, 1);
@@ -73,7 +73,6 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.lbFechaNac, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbLegajo, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbTipoPersona, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lbIdPlan, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.tbID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbNombre, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbDireccion, 1, 1);
@@ -82,40 +81,27 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.tbTelefono, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.tbLegajo, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.cbTipoPersona, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tbIdPlan, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.dtFechaNac, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblEspecialidad, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblPlan, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cbEspecialidad, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cbPlan, 3, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(601, 166);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(618, 193);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(389, 134);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(308, 134);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 0;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // lbID
             // 
@@ -207,16 +193,6 @@ namespace UI.Desktop
             this.lbTipoPersona.TabIndex = 10;
             this.lbTipoPersona.Text = "Tipo Persona";
             // 
-            // lbIdPlan
-            // 
-            this.lbIdPlan.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbIdPlan.AutoSize = true;
-            this.lbIdPlan.Location = new System.Drawing.Point(341, 111);
-            this.lbIdPlan.Name = "lbIdPlan";
-            this.lbIdPlan.Size = new System.Drawing.Size(42, 13);
-            this.lbIdPlan.TabIndex = 11;
-            this.lbIdPlan.Text = "ID Plan";
-            // 
             // tbID
             // 
             this.tbID.Location = new System.Drawing.Point(102, 3);
@@ -275,13 +251,6 @@ namespace UI.Desktop
             this.cbTipoPersona.Size = new System.Drawing.Size(121, 21);
             this.cbTipoPersona.TabIndex = 19;
             // 
-            // tbIdPlan
-            // 
-            this.tbIdPlan.Location = new System.Drawing.Point(389, 107);
-            this.tbIdPlan.Name = "tbIdPlan";
-            this.tbIdPlan.Size = new System.Drawing.Size(100, 20);
-            this.tbIdPlan.TabIndex = 20;
-            // 
             // dtFechaNac
             // 
             this.dtFechaNac.Location = new System.Drawing.Point(102, 81);
@@ -289,11 +258,68 @@ namespace UI.Desktop
             this.dtFechaNac.Size = new System.Drawing.Size(200, 20);
             this.dtFechaNac.TabIndex = 21;
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(308, 161);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(389, 161);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // lblEspecialidad
+            // 
+            this.lblEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblEspecialidad.AutoSize = true;
+            this.lblEspecialidad.Location = new System.Drawing.Point(316, 111);
+            this.lblEspecialidad.Name = "lblEspecialidad";
+            this.lblEspecialidad.Size = new System.Drawing.Size(67, 13);
+            this.lblEspecialidad.TabIndex = 22;
+            this.lblEspecialidad.Text = "Especialidad";
+            // 
+            // lblPlan
+            // 
+            this.lblPlan.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblPlan.AutoSize = true;
+            this.lblPlan.Location = new System.Drawing.Point(355, 138);
+            this.lblPlan.Name = "lblPlan";
+            this.lblPlan.Size = new System.Drawing.Size(28, 13);
+            this.lblPlan.TabIndex = 23;
+            this.lblPlan.Text = "Plan";
+            // 
+            // cbEspecialidad
+            // 
+            this.cbEspecialidad.FormattingEnabled = true;
+            this.cbEspecialidad.Location = new System.Drawing.Point(389, 107);
+            this.cbEspecialidad.Name = "cbEspecialidad";
+            this.cbEspecialidad.Size = new System.Drawing.Size(121, 21);
+            this.cbEspecialidad.TabIndex = 24;
+            this.cbEspecialidad.SelectedIndexChanged += new System.EventHandler(this.cbEspecialidad_SelectedIndexChanged);
+            // 
+            // cbPlan
+            // 
+            this.cbPlan.FormattingEnabled = true;
+            this.cbPlan.Location = new System.Drawing.Point(389, 134);
+            this.cbPlan.Name = "cbPlan";
+            this.cbPlan.Size = new System.Drawing.Size(121, 21);
+            this.cbPlan.TabIndex = 25;
+            // 
             // PersonaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 166);
+            this.ClientSize = new System.Drawing.Size(618, 193);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PersonaDesktop";
             this.Text = "PersonaDesktop";
@@ -317,7 +343,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Label lbFechaNac;
         private System.Windows.Forms.Label lbLegajo;
         private System.Windows.Forms.Label lbTipoPersona;
-        private System.Windows.Forms.Label lbIdPlan;
         private System.Windows.Forms.TextBox tbID;
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.TextBox tbDireccion;
@@ -326,7 +351,10 @@ namespace UI.Desktop
         private System.Windows.Forms.TextBox tbTelefono;
         private System.Windows.Forms.TextBox tbLegajo;
         private System.Windows.Forms.ComboBox cbTipoPersona;
-        private System.Windows.Forms.TextBox tbIdPlan;
         private System.Windows.Forms.DateTimePicker dtFechaNac;
+        private System.Windows.Forms.Label lblEspecialidad;
+        private System.Windows.Forms.Label lblPlan;
+        private System.Windows.Forms.ComboBox cbEspecialidad;
+        private System.Windows.Forms.ComboBox cbPlan;
     }
 }

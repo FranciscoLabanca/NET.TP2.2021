@@ -116,6 +116,23 @@ namespace Business.Entities
         		_TipoPersona = value;
         	}
         }
+
+        public Plan Plan { get; set; }
+
+        public string DescripcionPlan
+        {
+            get
+            {
+                if(Plan == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Plan.Descripcion;
+                }
+            }
+        }
         public enum TiposPersona
         {
             Profesor,

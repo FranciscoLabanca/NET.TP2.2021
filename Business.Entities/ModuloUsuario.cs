@@ -80,5 +80,39 @@ namespace Business.Entities
         		_PermiteConsulta = value;
         	}
         }
+
+        public Usuario User { get; set; }
+
+        public string NombreUsuario
+        {
+            get
+            {
+                if(User == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return User.NombreUsuario;
+                }
+            }
+        }
+
+        public Modulo Modulo { get; set; }
+
+        public string DescripcionModulo
+        {
+            get
+            {
+                if(Modulo == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return Modulo.Descripcion;
+                }
+            }
+        }
     }
 }
