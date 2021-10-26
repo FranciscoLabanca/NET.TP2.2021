@@ -30,6 +30,7 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.CbEspecialidad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,8 +41,9 @@ namespace UI.Desktop
             this.tbHorasTotales = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.cbPlanes = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.LblEspecialidad = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +55,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.CbEspecialidad, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
@@ -63,8 +66,9 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.tbHorasTotales, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.cbPlanes, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cbPlanes, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.LblEspecialidad, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -77,6 +81,16 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(601, 166);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // CbEspecialidad
+            // 
+            this.CbEspecialidad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CbEspecialidad.FormattingEnabled = true;
+            this.CbEspecialidad.Location = new System.Drawing.Point(103, 111);
+            this.CbEspecialidad.Name = "CbEspecialidad";
+            this.CbEspecialidad.Size = new System.Drawing.Size(163, 21);
+            this.CbEspecialidad.TabIndex = 13;
+            this.CbEspecialidad.SelectedIndexChanged += new System.EventHandler(this.CbEspecialidad_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -184,26 +198,37 @@ namespace UI.Desktop
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cbPlanes
+            // 
+            this.cbPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbPlanes.FormattingEnabled = true;
+            this.cbPlanes.Location = new System.Drawing.Point(103, 138);
+            this.cbPlanes.Name = "cbPlanes";
+            this.cbPlanes.Size = new System.Drawing.Size(163, 21);
+            this.cbPlanes.TabIndex = 11;
+            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 108);
+            this.label5.Location = new System.Drawing.Point(3, 135);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 27);
+            this.label5.Size = new System.Drawing.Size(28, 31);
             this.label5.TabIndex = 10;
             this.label5.Text = "Plan";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbPlanes
+            // LblEspecialidad
             // 
-            this.cbPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbPlanes.FormattingEnabled = true;
-            this.cbPlanes.Location = new System.Drawing.Point(103, 111);
-            this.cbPlanes.Name = "cbPlanes";
-            this.cbPlanes.Size = new System.Drawing.Size(163, 21);
-            this.cbPlanes.TabIndex = 11;
+            this.LblEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LblEspecialidad.AutoSize = true;
+            this.LblEspecialidad.Location = new System.Drawing.Point(3, 115);
+            this.LblEspecialidad.Name = "LblEspecialidad";
+            this.LblEspecialidad.Size = new System.Drawing.Size(67, 13);
+            this.LblEspecialidad.TabIndex = 12;
+            this.LblEspecialidad.Text = "Especialidad";
+            this.LblEspecialidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MateriaDesktop
             // 
@@ -234,5 +259,7 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbPlanes;
+        private System.Windows.Forms.Label LblEspecialidad;
+        private System.Windows.Forms.ComboBox CbEspecialidad;
     }
 }

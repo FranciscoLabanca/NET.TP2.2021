@@ -18,10 +18,15 @@ namespace UI.Desktop
         public MateriaDesktop()
         {
             InitializeComponent();
-            List<Plan> planes = new PlanLogic().GetAll();
-            cbPlanes.DataSource = planes;
-            cbPlanes.DisplayMember = "Descripcion";
-            cbPlanes.ValueMember = "ID";
+            List<Especialidad> especialidades = new EspecialidadLogic().GetAll();
+            CbEspecialidad.DataSource = especialidades;
+            CbEspecialidad.DisplayMember = "Descripcion";
+            CbEspecialidad.ValueMember = "ID";
+            CbEspecialidad.SelectedIndex = 0;
+            //List<Plan> planes = new PlanLogic().GetAll();
+            ActualizarPlanesCb();
+            //cbPlanes.DisplayMember = "Descripcion";
+            //cbPlanes.ValueMember = "ID";
         }
 
         public MateriaDesktop(ModoForm modo) : this()
@@ -108,6 +113,18 @@ namespace UI.Desktop
             MapearADatos();
             new MateriaLogic().Save(MateriaActual);
             this.Close();
+        }
+
+        private void CbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarPlanesCb();
+        }
+
+        private void ActualizarPlanesCb()
+        {
+            cbPlanes.DataSource = new PlanLogic().GetAll().Where(p => p.IDEspecialidad == ((Especialidad)CbEspecialidad.SelectedItem).ID).ToList();
+            cbPlanes.DisplayMember = "Descripcion";
+            cbPlanes.ValueMember = "ID";
         }
     }
 }
