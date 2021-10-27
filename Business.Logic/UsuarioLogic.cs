@@ -8,7 +8,7 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-    public class UsuarioLogic : BusinessLogic
+    public class UsuarioLogic : BusinessLogic, ILogic<Usuario>
     {
         public UsuarioAdapter UsuarioData { set; get; }
 

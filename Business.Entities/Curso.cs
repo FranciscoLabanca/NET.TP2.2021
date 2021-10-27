@@ -20,6 +20,7 @@ namespace Business.Entities
         		_AnioCalendario = value;
         	}
         }
+        
         private int _Cupo;
         public int Cupo 
         {
@@ -32,18 +33,7 @@ namespace Business.Entities
         		_Cupo = value;
         	}
         }
-        private string _Descripcion;
-        public string Descripcion 
-        {
-        	get
-        	{
-        		return _Descripcion;
-        	} 
-        	set
-        	{
-        		_Descripcion = value;
-        	}
-        }
+
         private int _IDComision;
         public int IDComision 
         {
@@ -56,6 +46,7 @@ namespace Business.Entities
         		_IDComision = value;
         	}
         }
+
         private int _IDMateria;
         public int IDMateria 
         {
@@ -68,5 +59,23 @@ namespace Business.Entities
         		_IDMateria = value;
         	}
         }
+
+        private string _Comision;
+
+        public string Comision
+        {
+            get { return _Comision; }
+            set { _Comision = value; }
+        }
+
+        private string _Materia;
+
+        public string Materia
+        {
+            get { return _Materia; }
+            set { _Materia = value; }
+        }
+
+
     }
 }

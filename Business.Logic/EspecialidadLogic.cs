@@ -8,7 +8,7 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-    public class EspecialidadLogic : BusinessLogic
+    public class EspecialidadLogic : BusinessLogic, ILogic<Especialidad>
     {
         public EspecialidadAdapter EspecialidadData { set; get; }
 

@@ -131,7 +131,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al acutalizar modulo", Ex);
+                Exception ExcepcionManejada = new Exception("Error al agregar el modulo", Ex);
                 throw ExcepcionManejada;
             }
             finally
