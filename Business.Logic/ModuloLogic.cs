@@ -8,7 +8,7 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    public class ModuloLogic : BusinessLogic
+    public class ModuloLogic : BusinessLogic, ILogic<Modulo>
     {
         public ModuloAdapter ModuloData { set; get; }
 

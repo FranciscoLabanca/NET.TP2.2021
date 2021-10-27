@@ -159,8 +159,9 @@ namespace UI.Desktop
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(70, 20);
-            this.toolStripMenuItem1.Text = "Cursos NI";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(55, 20);
+            this.toolStripMenuItem1.Text = "Cursos";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // especialidadesNIToolStripMenuItem
             // 

@@ -23,10 +23,7 @@ namespace UI.Desktop
             CbEspecialidad.DisplayMember = "Descripcion";
             CbEspecialidad.ValueMember = "ID";
             CbEspecialidad.SelectedIndex = 0;
-            //List<Plan> planes = new PlanLogic().GetAll();
             ActualizarPlanesCb();
-            //cbPlanes.DisplayMember = "Descripcion";
-            //cbPlanes.ValueMember = "ID";
         }
 
         public MateriaDesktop(ModoForm modo) : this()
@@ -81,7 +78,6 @@ namespace UI.Desktop
                     break;
 
                 case ModoForm.Modificacion:
-                    //MateriaActual = new Materia();
                     MateriaActual.Descripcion = tbDescripcion.Text;
                     MateriaActual.HSSemanales = int.Parse(tbHorasSemanales.Text);
                     MateriaActual.HSTotales = int.Parse(tbHorasTotales.Text);

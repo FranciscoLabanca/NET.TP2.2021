@@ -8,7 +8,7 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-    public class ComisionLogic : BusinessLogic
+    public class ComisionLogic : BusinessLogic, ILogic<Comision>
     {
         public ComisionAdapter ComisionData { set; get; }
 

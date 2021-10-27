@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace Business.Logic
 {
-    public class PersonaLogic : BusinessLogic
+    public class PersonaLogic : BusinessLogic, ILogic<Persona>
     {
         public PersonaAdapter PersonaData { set; get; }
 

@@ -74,5 +74,11 @@ namespace UI.Desktop
             Planes p = new Planes();
             p.ShowDialog();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cursos c = new Cursos();
+            c.ShowDialog();
+        }
     }
 }

@@ -8,7 +8,7 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-    public class ModuloUsuarioLogic : BusinessLogic
+    public class ModuloUsuarioLogic : BusinessLogic, ILogic<ModuloUsuario>
     {
         public ModuloUsuarioAdapter ModuloUsuarioData { get; set; }
 
@@ -35,6 +35,10 @@ namespace Business.Logic
         public void Save(ModuloUsuario moduloUsuario)
         {
             ModuloUsuarioData.Save(moduloUsuario);
+        }
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
