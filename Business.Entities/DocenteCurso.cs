@@ -20,6 +20,7 @@ namespace Business.Entities
         		_Cargo = value;
         	}
         }
+
         private int _IDCurso;
         public int IDCurso 
         {
@@ -32,6 +33,7 @@ namespace Business.Entities
         		_IDCurso = value;
         	}
         }
+
         private int _IDDocente;
         public int IDDocente 
         {
@@ -44,6 +46,9 @@ namespace Business.Entities
         		_IDDocente = value;
         	}
         }
+
+        public string NombreApellidoDocente { get; set; }
+
         public enum TiposCargo
         {
             Teoria,
