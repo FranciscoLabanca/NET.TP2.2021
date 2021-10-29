@@ -25,8 +25,7 @@
         <br />
 
         <asp:Label ID="especialidadLabel" runat="server" Text="Especialidad"></asp:Label>
-        <asp:DropDownList ID="especialidadDDL" runat="server" OnSelectedIndexChanged="especialidadDDL_SelectedIndexChanged"></asp:DropDownList>
-        <asp:Button ID="btnBuscarPlan" runat="server" Text="Buscar Plan" OnClick="btnBuscarPlan_Click" />
+        <asp:DropDownList ID="especialidadDDL" runat="server" OnSelectedIndexChanged="especialidadDDL_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
         <br />
 
         <asp:Label ID="planLabel" runat="server" Text="Plan"></asp:Label>

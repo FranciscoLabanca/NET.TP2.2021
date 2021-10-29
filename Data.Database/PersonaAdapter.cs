@@ -53,6 +53,90 @@ namespace Data.Database
             return personas;
         }
 
+        public List<Persona> GetAlumnos()
+        {
+            List<Persona> personas = new List<Persona>();
+
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdPersona = new SqlCommand("select * from personas per where per.tipo_persona = 'Alumno' inner join planes pl on per.id_plan = pl.id_plan", sqlConn);
+                SqlDataReader drPersona = cmdPersona.ExecuteReader();
+
+                while (drPersona.Read())
+                {
+                    Persona per = new Persona();
+
+                    per.ID = (int)drPersona["id_persona"];
+                    per.Nombre = (string)drPersona["nombre"];
+                    per.Apellido = (string)drPersona["apellido"];
+                    per.Direccion = (string)drPersona["direccion"];
+                    per.Email = (string)drPersona["email"];
+                    per.FechaNacimiento = (DateTime)drPersona["fecha_nac"];
+                    per.IDPlan = (int)drPersona["id_plan"];
+                    per.Legajo = (int)drPersona["legajo"];
+                    per.Telefono = (string)drPersona["telefono"];
+                    per.TipoPersona = (Persona.TiposPersona)drPersona["tipo_persona"];
+                    per.Plan = new Plan();
+                    per.Plan.Descripcion = (string)drPersona["desc_plan"];
+
+                    personas.Add(per);
+                }
+
+                drPersona.Close();
+                CloseConnection();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al buscar la lista de alumnos", Ex);
+                throw ExcepcionManejada;
+            }
+
+            return personas;
+        }
+
+        public List<Persona> GetProfesores()
+        {
+            List<Persona> personas = new List<Persona>();
+
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdPersona = new SqlCommand("select * from personas per where per.tipo_persona = 'Profesor' inner join planes pl on per.id_plan = pl.id_plan", sqlConn);
+                SqlDataReader drPersona = cmdPersona.ExecuteReader();
+
+                while (drPersona.Read())
+                {
+                    Persona per = new Persona();
+
+                    per.ID = (int)drPersona["id_persona"];
+                    per.Nombre = (string)drPersona["nombre"];
+                    per.Apellido = (string)drPersona["apellido"];
+                    per.Direccion = (string)drPersona["direccion"];
+                    per.Email = (string)drPersona["email"];
+                    per.FechaNacimiento = (DateTime)drPersona["fecha_nac"];
+                    per.IDPlan = (int)drPersona["id_plan"];
+                    per.Legajo = (int)drPersona["legajo"];
+                    per.Telefono = (string)drPersona["telefono"];
+                    per.TipoPersona = (Persona.TiposPersona)drPersona["tipo_persona"];
+                    per.Plan = new Plan();
+                    per.Plan.Descripcion = (string)drPersona["desc_plan"];
+
+                    personas.Add(per);
+                }
+
+                drPersona.Close();
+                CloseConnection();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al buscar la lista de alumnos", Ex);
+                throw ExcepcionManejada;
+            }
+
+            return personas;
+        }
+
         public Persona GetOne(int ID)
         {
             Persona per = new Persona();
