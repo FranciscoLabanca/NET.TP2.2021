@@ -210,10 +210,5 @@ namespace UI.Web
         {
             LoadPlanDDL();
         }
-
-        protected void btnBuscarPlan_Click(object sender, EventArgs e)
-        {
-            LoadPlanDDL();
-        }
     }
 }
