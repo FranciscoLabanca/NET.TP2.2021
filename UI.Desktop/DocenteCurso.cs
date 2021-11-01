@@ -16,6 +16,7 @@ namespace UI.Desktop
         public DocenteCurso()
         {
             InitializeComponent();
+            dgvDocenteCursos.AutoGenerateColumns = false;
         }
         private void DocenteCursos_Load(object sender, EventArgs e)
         {

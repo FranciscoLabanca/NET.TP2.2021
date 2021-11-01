@@ -34,6 +34,8 @@ namespace Business.Entities
         	}
         }
 
+        public string Curso { get; set; }
+
         private int _IDDocente;
         public int IDDocente 
         {
