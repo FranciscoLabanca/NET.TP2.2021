@@ -44,6 +44,8 @@ namespace UI.Desktop
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisosPorUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignarDocentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -158,10 +160,12 @@ namespace UI.Desktop
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asignarDocentesToolStripMenuItem,
+            this.administrarCursosToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(55, 20);
             this.toolStripMenuItem1.Text = "Cursos";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // especialidadesNIToolStripMenuItem
             // 
@@ -176,6 +180,20 @@ namespace UI.Desktop
             this.permisosPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
             this.permisosPorUsuarioToolStripMenuItem.Text = "Permisos por Usuario";
             this.permisosPorUsuarioToolStripMenuItem.Click += new System.EventHandler(this.permisosPorUsuarioToolStripMenuItem_Click);
+            // 
+            // asignarDocentesToolStripMenuItem
+            // 
+            this.asignarDocentesToolStripMenuItem.Name = "asignarDocentesToolStripMenuItem";
+            this.asignarDocentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asignarDocentesToolStripMenuItem.Text = "Asignar Docentes";
+            this.asignarDocentesToolStripMenuItem.Click += new System.EventHandler(this.asignarDocentesToolStripMenuItem_Click);
+            // 
+            // administrarCursosToolStripMenuItem
+            // 
+            this.administrarCursosToolStripMenuItem.Name = "administrarCursosToolStripMenuItem";
+            this.administrarCursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.administrarCursosToolStripMenuItem.Text = "Administrar Cursos";
+            this.administrarCursosToolStripMenuItem.Click += new System.EventHandler(this.administrarCursosToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -213,6 +231,8 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem especialidadesNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem permisosPorUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asignarDocentesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarCursosToolStripMenuItem;
     }
 }
 

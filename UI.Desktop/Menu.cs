@@ -75,7 +75,13 @@ namespace UI.Desktop
             p.ShowDialog();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void asignarDocentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocenteCurso dc = new DocenteCurso();
+            dc.ShowDialog();
+        }
+
+        private void administrarCursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursos c = new Cursos();
             c.ShowDialog();

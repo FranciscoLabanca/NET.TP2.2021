@@ -31,6 +31,7 @@ namespace Business.Logic
         }
         public void Delete(Curso curso)
         {
+            curso.State = BusinessEntity.States.Deleted;
             _CursoData.Save(curso);
         }
         public void Save(Curso curso)
