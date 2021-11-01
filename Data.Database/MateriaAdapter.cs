@@ -48,6 +48,47 @@ namespace Data.Database
             return materias;
         }
 
+        public List<Materia> GetByIdPlan(int id)
+        {
+            List<Materia> materias = new List<Materia>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdMaterias = new SqlCommand("SELECT m.id_materia, m.desc_materia, m.hs_semanales, m.hs_totales, m.id_plan, p.desc_plan FROM materias m "
+                                                        + "JOIN planes p ON m.id_plan = p.id_plan where m.id_plan = @id", sqlConn);
+                cmdMaterias.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                while (drMaterias.Read())
+                {
+                    Materia materia = new Materia();
+
+                    materia.ID = (int)drMaterias["id_materia"];
+                    materia.Descripcion = (string)drMaterias["desc_materia"];
+                    materia.IDPlan = (int)drMaterias["id_plan"];
+                    materia.HSSemanales = (int)drMaterias["hs_semanales"];
+                    materia.HSTotales = (int)drMaterias["hs_totales"];
+                    materia.DescripcionPlan = (string)drMaterias["desc_plan"];
+
+                    materias.Add(materia);
+                }
+
+                drMaterias.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar la lista de usuarios", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return materias;
+        }
+
         public Materia GetOne(int ID)
         {
             //return Usuarios.Find(delegate(Usuario u) { return u.ID == ID; });

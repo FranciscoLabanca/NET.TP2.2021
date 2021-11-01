@@ -27,6 +27,11 @@ namespace Business.Logic
             return ComisionData.GetAll();
         }
 
+        public List<Comision> GetByIdPlan(int id)
+        {
+            return ComisionData.GetByIdPlan(id);
+        }
+
         public Comision GetOne(int ID)
         {
             return ComisionData.GetOne(ID);

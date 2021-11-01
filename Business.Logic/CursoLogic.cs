@@ -27,7 +27,7 @@ namespace Business.Logic
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _CursoData.Delete(id);
         }
         public void Delete(Curso curso)
         {
