@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.Entities;
+using Business.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,27 @@ namespace UI.Desktop
 {
     public partial class Menu : Form
     {
+        private readonly IEnumerable<ModuloUsuario> _ModulosConAcceso;
         public Menu()
         {
             InitializeComponent();
+
         }
 
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+        public Menu(int idUsuario) : this()
         {
-
+            ModuloUsuarioLogic muLogic = new ModuloUsuarioLogic();
+            ModuloLogic modLogic = new ModuloLogic();
+            _ModulosConAcceso = (from modusuario in muLogic.GetByUserID(idUsuario)
+                                 join modulo in modLogic.GetAll() on modusuario.IdModulo equals modulo.ID
+                                 select new ModuloUsuario { ID = modusuario.ID, 
+                                                            IdUsuario = modusuario.IdUsuario,
+                                                            PermiteAlta = modusuario.PermiteAlta,
+                                                            PermiteBaja = modusuario.PermiteBaja,
+                                                            PermiteConsulta = modusuario.PermiteConsulta,
+                                                            PermiteModificacion = modusuario.PermiteModificacion,
+                                                            Modulo = modulo});
+            SetearAccesoAModulos();
         }
 
         private void accesoAModulosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,6 +100,40 @@ namespace UI.Desktop
         {
             Cursos c = new Cursos();
             c.ShowDialog();
+        }
+
+        private void SetearAccesoAModulos()
+        {
+            foreach (var modulo in _ModulosConAcceso)
+            {              
+                switch (modulo.Modulo.Ejecuta)
+                {
+                    case Business.Entities.Modulo.ListaModulos.Personas:
+                        personasToolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Permisos:
+                        permisosToolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Usuarios:
+                        usuariosNIToolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Comisiones:
+                        comisionesToolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Cursos:
+                        CursostoolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Planes:
+                        planesToolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Materias:
+                        materiasToolStripMenuItem.Enabled = true;
+                        break;
+                    case Business.Entities.Modulo.ListaModulos.Especialidades:
+                        especialidadesToolStripMenuItem.Enabled = true;
+                        break;
+                }
+            }
         }
 
     }

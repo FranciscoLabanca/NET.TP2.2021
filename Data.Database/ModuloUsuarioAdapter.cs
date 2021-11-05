@@ -59,6 +59,56 @@ namespace Data.Database
             return moduloUsuarios;
         }
 
+        public List<ModuloUsuario> GetByUserID(int idUsuario)
+        {
+            List<ModuloUsuario> moduloUsuarios = new List<ModuloUsuario>();
+
+            try
+            {
+                OpenConnection();
+
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM modulos_usuarios mu "
+                                                    + "INNER JOIN modulos m ON mu.id_modulo = m.id_modulo "
+                                                    + "INNER JOIN usuarios u ON mu.id_usuario = u.id_usuario " +
+                                                    "WHERE mu.id_usuario = @id_usuario", sqlConn);
+                sqlCommand.Parameters.Add("@id_usuario", SqlDbType.Int).Value = idUsuario;
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    ModuloUsuario mu = new ModuloUsuario();
+
+                    mu.ID = (int)dataReader["id_modulo_usuario"];
+                    mu.IdModulo = (int)dataReader["id_modulo"];
+                    mu.IdUsuario = (int)dataReader["id_usuario"];
+                    mu.PermiteAlta = (bool)dataReader["alta"];
+                    mu.PermiteBaja = (bool)dataReader["baja"];
+                    mu.PermiteConsulta = (bool)dataReader["consulta"];
+                    mu.PermiteModificacion = (bool)dataReader["modificacion"];
+                    mu.User = new Usuario();
+                    mu.User.NombreUsuario = (string)dataReader["nombre_usuario"];
+
+                    mu.Modulo = new Modulo();
+                    mu.Modulo.Descripcion = (string)dataReader["desc_modulo"];
+
+                    moduloUsuarios.Add(mu);
+                }
+                dataReader.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar los modulos del usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return moduloUsuarios;
+        }
+
         public ModuloUsuario GetOne(int ID)
         {
             ModuloUsuario mu = new ModuloUsuario();

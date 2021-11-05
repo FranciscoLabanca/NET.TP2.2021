@@ -32,14 +32,15 @@ namespace UI.Desktop
             this.tcModulos = new System.Windows.Forms.ToolStripContainer();
             this.tlModulo = new System.Windows.Forms.TableLayoutPanel();
             this.dgvModulos = new System.Windows.Forms.DataGridView();
-            this.id_modulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc_modulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tsModulos = new System.Windows.Forms.ToolStrip();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.id_modulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_modulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ejecuta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcModulos.ContentPanel.SuspendLayout();
             this.tcModulos.TopToolStripPanel.SuspendLayout();
             this.tcModulos.SuspendLayout();
@@ -90,7 +91,8 @@ namespace UI.Desktop
             this.dgvModulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvModulos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_modulo,
-            this.desc_modulo});
+            this.desc_modulo,
+            this.ejecuta});
             this.tlModulo.SetColumnSpan(this.dgvModulos, 2);
             this.dgvModulos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvModulos.Location = new System.Drawing.Point(3, 3);
@@ -99,20 +101,6 @@ namespace UI.Desktop
             this.dgvModulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvModulos.Size = new System.Drawing.Size(794, 390);
             this.dgvModulos.TabIndex = 0;
-            // 
-            // id_modulo
-            // 
-            this.id_modulo.DataPropertyName = "ID";
-            this.id_modulo.HeaderText = "ID";
-            this.id_modulo.Name = "id_modulo";
-            this.id_modulo.ReadOnly = true;
-            // 
-            // desc_modulo
-            // 
-            this.desc_modulo.DataPropertyName = "Descripcion";
-            this.desc_modulo.HeaderText = "Descripcion";
-            this.desc_modulo.Name = "desc_modulo";
-            this.desc_modulo.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -144,7 +132,7 @@ namespace UI.Desktop
             this.btnEliminar});
             this.tsModulos.Location = new System.Drawing.Point(3, 0);
             this.tsModulos.Name = "tsModulos";
-            this.tsModulos.Size = new System.Drawing.Size(112, 25);
+            this.tsModulos.Size = new System.Drawing.Size(81, 25);
             this.tsModulos.TabIndex = 0;
             // 
             // btnAgregar
@@ -176,6 +164,27 @@ namespace UI.Desktop
             this.btnEliminar.Size = new System.Drawing.Size(23, 22);
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // id_modulo
+            // 
+            this.id_modulo.DataPropertyName = "ID";
+            this.id_modulo.HeaderText = "ID";
+            this.id_modulo.Name = "id_modulo";
+            this.id_modulo.ReadOnly = true;
+            // 
+            // desc_modulo
+            // 
+            this.desc_modulo.DataPropertyName = "Descripcion";
+            this.desc_modulo.HeaderText = "Descripcion";
+            this.desc_modulo.Name = "desc_modulo";
+            this.desc_modulo.ReadOnly = true;
+            // 
+            // ejecuta
+            // 
+            this.ejecuta.DataPropertyName = "Ejecuta";
+            this.ejecuta.HeaderText = "Ejecuta Modulo";
+            this.ejecuta.Name = "ejecuta";
+            this.ejecuta.ReadOnly = true;
             // 
             // Modulo
             // 
@@ -212,5 +221,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_modulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_modulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ejecuta;
     }
 }
