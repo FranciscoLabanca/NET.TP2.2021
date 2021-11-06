@@ -87,5 +87,10 @@ namespace UI.Desktop
             c.ShowDialog();
         }
 
+        private void reportePlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportePlanes rp = new ReportePlanes();
+            rp.ShowDialog();
+        }
     }
 }
