@@ -14,19 +14,44 @@ namespace UI.Desktop
 {
     public partial class Planes : Form
     {
-        public PlanLogic planLogic { get; set; }
-        public Planes()
+        public PlanLogic PlanLogic { get; set; }
+        public ModuloUsuario Permiso { set; get; }
+
+        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Planes;
+
+        public Planes(ModuloUsuario permiso)
         {
+            Permiso = permiso;
             InitializeComponent();
             dgvPlanes.AutoGenerateColumns = false;
-            planLogic = new PlanLogic();
-            dgvPlanes.DataSource = planLogic.GetAll();
+            PlanLogic = new PlanLogic();
+            EstablecerPermisos();
         }
 
         public void Listar()
         {
-            PlanLogic pl = new PlanLogic();
-            dgvPlanes.DataSource = pl.GetAll();
+            if(Permiso.PermiteConsulta)
+                dgvPlanes.DataSource = PlanLogic.GetAll();
+        }
+
+        private void EstablecerPermisos()
+        {
+            btnActualizar.Enabled = false;
+            BtnAgregar.Enabled = false;
+            BtnEliminar.Enabled = false;
+            BtnEditar.Enabled = false;
+
+
+            if (Permiso.PermiteConsulta)
+            {
+                btnActualizar.Enabled = true;
+            }
+            if (Permiso.PermiteAlta)
+                BtnAgregar.Enabled = true;
+            if (Permiso.PermiteBaja)
+                BtnEliminar.Enabled = true;
+            if (Permiso.PermiteModificacion)
+                BtnEditar.Enabled = true;
         }
 
         private void Planes_Load(object sender, EventArgs e)
