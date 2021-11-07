@@ -132,7 +132,7 @@ namespace UI.Desktop
             this.btnEliminar});
             this.tsModulos.Location = new System.Drawing.Point(3, 0);
             this.tsModulos.Name = "tsModulos";
-            this.tsModulos.Size = new System.Drawing.Size(81, 25);
+            this.tsModulos.Size = new System.Drawing.Size(112, 25);
             this.tsModulos.TabIndex = 0;
             // 
             // btnAgregar
