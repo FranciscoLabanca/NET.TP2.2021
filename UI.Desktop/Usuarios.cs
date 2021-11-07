@@ -8,44 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
-using Business.Logic;
 
 namespace UI.Desktop
 {
     public partial class Usuarios : Form
     {
-        public UsuarioLogic UsuariosLogic { get; set; }
-        public ModuloUsuario Permiso { set; get; }
-
-        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Usuarios;
-
-        public Usuarios(ModuloUsuario permiso)
+        public Usuarios()
         {
-            Permiso = permiso;
             InitializeComponent();
             dgvUsuarios.AutoGenerateColumns = false;
-            UsuariosLogic = new UsuarioLogic();
-            EstablecerPermisos();
-        }
-
-        private void EstablecerPermisos()
-        {
-            BtnActualizar.Enabled = false;
-            BtnAgregar.Enabled = false;
-            BtnEliminar.Enabled = false;
-            BtnEditar.Enabled = false;
-
-
-            if (Permiso.PermiteConsulta)
-            {
-                BtnActualizar.Enabled = true;
-            }
-            if (Permiso.PermiteAlta)
-                BtnAgregar.Enabled = true;
-            if (Permiso.PermiteBaja)
-                BtnEliminar.Enabled = true;
-            if (Permiso.PermiteModificacion)
-                BtnEditar.Enabled = true;
+            Listar();
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -79,13 +51,9 @@ namespace UI.Desktop
         }
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            Listar();
+
         }
-        private void Listar()
-        {
-            if (Permiso.PermiteConsulta)            
-                dgvUsuarios.DataSource = UsuariosLogic.GetAll();            
-        }
+        private void Listar() => dgvUsuarios.DataSource = new Business.Logic.UsuarioLogic().GetAll();
         
     }
 }

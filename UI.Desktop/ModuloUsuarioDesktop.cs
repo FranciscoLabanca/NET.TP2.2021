@@ -50,10 +50,6 @@ namespace UI.Desktop
             tbID.Text = MUActual.ID.ToString();
             cbUsuario.SelectedValue = MUActual.IdUsuario;
             cbModulo.SelectedValue = MUActual.IdModulo;
-            checkAlta.Checked = MUActual.PermiteAlta;
-            checkBaja.Checked = MUActual.PermiteBaja;
-            checkConsulta.Checked = MUActual.PermiteConsulta;
-            checkModificacion.Checked = MUActual.PermiteModificacion;
             switch(Modo)
             {
                 case ModoForm.Alta:

@@ -14,44 +14,19 @@ namespace UI.Desktop
 {
     public partial class Planes : Form
     {
-        public PlanLogic PlanLogic { get; set; }
-        public ModuloUsuario Permiso { set; get; }
-
-        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Planes;
-
-        public Planes(ModuloUsuario permiso)
+        public PlanLogic planLogic { get; set; }
+        public Planes()
         {
-            Permiso = permiso;
             InitializeComponent();
             dgvPlanes.AutoGenerateColumns = false;
-            PlanLogic = new PlanLogic();
-            EstablecerPermisos();
+            planLogic = new PlanLogic();
+            dgvPlanes.DataSource = planLogic.GetAll();
         }
 
         public void Listar()
         {
-            if(Permiso.PermiteConsulta)
-                dgvPlanes.DataSource = PlanLogic.GetAll();
-        }
-
-        private void EstablecerPermisos()
-        {
-            btnActualizar.Enabled = false;
-            BtnAgregar.Enabled = false;
-            BtnEliminar.Enabled = false;
-            BtnEditar.Enabled = false;
-
-
-            if (Permiso.PermiteConsulta)
-            {
-                btnActualizar.Enabled = true;
-            }
-            if (Permiso.PermiteAlta)
-                BtnAgregar.Enabled = true;
-            if (Permiso.PermiteBaja)
-                BtnEliminar.Enabled = true;
-            if (Permiso.PermiteModificacion)
-                BtnEditar.Enabled = true;
+            PlanLogic pl = new PlanLogic();
+            dgvPlanes.DataSource = pl.GetAll();
         }
 
         private void Planes_Load(object sender, EventArgs e)
@@ -87,13 +62,6 @@ namespace UI.Desktop
         {
             PlanDesktop pd = new PlanDesktop(((Plan)dgvPlanes.SelectedRows[0].DataBoundItem).ID, ApplicationForm.ModoForm.Baja);
             pd.ShowDialog();
-            Listar();
-        }
-
-        private void tsbGeneraPlanes_Click(object sender, EventArgs e)
-        {
-            ReportePlanes rp = new ReportePlanes();
-            rp.ShowDialog();
             Listar();
         }
     }

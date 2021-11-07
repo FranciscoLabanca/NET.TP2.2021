@@ -14,41 +14,19 @@ namespace UI.Desktop
 {
     public partial class Especialidades : Form
     {
-        public EspecialidadLogic EspecialidadLogic { set; get; }
-        public ModuloUsuario Permiso { set; get; }
-        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Especialidades;
-
-        public Especialidades(ModuloUsuario permiso)
+        public EspecialidadLogic especialidadLogic { set; get; }
+        public Especialidades()
         {
-            Permiso = permiso;
             InitializeComponent();
             dgvEspecialidades.AutoGenerateColumns = false;
-            EspecialidadLogic = new EspecialidadLogic();
-            EstablecerPermisos();
+            especialidadLogic = new EspecialidadLogic();
+            dgvEspecialidades.DataSource = especialidadLogic.GetAll();
         }
-        private void EstablecerPermisos()
-        {
-            btnActualizar.Enabled = false;
-            BtnAgregar.Enabled = false;
-            BtnEliminar.Enabled = false;
-            BtnEditar.Enabled = false;
 
-
-            if (Permiso.PermiteConsulta)
-            {
-                btnActualizar.Enabled = true;
-            }
-            if (Permiso.PermiteAlta)
-                BtnAgregar.Enabled = true;
-            if (Permiso.PermiteBaja)
-                BtnEliminar.Enabled = true;
-            if (Permiso.PermiteModificacion)
-                BtnEditar.Enabled = true;
-        }
         public void Listar()
         {
-            if (Permiso.PermiteConsulta)
-                dgvEspecialidades.DataSource = EspecialidadLogic.GetAll();          
+            EspecialidadLogic el = new EspecialidadLogic();
+            dgvEspecialidades.DataSource = el.GetAll();
         }
 
         private void Especialidades_Load(object sender, EventArgs e)

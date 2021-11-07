@@ -34,6 +34,10 @@ namespace UI.Desktop
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvModulosUsuarios = new System.Windows.Forms.DataGridView();
+            this.tsModulosUsuarios = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbElminar = new System.Windows.Forms.ToolStripButton();
             this.id_modulo_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_modulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,10 +45,6 @@ namespace UI.Desktop
             this.baja = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.consulta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.modificacion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tsModulosUsuarios = new System.Windows.Forms.ToolStrip();
-            this.btnAgregar = new System.Windows.Forms.ToolStripButton();
-            this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.tscModulosUsuarios.ContentPanel.SuspendLayout();
             this.tscModulosUsuarios.TopToolStripPanel.SuspendLayout();
             this.tscModulosUsuarios.SuspendLayout();
@@ -129,6 +129,48 @@ namespace UI.Desktop
             this.dgvModulosUsuarios.Size = new System.Drawing.Size(794, 390);
             this.dgvModulosUsuarios.TabIndex = 2;
             // 
+            // tsModulosUsuarios
+            // 
+            this.tsModulosUsuarios.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsModulosUsuarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevo,
+            this.tsbEditar,
+            this.tsbElminar});
+            this.tsModulosUsuarios.Location = new System.Drawing.Point(3, 0);
+            this.tsModulosUsuarios.Name = "tsModulosUsuarios";
+            this.tsModulosUsuarios.Size = new System.Drawing.Size(81, 25);
+            this.tsModulosUsuarios.TabIndex = 0;
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.icono_agregar;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbEditar
+            // 
+            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = global::UI.Desktop.Properties.Resources.icono_editar;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
+            // tsbElminar
+            // 
+            this.tsbElminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbElminar.Image = global::UI.Desktop.Properties.Resources.icono_eliminar;
+            this.tsbElminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbElminar.Name = "tsbElminar";
+            this.tsbElminar.Size = new System.Drawing.Size(23, 22);
+            this.tsbElminar.Text = "Eliminar";
+            this.tsbElminar.Click += new System.EventHandler(this.tsbElminar_Click);
+            // 
             // id_modulo_usuario
             // 
             this.id_modulo_usuario.DataPropertyName = "ID";
@@ -178,48 +220,6 @@ namespace UI.Desktop
             this.modificacion.Name = "modificacion";
             this.modificacion.ReadOnly = true;
             // 
-            // tsModulosUsuarios
-            // 
-            this.tsModulosUsuarios.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsModulosUsuarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAgregar,
-            this.btnEditar,
-            this.btnEliminar});
-            this.tsModulosUsuarios.Location = new System.Drawing.Point(3, 0);
-            this.tsModulosUsuarios.Name = "tsModulosUsuarios";
-            this.tsModulosUsuarios.Size = new System.Drawing.Size(112, 25);
-            this.tsModulosUsuarios.TabIndex = 0;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAgregar.Image = global::UI.Desktop.Properties.Resources.icono_agregar;
-            this.btnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(23, 22);
-            this.btnAgregar.Text = "Nuevo";
-            this.btnAgregar.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEditar.Image = global::UI.Desktop.Properties.Resources.icono_editar;
-            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(23, 22);
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEliminar.Image = global::UI.Desktop.Properties.Resources.icono_eliminar;
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(23, 22);
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.tsbElminar_Click);
-            // 
             // ModulosUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,9 +250,9 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridView dgvModulosUsuarios;
         private System.Windows.Forms.ToolStrip tsModulosUsuarios;
-        private System.Windows.Forms.ToolStripButton btnAgregar;
-        private System.Windows.Forms.ToolStripButton btnEditar;
-        private System.Windows.Forms.ToolStripButton btnEliminar;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.ToolStripButton tsbEditar;
+        private System.Windows.Forms.ToolStripButton tsbElminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_modulo_usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_modulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;

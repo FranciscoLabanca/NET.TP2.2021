@@ -32,11 +32,6 @@ namespace Business.Logic
             return ModuloUsuarioData.GetOne(ID);
         }
 
-        public List<ModuloUsuario> GetByUserID(int idUsuario)
-        {
-            return ModuloUsuarioData.GetByUserID(idUsuario);
-        }
-
         public void Save(ModuloUsuario moduloUsuario)
         {
             ModuloUsuarioData.Save(moduloUsuario);

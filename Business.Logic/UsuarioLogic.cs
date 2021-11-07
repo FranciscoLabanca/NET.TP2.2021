@@ -26,10 +26,7 @@ namespace Business.Logic
         {
             return UsuarioData.GetOne(id);
         }
-        public Usuario GetOne(string nombreUsuario)
-        {
-            return UsuarioData.GetOne(nombreUsuario);
-        }
+
         public void Delete(int id)
         {
             UsuarioData.Delete(id);

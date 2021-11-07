@@ -36,8 +36,6 @@ namespace UI.Desktop
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CbModulos = new System.Windows.Forms.ComboBox();
             this.tlModulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,8 +52,6 @@ namespace UI.Desktop
             this.tlModulo.Controls.Add(this.tbDesc, 3, 0);
             this.tlModulo.Controls.Add(this.btnGuardar, 2, 1);
             this.tlModulo.Controls.Add(this.btnCancelar, 3, 1);
-            this.tlModulo.Controls.Add(this.label1, 0, 1);
-            this.tlModulo.Controls.Add(this.CbModulos, 1, 1);
             this.tlModulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlModulo.Location = new System.Drawing.Point(0, 0);
             this.tlModulo.Name = "tlModulo";
@@ -99,7 +95,7 @@ namespace UI.Desktop
             this.tbDesc.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tbDesc.Location = new System.Drawing.Point(483, 8);
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(166, 20);
+            this.tbDesc.Size = new System.Drawing.Size(100, 20);
             this.tbDesc.TabIndex = 3;
             // 
             // btnGuardar
@@ -121,26 +117,6 @@ namespace UI.Desktop
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 29);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Modulo";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CbModulos
-            // 
-            this.CbModulos.FormattingEnabled = true;
-            this.CbModulos.Location = new System.Drawing.Point(83, 40);
-            this.CbModulos.Name = "CbModulos";
-            this.CbModulos.Size = new System.Drawing.Size(172, 21);
-            this.CbModulos.TabIndex = 7;
             // 
             // ModuloDesktop
             // 
@@ -165,7 +141,5 @@ namespace UI.Desktop
         private System.Windows.Forms.TextBox tbDesc;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox CbModulos;
     }
 }

@@ -14,44 +14,20 @@ namespace UI.Desktop
 {
     public partial class ModulosUsuarios : Form
     {
-        public ModuloUsuarioLogic ModulosUsuariosLogic { get; set; }
-        public ModuloUsuario Permiso { set; get; }
+        public ModuloUsuarioLogic MULogic { get; set; }
 
-        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Permisos;
-
-        public ModulosUsuarios(ModuloUsuario permiso)
+        public ModulosUsuarios()
         {
-            Permiso = permiso;
             InitializeComponent();
             dgvModulosUsuarios.AutoGenerateColumns = false;
-            ModulosUsuariosLogic = new ModuloUsuarioLogic();
-            EstablecerPermisos();
+            MULogic = new ModuloUsuarioLogic();
+            dgvModulosUsuarios.DataSource = MULogic.GetAll();
         }
 
         public void Listar()
         {
-            if (Permiso.PermiteConsulta)
-                dgvModulosUsuarios.DataSource = ModulosUsuariosLogic.GetAll();
-        }
-
-        private void EstablecerPermisos()
-        {
-            btnActualizar.Enabled = false;
-            btnAgregar.Enabled = false;
-            btnEliminar.Enabled = false;
-            btnEditar.Enabled = false;
-
-
-            if (Permiso.PermiteConsulta)
-            {
-                btnActualizar.Enabled = true;
-            }
-            if (Permiso.PermiteAlta)
-                btnAgregar.Enabled = true;
-            if (Permiso.PermiteBaja)
-                btnEliminar.Enabled = true;
-            if (Permiso.PermiteModificacion)
-                btnEditar.Enabled = true;
+            ModuloUsuarioLogic mu = new ModuloUsuarioLogic();
+            dgvModulosUsuarios.DataSource = mu.GetAll();
         }
 
         private void ModulosUsuarios_Load(object sender, EventArgs e)

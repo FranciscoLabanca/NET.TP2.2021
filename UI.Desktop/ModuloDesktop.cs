@@ -18,7 +18,6 @@ namespace UI.Desktop
         public ModuloDesktop()
         {
             InitializeComponent();
-            CbModulos.DataSource = Enum.GetNames(typeof(Business.Entities.Modulo.ListaModulos));
         }
 
         public ModuloDesktop(ModoForm modo) : this() 
@@ -38,7 +37,6 @@ namespace UI.Desktop
         {
             tbId.Text = ModuloActual.ID.ToString();
             tbDesc.Text = ModuloActual.Descripcion;
-            CbModulos.SelectedIndex = (int)ModuloActual.Ejecuta;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -69,7 +67,6 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Modificacion:
                     ModuloActual.Descripcion = tbDesc.Text;
-                    ModuloActual.Ejecuta = (Business.Entities.Modulo.ListaModulos)Enum.Parse(typeof(Business.Entities.Modulo.ListaModulos),(string)CbModulos.SelectedItem);
                     ModuloActual.State = BusinessEntity.States.Modified;
                     break;
                 case ModoForm.Baja:
