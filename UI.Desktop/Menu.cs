@@ -86,11 +86,5 @@ namespace UI.Desktop
             Cursos c = new Cursos();
             c.ShowDialog();
         }
-
-        private void reportePlanesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ReportePlanes rp = new ReportePlanes();
-            rp.ShowDialog();
-        }
     }
 }

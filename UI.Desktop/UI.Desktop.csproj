@@ -331,6 +331,7 @@
     <Content Include="Properties\icono agregar.png" />
     <Content Include="Properties\icono editar.png" />
     <Content Include="Properties\icono eliminar.png" />
+    <None Include="Properties\iconoReportes.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

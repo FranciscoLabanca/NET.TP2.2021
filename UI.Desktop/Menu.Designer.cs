@@ -46,7 +46,6 @@ namespace UI.Desktop
             this.asignarDocentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -83,8 +82,7 @@ namespace UI.Desktop
             this.inscripcionesNIToolStripMenuItem,
             this.comisionesNIToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.especialidadesNIToolStripMenuItem,
-            this.reportePlanesToolStripMenuItem});
+            this.especialidadesNIToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1055, 24);
@@ -197,13 +195,6 @@ namespace UI.Desktop
             this.especialidadesNIToolStripMenuItem.Text = "Especialidades";
             this.especialidadesNIToolStripMenuItem.Click += new System.EventHandler(this.especialidadesNIToolStripMenuItem_Click);
             // 
-            // reportePlanesToolStripMenuItem
-            // 
-            this.reportePlanesToolStripMenuItem.Name = "reportePlanesToolStripMenuItem";
-            this.reportePlanesToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.reportePlanesToolStripMenuItem.Text = "Reporte Planes";
-            this.reportePlanesToolStripMenuItem.Click += new System.EventHandler(this.reportePlanesToolStripMenuItem_Click);
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,7 +233,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem asignarDocentesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarCursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem permisosPorUsuarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportePlanesToolStripMenuItem;
     }
 }
 
