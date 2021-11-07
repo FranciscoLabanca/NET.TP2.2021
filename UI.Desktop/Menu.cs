@@ -87,7 +87,6 @@ namespace UI.Desktop
             Cursos c = new Cursos(_ModulosConAcceso.First(m => m.Modulo.Ejecuta == Cursos.NombreModulo));
             c.ShowDialog();
         }
-
         private void SetearAccesoAModulos(int idUsuario)
         {
             ModuloUsuarioLogic muLogic = new ModuloUsuarioLogic();
@@ -135,6 +134,5 @@ namespace UI.Desktop
                 }
             }
         }
-
     }
 }

@@ -181,7 +181,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = materia.ID;
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.Descripcion;
                 cmdSave.Parameters.Add("@hs_semanales", SqlDbType.VarChar, 50).Value = materia.HSSemanales;
-                cmdSave.Parameters.Add("@hs_totales", SqlDbType.Bit).Value = materia.HSTotales;
+                cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HSTotales;
                 cmdSave.Parameters.Add("@id_plan", SqlDbType.VarChar, 50).Value = materia.IDPlan;
                 materia.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
