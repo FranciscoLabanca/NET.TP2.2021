@@ -38,19 +38,15 @@ namespace UI.Desktop
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tslReportesPlanes = new System.Windows.Forms.ToolStripLabel();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.tsbGeneraPlanes = new System.Windows.Forms.ToolStripButton();
+            this.BtnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.BtnEditar = new System.Windows.Forms.ToolStripButton();
+            this.BtnEliminar = new System.Windows.Forms.ToolStripButton();
             this.tscPlanes.ContentPanel.SuspendLayout();
             this.tscPlanes.TopToolStripPanel.SuspendLayout();
             this.tscPlanes.SuspendLayout();
             this.tlpPlanes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanes)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tscPlanes
@@ -70,7 +66,6 @@ namespace UI.Desktop
             // tscPlanes.TopToolStripPanel
             // 
             this.tscPlanes.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            this.tscPlanes.TopToolStripPanel.Controls.Add(this.toolStrip2);
             // 
             // tlpPlanes
             // 
@@ -158,63 +153,35 @@ namespace UI.Desktop
             this.toolStrip1.Size = new System.Drawing.Size(81, 25);
             this.toolStrip1.TabIndex = 0;
             // 
-            // toolStrip2
+            // BtnAgregar
             // 
-            this.toolStrip2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslReportesPlanes,
-            this.tsbGeneraPlanes});
-            this.toolStrip2.Location = new System.Drawing.Point(589, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(211, 25);
-            this.toolStrip2.TabIndex = 1;
+            this.BtnAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnAgregar.Image = global::UI.Desktop.Properties.Resources.icono_agregar;
+            this.BtnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(23, 22);
+            this.BtnAgregar.Text = "Nuevo";
+            this.BtnAgregar.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
-            // tslReportesPlanes
+            // BtnEditar
             // 
-            this.tslReportesPlanes.Name = "tslReportesPlanes";
-            this.tslReportesPlanes.Size = new System.Drawing.Size(145, 22);
-            this.tslReportesPlanes.Text = "Generar Reporte de Planes";
+            this.BtnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnEditar.Image = global::UI.Desktop.Properties.Resources.icono_editar;
+            this.BtnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(23, 22);
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
-            // tsbNuevo
+            // BtnEliminar
             // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.icono_agregar;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "Nuevo";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditar.Image = global::UI.Desktop.Properties.Resources.icono_editar;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
-            // tsbEliminar
-            // 
-            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEliminar.Image = global::UI.Desktop.Properties.Resources.icono_eliminar;
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEliminar.Text = "Eliminar";
-            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // tsbGeneraPlanes
-            // 
-            this.tsbGeneraPlanes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbGeneraPlanes.Image = global::UI.Desktop.Properties.Resources.icono_reportes;
-            this.tsbGeneraPlanes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGeneraPlanes.Name = "tsbGeneraPlanes";
-            this.tsbGeneraPlanes.Size = new System.Drawing.Size(23, 22);
-            this.tsbGeneraPlanes.Text = "Generar Reporte de Planes";
-            this.tsbGeneraPlanes.Click += new System.EventHandler(this.tsbGeneraPlanes_Click);
+            this.BtnEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnEliminar.Image = global::UI.Desktop.Properties.Resources.icono_eliminar;
+            this.BtnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(23, 22);
+            this.BtnEliminar.Text = "Eliminar";
+            this.BtnEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // Planes
             // 
@@ -234,8 +201,6 @@ namespace UI.Desktop
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanes)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -254,8 +219,5 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_especialidad;
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripLabel tslReportesPlanes;
-        private System.Windows.Forms.ToolStripButton tsbGeneraPlanes;
     }
 }

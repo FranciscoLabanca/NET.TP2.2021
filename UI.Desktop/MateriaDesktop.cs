@@ -42,10 +42,7 @@ namespace UI.Desktop
             tbDescripcion.Text = MateriaActual.Descripcion;
             tbHorasSemanales.Text = MateriaActual.HSSemanales.ToString();
             tbHorasTotales.Text = MateriaActual.HSTotales.ToString();
-            PlanLogic pl = new PlanLogic();
-            Plan p = pl.GetOne(MateriaActual.IDPlan);
-            CbEspecialidad.SelectedValue = p.IDEspecialidad;
-            cbPlanes.SelectedItem = p;
+            cbPlanes.SelectedItem = new PlanLogic().GetOne(MateriaActual.IDPlan);
 
             switch (Modo)
             {
