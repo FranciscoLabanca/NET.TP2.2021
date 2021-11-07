@@ -20,5 +20,24 @@ namespace Business.Entities
         		_Descripcion = value;
         	}
         }
+
+        private ListaModulos _Ejecuta;
+        public ListaModulos Ejecuta
+        {
+            get { return _Ejecuta; }
+            set { _Ejecuta = value; }
+        }
+
+        public enum ListaModulos
+        {
+            Personas,
+            Permisos,
+            Usuarios,
+            Comisiones,
+            Cursos,
+            Planes,
+            Materias,
+            Especialidades
+        }
     }
 }

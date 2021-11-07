@@ -14,11 +14,37 @@ namespace UI.Desktop
 {
     public partial class Cursos : Form
     {
-        public Cursos()
+        public CursoLogic CursoLogic { set; get; }
+        public ModuloUsuario Permiso { set; get; }
+        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Cursos;
+
+        public Cursos(ModuloUsuario permiso)
         {
+            Permiso = permiso;
             InitializeComponent();
             dgvCursos.AutoGenerateColumns = false;
+            CursoLogic = new CursoLogic();
+            EstablecerPermisos();
         }
+        private void EstablecerPermisos()
+        {
+            btnActualizar.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnEditar.Enabled = false;
+
+            if (Permiso.PermiteConsulta)
+            {
+                btnActualizar.Enabled = true;
+            }
+            if (Permiso.PermiteAlta)
+                btnAgregar.Enabled = true;
+            if (Permiso.PermiteBaja)
+                btnEliminar.Enabled = true;
+            if (Permiso.PermiteModificacion)
+                btnEditar.Enabled = true;
+        }
+
         private void Cursos_Load(object sender, EventArgs e)
         {
             LoadDataSource();
@@ -51,7 +77,8 @@ namespace UI.Desktop
 
         private void LoadDataSource()
         {
-            dgvCursos.DataSource = new CursoLogic().GetAll();
+            if(Permiso.PermiteConsulta)
+                dgvCursos.DataSource = CursoLogic.GetAll();
         }
     }
 }

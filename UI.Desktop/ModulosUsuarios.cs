@@ -14,20 +14,44 @@ namespace UI.Desktop
 {
     public partial class ModulosUsuarios : Form
     {
-        public ModuloUsuarioLogic MULogic { get; set; }
+        public ModuloUsuarioLogic ModulosUsuariosLogic { get; set; }
+        public ModuloUsuario Permiso { set; get; }
 
-        public ModulosUsuarios()
+        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Permisos;
+
+        public ModulosUsuarios(ModuloUsuario permiso)
         {
+            Permiso = permiso;
             InitializeComponent();
             dgvModulosUsuarios.AutoGenerateColumns = false;
-            MULogic = new ModuloUsuarioLogic();
-            dgvModulosUsuarios.DataSource = MULogic.GetAll();
+            ModulosUsuariosLogic = new ModuloUsuarioLogic();
+            EstablecerPermisos();
         }
 
         public void Listar()
         {
-            ModuloUsuarioLogic mu = new ModuloUsuarioLogic();
-            dgvModulosUsuarios.DataSource = mu.GetAll();
+            if (Permiso.PermiteConsulta)
+                dgvModulosUsuarios.DataSource = ModulosUsuariosLogic.GetAll();
+        }
+
+        private void EstablecerPermisos()
+        {
+            btnActualizar.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnEditar.Enabled = false;
+
+
+            if (Permiso.PermiteConsulta)
+            {
+                btnActualizar.Enabled = true;
+            }
+            if (Permiso.PermiteAlta)
+                btnAgregar.Enabled = true;
+            if (Permiso.PermiteBaja)
+                btnEliminar.Enabled = true;
+            if (Permiso.PermiteModificacion)
+                btnEditar.Enabled = true;
         }
 
         private void ModulosUsuarios_Load(object sender, EventArgs e)

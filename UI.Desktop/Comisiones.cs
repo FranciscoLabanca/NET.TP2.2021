@@ -14,19 +14,43 @@ namespace UI.Desktop
 {
     public partial class Comisiones : Form
     {
-        public ComisionLogic ComLogic { set; get; }
-        public Comisiones()
+        public ComisionLogic ComisionesLogic { set; get; }
+        public ModuloUsuario Permiso { set; get; }
+
+        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Comisiones;
+
+        public Comisiones(ModuloUsuario permiso)
         {
+            Permiso = permiso;
             InitializeComponent();
             dgvComisiones.AutoGenerateColumns = false;
-            ComLogic = new ComisionLogic();
-            dgvComisiones.DataSource = ComLogic.GetAll();
+            ComisionesLogic = new ComisionLogic();
+            EstablecerPermisos();
+        }
+        private void EstablecerPermisos()
+        {
+            btnActualizar.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnEditar.Enabled = false;
+
+
+            if (Permiso.PermiteConsulta)
+            {
+                btnActualizar.Enabled = true;
+            }
+            if (Permiso.PermiteAlta)
+                btnAgregar.Enabled = true;
+            if (Permiso.PermiteBaja)
+                btnEliminar.Enabled = true;
+            if (Permiso.PermiteModificacion)
+                btnEditar.Enabled = true;
         }
 
         public void Listar()
         {
-            ComisionLogic cl = new ComisionLogic();
-            dgvComisiones.DataSource = cl.GetAll();
+            if (Permiso.PermiteConsulta)            
+                dgvComisiones.DataSource = ComisionesLogic.GetAll();
         }
 
         private void Comisiones_Load(object sender, EventArgs e)
