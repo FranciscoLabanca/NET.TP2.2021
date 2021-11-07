@@ -14,19 +14,47 @@ namespace UI.Desktop
 {
     public partial class Modulo : Form
     {
-        public ModuloLogic moduloLogic { set; get; }
-        public Modulo()
+        public ModuloLogic ModuloLogic { set; get; }
+        public ModuloUsuario Permiso { set; get; }
+
+        public static Business.Entities.Modulo.ListaModulos NombreModulo = Business.Entities.Modulo.ListaModulos.Permisos;
+
+        public Modulo(ModuloUsuario permiso)
         {
+            Permiso = permiso;
             InitializeComponent();
             dgvModulos.AutoGenerateColumns = false;
-            moduloLogic = new ModuloLogic();
-            dgvModulos.DataSource = moduloLogic.GetAll();
+
+            EstablecerPermisos();
+        }
+
+        private void EstablecerPermisos()
+        {
+            btnActualizar.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnEditar.Enabled = false;
+
+
+            if (Permiso.PermiteConsulta)
+            {
+                btnActualizar.Enabled = true;
+            }
+            if (Permiso.PermiteAlta)
+                btnAgregar.Enabled = true;
+            if (Permiso.PermiteBaja)
+                btnEliminar.Enabled = true;
+            if (Permiso.PermiteModificacion)
+                btnEditar.Enabled = true;          
         }
 
         public void Listar()
         {
-            ModuloLogic ml = new ModuloLogic();
-            dgvModulos.DataSource = ml.GetAll();
+            if (Permiso.PermiteConsulta)
+            {
+                ModuloLogic ml = new ModuloLogic();
+                dgvModulos.DataSource = ml.GetAll();
+            }
         }
 
         private void Modulo_Load(object sender, EventArgs e)

@@ -54,6 +54,44 @@ namespace Data.Database
             return usuarios;
         }
 
+        public Usuario GetOne(string nombreUsuario)
+        {
+            Usuario usr = new Usuario();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE nombre_usuario = @nombreUsuario", sqlConn);
+                cmdUsuarios.Parameters.Add("@nombreUsuario", SqlDbType.VarChar).Value = nombreUsuario;
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+
+                if (drUsuarios.Read())
+                {
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.Nombre = (string)drUsuarios["nombre"];
+                    usr.Apellido = (string)drUsuarios["apellido"];
+                    usr.EMail = (string)drUsuarios["email"];
+                }
+                else
+                {
+                    usr = null;
+                }
+                drUsuarios.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar los datos de usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return usr;
+        }
+
         public Usuario GetOne(int ID)
         {
             //return Usuarios.Find(delegate(Usuario u) { return u.ID == ID; });

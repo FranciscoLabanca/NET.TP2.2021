@@ -27,18 +27,20 @@ namespace Data.Database
 
                     mod.ID = (int)drModulos["id_modulo"];
                     mod.Descripcion = (string)drModulos["desc_modulo"];
+                    mod.Ejecuta = (Modulo.ListaModulos)Enum.Parse(typeof(Modulo.ListaModulos),(string)drModulos["ejecuta"]);
 
                     modulos.Add(mod);
                 }
                 drModulos.Close();
-                CloseConnection();
-                
-
             }
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar la lista de modulos", Ex);
                 throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
             }
             return modulos;
         }
@@ -58,6 +60,7 @@ namespace Data.Database
                 {
                     mod.ID = (int)drModulos["id_modulo"];
                     mod.Descripcion = (string)drModulos["desc_modulo"];
+                    mod.Ejecuta = (Modulo.ListaModulos)Enum.Parse(typeof(Modulo.ListaModulos), (string)drModulos["ejecuta"]);
                 }
                 drModulos.Close();
                 
@@ -101,9 +104,10 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdSave = new SqlCommand("update modulos set desc_modulo = @desc_modulo where id_modulo = @id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("UPDATE modulos SET desc_modulo = @desc_modulo, ejecuta = @ejecuta WHERE id_modulo = @id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = modulo.ID;
                 cmdSave.Parameters.Add("@desc_modulo", SqlDbType.VarChar, 50).Value = modulo.Descripcion;
+                cmdSave.Parameters.Add("@ejecuta", SqlDbType.VarChar, 50).Value = modulo.Ejecuta;
                 cmdSave.ExecuteNonQuery();
             }
             catch(Exception Ex)
@@ -124,9 +128,11 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdSave = new SqlCommand("insert into modulos(desc_modulo) values(@desc_modulo) select @@identity", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO modulos(desc_modulo, ejecuta) VALUES(@desc_modulo, @ejecuta) SELECT @@identity", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = modulo.ID;
                 cmdSave.Parameters.Add("@desc_modulo", SqlDbType.VarChar).Value = modulo.Descripcion;
+                cmdSave.Parameters.Add("@ejecuta", SqlDbType.VarChar, 50).Value = modulo.Ejecuta;
+
                 modulo.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)

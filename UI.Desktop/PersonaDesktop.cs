@@ -86,7 +86,7 @@ namespace UI.Desktop
                     PersonaActual.Apellido = tbApellido.Text;
                     PersonaActual.Direccion = tbDireccion.Text;
                     PersonaActual.Telefono = tbTelefono.Text;
-                    PersonaActual.Email = tbDireccion.Text;
+                    PersonaActual.Email = tbEmail.Text;
                     PersonaActual.IDPlan = ((Plan)cbPlan.SelectedItem).ID;
                     PersonaActual.FechaNacimiento = dtFechaNac.Value;
 
@@ -106,7 +106,7 @@ namespace UI.Desktop
                     PersonaActual.Apellido = tbApellido.Text;
                     PersonaActual.Direccion = tbDireccion.Text;
                     PersonaActual.Telefono = tbTelefono.Text;
-                    PersonaActual.Email = tbDireccion.Text;
+                    PersonaActual.Email = tbEmail.Text;
                     PersonaActual.IDPlan = ((Plan)cbPlan.SelectedItem).ID;
                     PersonaActual.FechaNacimiento = dtFechaNac.Value;
                     Persona.TiposPersona tipoPersona;
