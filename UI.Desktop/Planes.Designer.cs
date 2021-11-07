@@ -41,6 +41,7 @@ namespace UI.Desktop
             this.BtnAgregar = new System.Windows.Forms.ToolStripButton();
             this.BtnEditar = new System.Windows.Forms.ToolStripButton();
             this.BtnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.BtnGenerarReporte = new System.Windows.Forms.ToolStripButton();
             this.tscPlanes.ContentPanel.SuspendLayout();
             this.tscPlanes.TopToolStripPanel.SuspendLayout();
             this.tscPlanes.SuspendLayout();
@@ -147,10 +148,11 @@ namespace UI.Desktop
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BtnAgregar,
             this.BtnEditar,
-            this.BtnEliminar});
+            this.BtnEliminar,
+            this.BtnGenerarReporte});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(135, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // BtnAgregar
@@ -182,6 +184,16 @@ namespace UI.Desktop
             this.BtnEliminar.Size = new System.Drawing.Size(23, 22);
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // BtnGenerarReporte
+            // 
+            this.BtnGenerarReporte.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnGenerarReporte.Image = global::UI.Desktop.Properties.Resources.iconoReportes;
+            this.BtnGenerarReporte.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnGenerarReporte.Name = "BtnGenerarReporte";
+            this.BtnGenerarReporte.Size = new System.Drawing.Size(23, 22);
+            this.BtnGenerarReporte.Text = "Reporte de Planes";
+            this.BtnGenerarReporte.Click += new System.EventHandler(this.BtnGenerarReporte_Click);
             // 
             // Planes
             // 
@@ -219,5 +231,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_especialidad;
+        private System.Windows.Forms.ToolStripButton BtnGenerarReporte;
     }
 }
