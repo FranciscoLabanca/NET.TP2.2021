@@ -64,8 +64,7 @@ namespace UI.Desktop
             pd.ShowDialog();
             Listar();
         }
-
-        private void tsbGeneraPlanes_Click(object sender, EventArgs e)
+        private void tsbGenerarReporte_Click(object sender, EventArgs e)
         {
             ReportePlanes rp = new ReportePlanes();
             rp.ShowDialog();
