@@ -60,7 +60,7 @@
                         <asp:Label ID="claveLabel" runat="server" Text="Clave: " CssClass="form-label"></asp:Label>
                     </div>
                     <div class="col-md-2">
-                        <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server" OnTextChanged="claveTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server" OnTextChanged="claveTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-9">
                         <div class="alert alert-danger" role="alert" runat="server" id="ClaveValidacion" visible="false">
@@ -75,7 +75,7 @@
                         <asp:Label ID="repetirClaveLabel" runat="server" Text="RepetirClave" CssClass="form-label"></asp:Label>
                     </div>
                     <div class="col-md-2">
-                        <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server" OnTextChanged="repetirClaveTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server" OnTextChanged="repetirClaveTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-9">
                         <div class="alert alert-danger" role="alert" runat="server" id="RepetirClaveValidacion" visible="false">
