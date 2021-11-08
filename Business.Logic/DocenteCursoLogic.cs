@@ -39,23 +39,34 @@ namespace Business.Logic
 
         public void Save(DocenteCurso docenteCurso)
         {
-            if (docenteCurso.State == BusinessEntity.States.New) 
+            try
             {
                 Validar(docenteCurso);
-            }
-            else
-            {
                 _DocenteCursoData.Save(docenteCurso);
             }
-            
+            catch(Exception Ex)
+            {
+                throw Ex;
+            }
         }
 
         private void Validar(DocenteCurso docenteCurso)
         {
             List<DocenteCurso> docentesCursos = this.GetAll();
-            List<DocenteCurso> docenteCursosRepetidos = docentesCursos.Where(dc => dc.IDCurso == docenteCurso.IDCurso && dc.IDDocente == docenteCurso.IDDocente).ToList();
-            if (docenteCursosRepetidos.Count != 0)
-                throw new Exception("El docente ya se encuetra asignado al curso seleccionado");
+            if (docenteCurso.State == BusinessEntity.States.New)
+            {
+                
+                List<DocenteCurso> docenteCursosRepetidos = docentesCursos.Where(dc => dc.IDCurso == docenteCurso.IDCurso && dc.IDDocente == docenteCurso.IDDocente && dc.Cargo == docenteCurso.Cargo).ToList();
+                if (docenteCursosRepetidos.Count != 0)
+                    throw new Exception("El docente ya se encuentra asignado al curso seleccionado");
+            }
+
+            if (docenteCurso.State == BusinessEntity.States.Modified)
+            {
+                List<DocenteCurso> docenteCargo = docentesCursos.Where(dc => dc.IDCurso == docenteCurso.IDCurso && dc.Cargo == docenteCurso.Cargo).ToList();
+                if (docenteCargo.Count != 0)
+                    throw new Exception("Ya hay un docente asignado en ese cargo");
+            }
         }
     }
 }
