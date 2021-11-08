@@ -39,8 +39,15 @@ namespace Business.Logic
 
         public void Save(DocenteCurso docenteCurso)
         {
-            Validar(docenteCurso);
-            _DocenteCursoData.Save(docenteCurso);
+            if (docenteCurso.State == BusinessEntity.States.New) 
+            {
+                Validar(docenteCurso);
+            }
+            else
+            {
+                _DocenteCursoData.Save(docenteCurso);
+            }
+            
         }
 
         private void Validar(DocenteCurso docenteCurso)

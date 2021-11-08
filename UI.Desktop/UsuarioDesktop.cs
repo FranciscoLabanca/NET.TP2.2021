@@ -20,6 +20,7 @@ namespace UI.Desktop
         public UsuarioDesktop(ModoForm modo) : this()
         {
             Modo = modo;
+            LoadCBPersona();
         }
 
         public UsuarioDesktop(int id, ModoForm modo) : this()
@@ -32,9 +33,8 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             tbID.Text = UsuarioActual.ID.ToString();
-            tbNombre.Text = UsuarioActual.Nombre;
-            tbApellido.Text = UsuarioActual.Apellido;
-            tbEmail.Text = UsuarioActual.EMail;
+            LoadCBPersona();
+            CargarCamposPersona();
             tbNombreUsuario.Text = UsuarioActual.NombreUsuario;
             tbClave.Text = UsuarioActual.Clave;
             cbHabilitado.Checked = UsuarioActual.Habilitado;
@@ -127,6 +127,25 @@ namespace UI.Desktop
             }
             else
                 Notificar("Verifique que todos los campos esten completos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void LoadCBPersona()
+        {
+            cbPersona.DataSource = new PersonaLogic().GetAll();
+            cbPersona.DisplayMember = "Apellido";
+            cbPersona.ValueMember = "ID";
+        }
+
+        private void CargarCamposPersona()
+        {
+            tbApellido.Text = ((Persona)cbPersona.SelectedItem).Apellido;
+            tbNombre.Text = ((Persona)cbPersona.SelectedItem).Nombre;
+            tbEmail.Text = ((Persona)cbPersona.SelectedItem).Email;
+        }
+
+        private void cbPersona_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCamposPersona();
         }
     }
 }
