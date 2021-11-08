@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
+        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" CssClass="table table-hover">
             <Columns>
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Especialidad" DataField="DescripcionEspecialidad" />
@@ -13,22 +13,40 @@
     </asp:Panel>
 
     <asp:Panel ID="formPanel" Visible="false" runat="server">
-        <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion: "></asp:Label>
-        <asp:TextBox ID="descripcionTextBox" runat="server" OnTextChanged="descripcionTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionDescripcion" runat="server" Visible="false">La descripcion no puede estar vacia</asp:Label>
-        <br />
-        <asp:Label ID="especialidadLabel" runat="server" Text="Especialidad"></asp:Label>
-        <asp:DropDownList ID="especialidadDDL" runat="server"></asp:DropDownList>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="descripcionTextBox" runat="server" OnTextChanged="descripcionTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-9" runat="server" visible="false" id="divValidacion">
+                    <div class="alert alert-danger" role="alert">
+                        <asp:Label ID="validacionDescripcion" runat="server">La descripcion no puede estar vacia</asp:Label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="especialidadLabel" runat="server" Text="Especialidad"></asp:Label>
+                </div>
+                <div class="col-md-11">
+                    <asp:DropDownList ID="especialidadDDL" runat="server" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
+        
     </asp:Panel>
 
     <asp:Panel ID="gridActionPanel" runat="server">
-        <asp:LinkButton ID="editarLinkButton" runat="server" OnClick="editarLinkButton_Click">Editar</asp:LinkButton>
-        <asp:LinkButton ID="eliminarLinkButton" runat="server" OnClick="eliminarLinkButton_Click" >Eliminar</asp:LinkButton>
-        <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click" >Nuevo</asp:LinkButton>
+        <asp:LinkButton ID="editarLinkButton" runat="server" OnClick="editarLinkButton_Click" CssClass="btn btn-default btn-lg">Editar</asp:LinkButton>
+        <asp:LinkButton ID="eliminarLinkButton" runat="server" OnClick="eliminarLinkButton_Click" CssClass="btn btn-default btn-lg">Eliminar</asp:LinkButton>
+        <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click" CssClass="btn btn-default btn-lg">Nuevo</asp:LinkButton>
     </asp:Panel>
 
     <asp:Panel ID="formActionPanel" runat="server">
-        <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click" >Aceptar</asp:LinkButton>
-        <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click" >Cancelar</asp:LinkButton>
+        <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click" CssClass="btn btn-primary btn-lg">Aceptar</asp:LinkButton>
+        <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click" CssClass="btn btn-danger btn-lg">Cancelar</asp:LinkButton>
     </asp:Panel>
 </asp:Content>

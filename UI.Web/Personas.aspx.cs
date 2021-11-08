@@ -31,6 +31,8 @@ namespace UI.Web
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
+            gridActionPanel.Visible = true;
+            formActionPanel.Visible = false;
         }
 
         protected override void LoadForm(int id)
@@ -125,7 +127,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-
+                EsconderValidaciones();
                 formPanel.Visible = false;
             }
         }
@@ -158,6 +160,8 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Baja;
                 EnableForm(false);
@@ -167,6 +171,8 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            gridActionPanel.Visible = false;
+            formActionPanel.Visible = true;
             formPanel.Visible = true;
             LoadEspecialidadDDL();
             LoadTipoPersonaDDL();
@@ -190,6 +196,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            EsconderValidaciones();
             LoadGrid();
             formPanel.Visible = false;
         }
@@ -198,43 +205,43 @@ namespace UI.Web
         {
             if(nombreTextBox.Text == "")
             {
-                validacionNombre.Visible = true;
+                NombreValidacion.Visible = true;
                 return false;
             }
 
             if(apellidoTextBox.Text == "")
             {
-                validacionApellido.Visible = true;
+                ApellidoValidacion.Visible = true;
                 return false;
             }
 
             if(direccionTextBox.Text == "")
             {
-                validacionDireccion.Visible = true;
+                DireccionValidacion.Visible = true;
                 return false;
             }
 
             if(!new PersonaLogic().IsValidEmail(emailTextBox.Text))
             {
-                validacionMail.Visible = true;
+                MailValidacion.Visible = true;
                 return false;
             }
 
             if(telefonoTextBox.Text == "")
             {
-                validacionTelefono.Visible = true;
+                TelefonoValidacion.Visible = true;
                 return false;
             }
 
             if(legajoTextBox.Text == "")
             {
-                validacionLegajo.Visible = true;
+                LegajoValidacion.Visible = true;
                 return false;
             }
 
             if(fechaNacimientoTextBox.Text == "")
             {
-                validacionFechaNacimiento.Visible = true;
+                FechaNacimientoValidacion.Visible = true;
                 return false;
             }
             return true;
@@ -242,32 +249,32 @@ namespace UI.Web
 
         protected void nombreTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionNombre.Visible = false;
+            NombreValidacion.Visible = false;
         }
 
         protected void apellidoTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionApellido.Visible = false;
+            ApellidoValidacion.Visible = false;
         }
 
         protected void direccionTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionDireccion.Visible = false;
+            DireccionValidacion.Visible = false;
         }
 
         protected void telefonoTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionTelefono.Visible = false;
+            TelefonoValidacion.Visible = false;
         }
 
         protected void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionMail.Visible = false;
+            MailValidacion.Visible = false;
         }
 
         protected void legajoTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionLegajo.Visible = false;
+            LegajoValidacion.Visible = false;
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -279,6 +286,8 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 LoadEspecialidadDDL();
                 LoadTipoPersonaDDL();
@@ -294,7 +303,17 @@ namespace UI.Web
 
         protected void fechaNacimientoTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionFechaNacimiento.Visible = false;
+            FechaNacimientoValidacion.Visible = false;
+        }
+
+        private void EsconderValidaciones()
+        {
+            NombreValidacion.Visible = false;
+            ApellidoValidacion.Visible = false;
+            DireccionValidacion.Visible = false;
+            MailValidacion.Visible = false;
+            LegajoValidacion.Visible = false;
+            TelefonoValidacion.Visible = false;
         }
     }
 }

@@ -31,6 +31,8 @@ namespace UI.Web
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
+            gridActionPanel.Visible = true;
+            formActionPanel.Visible = false;
         }
 
         protected override void LoadForm(int id)
@@ -95,7 +97,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-
+                EsconderValidaciones();
                 formPanel.Visible = false;
             }
         }
@@ -113,6 +115,9 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                EsconderValidaciones();
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Baja;
                 EnableForm(false);
@@ -122,6 +127,8 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            gridActionPanel.Visible = false;
+            formActionPanel.Visible = true;
             formPanel.Visible = true;
             LoadDropDownList();
             FormMode = FormModes.Alta;
@@ -136,6 +143,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            EsconderValidaciones();
             LoadGrid();
             formPanel.Visible = false;
         }
@@ -146,7 +154,7 @@ namespace UI.Web
 
             if (descripcionTextBox.Text == "")
             {
-                validacionDescripcion.Visible = true;
+                divValidacion.Visible = true;
                 flag = false;
             }
 
@@ -155,7 +163,7 @@ namespace UI.Web
 
         protected void descripcionTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionDescripcion.Visible = false;
+            divValidacion.Visible = false;
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,11 +175,18 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 LoadDropDownList();
                 FormMode = FormModes.Modificacion;
                 LoadForm(SelectedID);
             }
+        }
+
+        private void EsconderValidaciones ()
+        {
+            divValidacion.Visible = false;
         }
     }
 }

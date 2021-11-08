@@ -60,13 +60,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox descripcionTextBox;
 
         /// <summary>
-        /// Control validacionDescripcion.
+        /// Control DescripcionValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionDescripcion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DescripcionValidacion;
 
         /// <summary>
         /// Control hsSemanalesLabel.
@@ -87,13 +87,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox hsSemanalesTextBox;
 
         /// <summary>
-        /// Control validacionHSSemanales.
+        /// Control HSSemanalesValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionHSSemanales;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HSSemanalesValidacion;
 
         /// <summary>
         /// Control hsTotalesLabel.
@@ -114,13 +114,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox hsTotalesTextBox;
 
         /// <summary>
-        /// Control validacionHSTotales.
+        /// Control HSTotalesValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionHSTotales;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HSTotalesValidacion;
 
         /// <summary>
         /// Control especialidadLabel.

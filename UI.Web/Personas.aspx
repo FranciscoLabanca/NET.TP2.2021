@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
+        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" CssClass="table table-hover">
             <Columns>
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -19,62 +19,137 @@
     </asp:Panel>
 
     <asp:Panel ID="formPanel" Visible="false" runat="server">
-        <asp:Label ID="nombreLabel" runat="server" Text="Nombre: "></asp:Label>
-        <asp:TextBox ID="nombreTextBox" runat="server" OnTextChanged="nombreTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionNombre" runat="server" Visible="false">El nombre no puede estar vacio</asp:Label>
-        <br />
-
-        <asp:Label ID="apellidoLabel" runat="server" Text="Apellido: "></asp:Label>
-        <asp:TextBox ID="apellidoTextBox" runat="server" OnTextChanged="apellidoTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionApellido" runat="server" Visible="false">El apellido no puede estar vacio</asp:Label>
-        <br />
-
-        <asp:Label ID="direccionLabel" runat="server" Text="Direccion"></asp:Label>
-        <asp:TextBox ID="direccionTextBox" runat="server" OnTextChanged="direccionTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionDireccion" runat="server" Visible="false">La direccion no puede estar vacia</asp:Label>
-        <br />
-
-        <asp:Label ID="emailLabel" runat="server" Text="EMail: "></asp:Label>
-        <asp:TextBox ID="emailTextBox" runat="server" OnTextChanged="emailTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionMail" runat="server" Visible="false">El mail es inválido</asp:Label>
-        <br />
-
-        <asp:Label ID="telefonoLabel" runat="server" Text="Telefono"></asp:Label>
-        <asp:TextBox ID="telefonoTextBox" runat="server" TextMode="Number" OnTextChanged="telefonoTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionTelefono" runat="server" Visible="false">El telefono no puede estar vacio</asp:Label>
-        <br />
-
-        <asp:Label ID="fechaNacimientoLabel" runat="server" Text="Fecha de Nacimiento"></asp:Label>        
-        <asp:TextBox ID="fechaNacimientoTextBox" runat="server" TextMode="Date" OnTextChanged="fechaNacimientoTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionFechaNacimiento" runat="server" Visible="false">La fecha de nacimiento no puede estar vacia</asp:Label>
-        <br />
-
-        <asp:Label ID="legajoLabel" runat="server" Text="Legajo"></asp:Label>
-        <asp:TextBox ID="legajoTextBox" runat="server" TextMode="Number" OnTextChanged="legajoTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionLegajo" runat="server" Visible="false">El legajo no puede estar vacio</asp:Label>
-        <br />
-
-        <asp:Label ID="tipoPersonaLabel" runat="server" Text="Tipo Persona"></asp:Label>
-        <asp:DropDownList ID="tipoPersonaDDL" runat="server"></asp:DropDownList>
-        <br />
-
-        <asp:Label ID="especialidadLabel" runat="server" Text="Especialidad"></asp:Label>
-        <asp:DropDownList ID="especialidadDDL" runat="server" OnSelectedIndexChanged="especialidadDDL_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-        <br />
-
-        <asp:Label ID="planLabel" runat="server" Text="Plan"></asp:Label>
-        <asp:DropDownList ID="planDDL" runat="server"></asp:DropDownList>
-        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="nombreLabel" runat="server" Text="Nombre: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="nombreTextBox" runat="server" OnTextChanged="nombreTextBox_TextChanged" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" id="NombreValidacion" runat="server" visible="false">
+                        El nombre no puede estar vacio
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="apellidoLabel" runat="server" Text="Apellido: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="apellidoTextBox" runat="server" OnTextChanged="apellidoTextBox_TextChanged" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" runat="server" id="ApellidoValidacion" visible="false">
+                        El apellido no puede estar vacio
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="direccionLabel" runat="server" Text="Direccion" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="direccionTextBox" runat="server" OnTextChanged="direccionTextBox_TextChanged" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" runat="server" id="DireccionValidacion" visible="false">
+                        La dirección no puede estar vacía
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="emailLabel" runat="server" Text="EMail: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="emailTextBox" runat="server" OnTextChanged="emailTextBox_TextChanged" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" runat="server" id="MailValidacion" visible="false">
+                        El mail es inválido
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="telefonoLabel" runat="server" Text="Telefono" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="telefonoTextBox" runat="server" TextMode="Number" OnTextChanged="telefonoTextBox_TextChanged" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" runat="server" id="TelefonoValidacion" visible="false">
+                        El telefono no puede estar vacio
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="fechaNacimientoLabel" runat="server" Text="Fecha de Nacimiento" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="fechaNacimientoTextBox" runat="server" TextMode="Date" OnTextChanged="fechaNacimientoTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" runat="server" id="FechaNacimientoValidacion" visible="false">
+                        La fecha de nacimiento no puede estar vacia
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="legajoLabel" runat="server" Text="Legajo" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="legajoTextBox" runat="server" TextMode="Number" OnTextChanged="legajoTextBox_TextChanged" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" runat="server" id="LegajoValidacion" visible="false">
+                        El legajo no puede estar vacio
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="tipoPersonaLabel" runat="server" Text="Tipo Persona" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="tipoPersonaDDL" runat="server" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="especialidadLabel" runat="server" Text="Especialidad" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="especialidadDDL" runat="server" OnSelectedIndexChanged="especialidadDDL_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="planLabel" runat="server" Text="Plan" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="planDDL" runat="server" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
     </asp:Panel>
 
     <asp:Panel ID="gridActionPanel" runat="server">
-        <asp:LinkButton ID="editarLinkButton" runat="server" OnClick="editarLinkButton_Click">Editar</asp:LinkButton>
-        <asp:LinkButton ID="eliminarLinkButton" runat="server" OnClick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
-        <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
+        <div class="container">
+            <asp:LinkButton ID="editarLinkButton" runat="server" OnClick="editarLinkButton_Click" CssClass="btn btn-default btn-lg">Editar</asp:LinkButton>
+            <asp:LinkButton ID="eliminarLinkButton" runat="server" OnClick="eliminarLinkButton_Click" CssClass="btn btn-default btn-lg">Eliminar</asp:LinkButton>
+            <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click" CssClass="btn btn-default btn-lg">Nuevo</asp:LinkButton>
+        </div>
     </asp:Panel>
 
     <asp:Panel ID="formActionPanel" runat="server">
-        <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
-        <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+        <div class="container">
+            <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click" CssClass="btn btn-primary btn-lg">Aceptar</asp:LinkButton>
+            <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click" CssClass="btn btn-danger btn-lg">Cancelar</asp:LinkButton>
+        </div>
     </asp:Panel>
 </asp:Content>
