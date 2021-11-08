@@ -112,8 +112,15 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-            mul.Save(MUActual);
+            try
+            {
+                ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+                mul.Save(MUActual);
+            }
+            catch (Exception e)
+            {
+                Notificar("Error al guardar los permisos", $"{e.Message}\n\n{(e.InnerException == null ? "" : e.InnerException.Message)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
