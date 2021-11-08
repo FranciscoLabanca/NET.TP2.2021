@@ -40,11 +40,12 @@ namespace UI.Web
         override protected void LoadForm(int id)
         {
             Entity = Logic.GetOne(id);
-            nombreTextBox.Text = Entity.Nombre;
-            apellidoTextBox.Text = Entity.Apellido;
-            emailTextBox.Text = Entity.EMail;
+            nombreTextBox.Text = " ";
+            apellidoTextBox.Text = " ";
+            emailTextBox.Text = " ";
             habilitadoCheckBox.Checked = Entity.Habilitado;
             nombreUsuarioTextBox.Text = Entity.NombreUsuario;
+            personaDDL.SelectedValue = Entity.IDPersona.ToString();
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace UI.Web
             {
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
+                LoadPersonaDDL();
                 LoadForm(SelectedID);
             }
         }
@@ -109,9 +111,9 @@ namespace UI.Web
 
         override protected void EnableForm(bool enable)
         {
-            nombreTextBox.Enabled = enable;
+            /*nombreTextBox.Enabled = enable;
             apellidoTextBox.Enabled = enable;
-            emailTextBox.Enabled = enable;
+            emailTextBox.Enabled = enable;*/
             nombreUsuarioTextBox.Enabled = enable;
             claveTextBox.Visible = enable;
             claveLabel.Visible = enable;
@@ -141,13 +143,14 @@ namespace UI.Web
             FormMode = FormModes.Alta;
             ClearForm();
             EnableForm(true);
+            LoadPersonaDDL();
         }
 
         override protected void ClearForm()
         {
-            nombreTextBox.Text = string.Empty;
+            /*nombreTextBox.Text = string.Empty;
             apellidoTextBox.Text = string.Empty;
-            emailTextBox.Text = string.Empty;
+            emailTextBox.Text = string.Empty;*/
             habilitadoCheckBox.Checked = false;
             nombreUsuarioTextBox.Text = string.Empty;
         }
@@ -161,7 +164,7 @@ namespace UI.Web
         override protected bool Validar()
         {
             bool flag = true;
-            if(nombreTextBox.Text == "")
+            /*if(nombreTextBox.Text == "")
             {
                 validacionNombre.Visible = true;
                 flag = false;
@@ -177,7 +180,7 @@ namespace UI.Web
             {
                 validacionMail.Visible = true;
                 flag = false;
-            }
+            }*/
 
             if(nombreUsuarioTextBox.Text == "")
             {
@@ -207,17 +210,17 @@ namespace UI.Web
 
         protected void nombreTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionNombre.Visible = false;
+            //validacionNombre.Visible = false;
         }
 
         protected void apellidoTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionApellido.Visible = false;
+            //validacionApellido.Visible = false;
         }
 
         protected void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionMail.Visible = false;
+            //validacionMail.Visible = false;
         }
 
         protected void nombreUsuarioTextBox_TextChanged(object sender, EventArgs e)
@@ -235,6 +238,20 @@ namespace UI.Web
         {
             validacionRepetirClave.Visible = false;
             validacionClavesIguales.Visible = false;
+        }
+
+        private void LoadPersonaDDL()
+        {
+            personaDDL.DataSource = new PersonaLogic().GetAll();
+            personaDDL.DataTextField = "Apellido";
+            personaDDL.DataValueField = "ID";
+            personaDDL.DataBind();
+        }
+
+        protected void personaDDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*nombreTextBox.Text = ((Persona)personaDDL.SelectedItem).Nombre;
+            apellidoTextBox.Text = ((Persona)personaDDL.SelectedItem).Apellido;*/
         }
     }
 }

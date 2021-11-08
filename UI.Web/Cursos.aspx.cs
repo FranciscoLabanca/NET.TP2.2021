@@ -31,6 +31,8 @@ namespace UI.Web
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
+            gridActionPanel.Visible = true;
+            formActionPanel.Visible = false;
         }
 
         protected override void LoadForm(int id)
@@ -132,7 +134,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-
+                EsconderValidaciones();
                 formPanel.Visible = false;
             }
         }
@@ -157,6 +159,8 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Baja;
                 EnableForm(false);
@@ -166,6 +170,8 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            gridActionPanel.Visible = false;
+            formActionPanel.Visible = true;
             formPanel.Visible = true;
             LoadEspecialidadDDL();
             FormMode = FormModes.Alta;
@@ -185,6 +191,9 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            gridActionPanel.Visible = false;
+            formActionPanel.Visible = true;
+            EsconderValidaciones();
             LoadGrid();
             formPanel.Visible = false;
         }
@@ -193,13 +202,13 @@ namespace UI.Web
         {
             if(AnioCalendarioTextBox.Text == "")
             {
-                validacionAnioCalendario.Visible = true;
+                AnioCalendarioValidacion.Visible = true;
                 return false;
             }
 
             if(CupoTextBox.Text == "")
             {
-                validacionCupo.Visible = true;
+                CupoValidacion.Visible = true;
                 return false;
             }
 
@@ -208,12 +217,12 @@ namespace UI.Web
 
         protected void AnioCalendarioTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionAnioCalendario.Visible = false;
+            AnioCalendarioValidacion.Visible = false;
         }
 
         protected void CupoTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionCupo.Visible = false;
+            CupoValidacion.Visible = false;
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,11 +234,19 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 LoadEspecialidadDDL();
                 FormMode = FormModes.Modificacion;
                 LoadForm(SelectedID);
             }
+        }
+
+        private void EsconderValidaciones()
+        {
+            AnioCalendarioValidacion.Visible = false;
+            CupoValidacion.Visible = false;
         }
     }
 }

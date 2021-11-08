@@ -31,6 +31,8 @@ namespace UI.Web
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
+            gridActionPanel.Visible = true;
+            formActionPanel.Visible = false;
         }
 
         protected override void LoadForm(int id)
@@ -110,7 +112,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-
+                EsconderValidaciones();
                 formPanel.Visible = false;
             }
         }
@@ -131,6 +133,8 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Baja;
                 EnableForm(false);
@@ -140,6 +144,8 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            gridActionPanel.Visible = false;
+            formActionPanel.Visible = true;
             formPanel.Visible = true;
             LoadEspecialidadDDL();
             FormMode = FormModes.Alta;
@@ -157,6 +163,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            EsconderValidaciones();
             LoadGrid();
             formPanel.Visible = false;
         }
@@ -167,13 +174,13 @@ namespace UI.Web
 
             if (descripcionTextBox.Text == "")
             {
-                validacionDescripcion.Visible = true;
+                DescripcionValidacion.Visible = true;
                 flag = false;
             }
 
             if(anioEspecialidadTextBox.Text == "")
             {
-                validacionAnioEspecialidad.Visible = true;
+                AnioEspecialidadValidacion.Visible = true;
                 flag = false;
             }
 
@@ -182,12 +189,12 @@ namespace UI.Web
 
         protected void descripcionTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionDescripcion.Visible = false;
+            DescripcionValidacion.Visible = false;
         }
 
         protected void anioEspecialidadTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionAnioEspecialidad.Visible = false;
+            AnioEspecialidadValidacion.Visible = false;
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +206,9 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
+                EsconderValidaciones();
                 formPanel.Visible = true;
                 LoadEspecialidadDDL();
                 FormMode = FormModes.Modificacion;
@@ -209,6 +219,12 @@ namespace UI.Web
         protected void especialidadDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadPlanDDL();
+        }
+
+        private void EsconderValidaciones()
+        {
+            DescripcionValidacion.Visible = false;
+            AnioEspecialidadValidacion.Visible = false;
         }
     }
 }

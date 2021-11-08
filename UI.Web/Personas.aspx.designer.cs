@@ -60,13 +60,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox nombreTextBox;
 
         /// <summary>
-        /// Control validacionNombre.
+        /// Control NombreValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionNombre;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NombreValidacion;
 
         /// <summary>
         /// Control apellidoLabel.
@@ -87,13 +87,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox apellidoTextBox;
 
         /// <summary>
-        /// Control validacionApellido.
+        /// Control ApellidoValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionApellido;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApellidoValidacion;
 
         /// <summary>
         /// Control direccionLabel.
@@ -114,13 +114,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox direccionTextBox;
 
         /// <summary>
-        /// Control validacionDireccion.
+        /// Control DireccionValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionDireccion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DireccionValidacion;
 
         /// <summary>
         /// Control emailLabel.
@@ -141,13 +141,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox emailTextBox;
 
         /// <summary>
-        /// Control validacionMail.
+        /// Control MailValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionMail;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MailValidacion;
 
         /// <summary>
         /// Control telefonoLabel.
@@ -168,13 +168,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox telefonoTextBox;
 
         /// <summary>
-        /// Control validacionTelefono.
+        /// Control TelefonoValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionTelefono;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TelefonoValidacion;
 
         /// <summary>
         /// Control fechaNacimientoLabel.
@@ -195,13 +195,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox fechaNacimientoTextBox;
 
         /// <summary>
-        /// Control validacionFechaNacimiento.
+        /// Control FechaNacimientoValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionFechaNacimiento;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FechaNacimientoValidacion;
 
         /// <summary>
         /// Control legajoLabel.
@@ -222,13 +222,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox legajoTextBox;
 
         /// <summary>
-        /// Control validacionLegajo.
+        /// Control LegajoValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionLegajo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LegajoValidacion;
 
         /// <summary>
         /// Control tipoPersonaLabel.
