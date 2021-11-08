@@ -38,8 +38,17 @@ namespace Business.Logic
         }
 
         public void Save(Modulo modulo)
+        {            
+            if (ModuloExiste(modulo))
+                throw new Exception("Ya existe una entrada que ejecuta el modulo seleccionado.");
+            else
+                ModuloData.Save(modulo);
+        }
+
+        private bool ModuloExiste(Modulo modulo)
         {
-            ModuloData.Save(modulo);
+            List<Modulo> modulosExistentes = this.GetAll();
+            return modulosExistentes.Exists(m => m.Ejecuta == modulo.Ejecuta);
         }
     }
 }
