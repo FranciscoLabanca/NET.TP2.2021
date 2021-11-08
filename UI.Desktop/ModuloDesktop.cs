@@ -83,8 +83,15 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            ModuloLogic ml = new ModuloLogic();
-            ml.Save(ModuloActual);
+            try
+            {
+                ModuloLogic ml = new ModuloLogic();
+                ml.Save(ModuloActual);
+            }
+            catch (Exception e)
+            {
+                Notificar("Error al guardar el modulo", $"{e.Message}\n\n{(e.InnerException == null ? "" : e.InnerException.Message)}",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         public override bool Validar()
