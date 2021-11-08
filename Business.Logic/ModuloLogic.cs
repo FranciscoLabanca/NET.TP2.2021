@@ -48,7 +48,7 @@ namespace Business.Logic
         private bool ModuloExiste(Modulo modulo)
         {
             List<Modulo> modulosExistentes = this.GetAll();
-            return modulosExistentes.Exists(m => m.Ejecuta == modulo.Ejecuta);
+            return modulosExistentes.Exists(m => m.Ejecuta == modulo.Ejecuta );
         }
     }
 }

@@ -39,8 +39,17 @@ namespace Business.Logic
 
         public void Save(ModuloUsuario moduloUsuario)
         {
-            ModuloUsuarioData.Save(moduloUsuario);
+            if (ExisteModUsuario(moduloUsuario))
+                throw new Exception("Ya existe un permiso cargado para ese usuario y modulo.");
+            else
+                ModuloUsuarioData.Save(moduloUsuario);
         }
+        private bool ExisteModUsuario(ModuloUsuario moduloUsuario)
+        {
+            List<ModuloUsuario> modulosExistentes = this.GetAll();
+            return modulosExistentes.Exists(mu => (mu.IdUsuario == moduloUsuario.IdUsuario && mu.IdModulo == moduloUsuario.IdModulo && moduloUsuario.State == BusinessEntity.States.New) || (moduloUsuario.State == BusinessEntity.States.Modified && mu.IdUsuario == moduloUsuario.IdUsuario && mu.IdModulo == moduloUsuario.IdModulo && mu.ID != moduloUsuario.ID) );
+        }
+
         public void Delete(int id)
         {
             throw new NotImplementedException();
