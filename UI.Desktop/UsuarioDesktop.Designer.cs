@@ -46,6 +46,8 @@ namespace UI.Desktop
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.cbHabilitado = new System.Windows.Forms.CheckBox();
+            this.cbPersona = new System.Windows.Forms.ComboBox();
+            this.Persona = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +75,8 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 4, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.cbHabilitado, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cbPersona, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.Persona, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -192,6 +196,7 @@ namespace UI.Desktop
             this.tbNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNombre.Location = new System.Drawing.Point(133, 57);
             this.tbNombre.Name = "tbNombre";
+            this.tbNombre.ReadOnly = true;
             this.tbNombre.Size = new System.Drawing.Size(124, 20);
             this.tbNombre.TabIndex = 9;
             // 
@@ -200,6 +205,7 @@ namespace UI.Desktop
             this.tbApellido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbApellido.Location = new System.Drawing.Point(133, 84);
             this.tbApellido.Name = "tbApellido";
+            this.tbApellido.ReadOnly = true;
             this.tbApellido.Size = new System.Drawing.Size(124, 20);
             this.tbApellido.TabIndex = 10;
             // 
@@ -208,6 +214,7 @@ namespace UI.Desktop
             this.tbEmail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbEmail.Location = new System.Drawing.Point(393, 3);
             this.tbEmail.Name = "tbEmail";
+            this.tbEmail.ReadOnly = true;
             this.tbEmail.Size = new System.Drawing.Size(124, 20);
             this.tbEmail.TabIndex = 11;
             // 
@@ -251,6 +258,25 @@ namespace UI.Desktop
             this.cbHabilitado.TabIndex = 16;
             this.cbHabilitado.UseVisualStyleBackColor = true;
             // 
+            // cbPersona
+            // 
+            this.cbPersona.FormattingEnabled = true;
+            this.cbPersona.Location = new System.Drawing.Point(393, 84);
+            this.cbPersona.Name = "cbPersona";
+            this.cbPersona.Size = new System.Drawing.Size(121, 21);
+            this.cbPersona.TabIndex = 17;
+            this.cbPersona.SelectedIndexChanged += new System.EventHandler(this.cbPersona_SelectedIndexChanged);
+            // 
+            // Persona
+            // 
+            this.Persona.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Persona.AutoSize = true;
+            this.Persona.Location = new System.Drawing.Point(263, 88);
+            this.Persona.Name = "Persona";
+            this.Persona.Size = new System.Drawing.Size(46, 13);
+            this.Persona.TabIndex = 18;
+            this.Persona.Text = "Persona";
+            // 
             // UsuarioDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,5 +310,7 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.CheckBox cbHabilitado;
+        private System.Windows.Forms.ComboBox cbPersona;
+        private System.Windows.Forms.Label Persona;
     }
 }
