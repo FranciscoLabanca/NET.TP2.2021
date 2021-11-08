@@ -27,28 +27,77 @@
         <asp:Label ID="emailLabel" runat="server" Text="EMail: " Enabled="false"></asp:Label>
         <asp:TextBox ID="emailTextBox" runat="server" OnTextChanged="emailTextBox_TextChanged" Enabled="False"></asp:TextBox>
         <asp:Label ID="validacionMail" runat="server" Visible="false">El mail es inválido</asp:Label>-->
-        <br />
-        <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: "></asp:Label>
-        <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
-        <br />
-        <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: "></asp:Label>
-        <asp:TextBox ID="nombreUsuarioTextBox" runat="server" OnTextChanged="nombreUsuarioTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionNombreUsuario" runat="server" Visible="false">El nombre de usuario no puede estar vacio</asp:Label>
-        <br />
-        <asp:Label ID="claveLabel" runat="server" Text="Clave: "></asp:Label>
-        <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server" OnTextChanged="claveTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionClave" runat="server" Visible="false">La clave no puede estar vacía</asp:Label>
-        <br />
-        <asp:Label ID="repetirClaveLabel" runat="server" Text="RepetirClave"></asp:Label>
-        <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server" OnTextChanged="repetirClaveTextBox_TextChanged"></asp:TextBox>
-        <asp:Label ID="validacionRepetirClave" runat="server" Visible="false">La clave no puede estar vacía</asp:Label>
-        <br />
-        <asp:Label ID="validacionClavesIguales" runat="server" Visible="false">Las claves no coinciden</asp:Label>
-        <br />
-        
-        <asp:Label ID="personaLabel" runat="server" Text="Persona: "></asp:Label>
-        <asp:DropDownList ID="personaDDL" runat="server" OnSelectedIndexChanged="personaDDL_SelectedIndexChanged"></asp:DropDownList>
-        <br />
+
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div class="col-md-1">
+                        <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: " CssClass="form-label"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-1">
+                        <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: " CssClass="form-label"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:TextBox ID="nombreUsuarioTextBox" runat="server" OnTextChanged="nombreUsuarioTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="alert alert-danger" role="alert" runat="server" id="NombreUsuarioValidacion" visible="false">
+                            El nombre de usuario no puede estar vacio
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-1">
+                        <asp:Label ID="claveLabel" runat="server" Text="Clave: " CssClass="form-label"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server" OnTextChanged="claveTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="alert alert-danger" role="alert" runat="server" id="ClaveValidacion" visible="false">
+                            La clave no puede estar vacía
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-1">
+                        <asp:Label ID="repetirClaveLabel" runat="server" Text="RepetirClave" CssClass="form-label"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server" OnTextChanged="repetirClaveTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="alert alert-danger" role="alert" runat="server" id="RepetirClaveValidacion" visible="false">
+                            La clave no puede estar vacía
+                        </div>
+                        <div class="alert alert-danger" role="alert" runat="server" id="ClavesIgualesValidacion" visible="false">
+                            Las claves no coinciden
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-1">
+                        <asp:Label ID="personaLabel" runat="server" Text="Persona: " CssClass="form-label"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:DropDownList ID="personaDDL" runat="server" OnSelectedIndexChanged="personaDDL_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+        </div>
     </asp:Panel>
 
     <asp:Panel ID="gridActionPanel" runat="server">

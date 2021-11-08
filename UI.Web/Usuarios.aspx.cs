@@ -30,6 +30,8 @@ namespace UI.Web
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
+            gridActionPanel.Visible = true;
+            formActionPanel.Visible = false;
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,9 +42,6 @@ namespace UI.Web
         override protected void LoadForm(int id)
         {
             Entity = Logic.GetOne(id);
-            nombreTextBox.Text = " ";
-            apellidoTextBox.Text = " ";
-            emailTextBox.Text = " ";
             habilitadoCheckBox.Checked = Entity.Habilitado;
             nombreUsuarioTextBox.Text = Entity.NombreUsuario;
             personaDDL.SelectedValue = Entity.IDPersona.ToString();
@@ -52,6 +51,8 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadPersonaDDL();
@@ -61,9 +62,10 @@ namespace UI.Web
 
         private void LoadEntity(Usuario usuario)
         {
-            usuario.Nombre = nombreTextBox.Text;
-            usuario.Apellido = apellidoTextBox.Text;
-            usuario.EMail = emailTextBox.Text;
+            Persona per = new PersonaLogic().GetOne(int.Parse(personaDDL.SelectedValue));
+            usuario.Nombre = per.Nombre;
+            usuario.Apellido = per.Apellido;
+            usuario.EMail = per.Email;
             usuario.NombreUsuario = nombreUsuarioTextBox.Text;
             usuario.Clave = claveTextBox.Text;
             usuario.Habilitado = habilitadoCheckBox.Checked;
@@ -104,7 +106,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-
+                EsconderValidaciones();
                 formPanel.Visible = false;
             }            
         }
@@ -125,6 +127,8 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
+                gridActionPanel.Visible = false;
+                formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Baja;
                 EnableForm(false);
@@ -139,6 +143,8 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            gridActionPanel.Visible = false;
+            formActionPanel.Visible = true;
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
@@ -157,6 +163,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            EsconderValidaciones();
             LoadGrid();
             formPanel.Visible = false;
         }
@@ -184,25 +191,25 @@ namespace UI.Web
 
             if(nombreUsuarioTextBox.Text == "")
             {
-                validacionNombreUsuario.Visible = true;
+                NombreUsuarioValidacion.Visible = true;
                 flag = false;
             }
 
             if (claveTextBox.Text == "" && FormMode != FormModes.Baja)
             {
-                validacionClave.Visible = true;
+                ClaveValidacion.Visible = true;
                 flag = false;
             }
 
             if(repetirClaveTextBox.Text == "" && FormMode != FormModes.Baja)
             {
-                validacionRepetirClave.Visible = true;
+                RepetirClaveValidacion.Visible = true;
                 flag = false;
             }
 
             if(claveTextBox.Text != repetirClaveTextBox.Text && FormMode != FormModes.Baja)
             {
-                validacionClavesIguales.Visible = true;
+                ClavesIgualesValidacion.Visible = true;
                 flag = false;
             }
             return flag;
@@ -225,19 +232,19 @@ namespace UI.Web
 
         protected void nombreUsuarioTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionNombreUsuario.Visible = false;
+            NombreUsuarioValidacion.Visible = false;
         }
 
         protected void claveTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionClave.Visible = false;
-            validacionClavesIguales.Visible = false;
+            ClaveValidacion.Visible = false;
+            ClavesIgualesValidacion.Visible = false;
         }
 
         protected void repetirClaveTextBox_TextChanged(object sender, EventArgs e)
         {
-            validacionRepetirClave.Visible = false;
-            validacionClavesIguales.Visible = false;
+            RepetirClaveValidacion.Visible = false;
+            ClavesIgualesValidacion.Visible = false;
         }
 
         private void LoadPersonaDDL()
@@ -252,6 +259,14 @@ namespace UI.Web
         {
             /*nombreTextBox.Text = ((Persona)personaDDL.SelectedItem).Nombre;
             apellidoTextBox.Text = ((Persona)personaDDL.SelectedItem).Apellido;*/
+        }
+
+        private void EsconderValidaciones()
+        {
+            NombreUsuarioValidacion.Visible = false;
+            ClaveValidacion.Visible = false;
+            ClavesIgualesValidacion.Visible = false;
+            RepetirClaveValidacion.Visible = false;
         }
     }
 }

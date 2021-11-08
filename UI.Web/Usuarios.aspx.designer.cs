@@ -159,13 +159,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox nombreUsuarioTextBox;
 
         /// <summary>
-        /// Control validacionNombreUsuario.
+        /// Control NombreUsuarioValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionNombreUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NombreUsuarioValidacion;
 
         /// <summary>
         /// Control claveLabel.
@@ -186,13 +186,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox claveTextBox;
 
         /// <summary>
-        /// Control validacionClave.
+        /// Control ClaveValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionClave;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ClaveValidacion;
 
         /// <summary>
         /// Control repetirClaveLabel.
@@ -213,22 +213,22 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox repetirClaveTextBox;
 
         /// <summary>
-        /// Control validacionRepetirClave.
+        /// Control RepetirClaveValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionRepetirClave;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RepetirClaveValidacion;
 
         /// <summary>
-        /// Control validacionClavesIguales.
+        /// Control ClavesIgualesValidacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionClavesIguales;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ClavesIgualesValidacion;
 
         /// <summary>
         /// Control personaLabel.
