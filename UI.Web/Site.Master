@@ -35,21 +35,19 @@
             </asp:ScriptManager>
             <!--<asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource"></asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server"/>-->
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" runat="server" href="Default.aspx">Home</a>
-                        <a class="navbar-brand" runat="server" href="Comisiones.aspx">Comisiones</a>
-                        <a class="navbar-brand" runat="server" href="Cursos.aspx">Cursos</a>
-                        <a class="navbar-brand" runat="server" href="Especialidades.aspx">Especialidades</a>
-                        <a class="navbar-brand" runat="server" href="Materias.aspx">Materias</a>
-                        <a class="navbar-brand" runat="server" href="Modulos.aspx">Modulos</a>
-                        <a class="navbar-brand" runat="server" href="Personas.aspx">Personas</a>
-                        <a class="navbar-brand" runat="server" href="Planes.aspx">Planes</a>
-                        <a class="navbar-brand" runat="server" href="Usuarios.aspx">Usuarios</a>
-                    </div>
+            <nav class="navbar fixed-top navbar-dark bg-dark">
+                <div class="navbar-header">
+                    <a class="navbar-brand" runat="server" href="./Academia/Default.aspx">Home</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Comisiones.aspx">Comisiones</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Cursos.aspx">Cursos</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Especialidades.aspx">Especialidades</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Materias.aspx">Materias</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Modulos.aspx">Modulos</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Personas.aspx">Personas</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Planes.aspx">Planes</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/Usuarios.aspx">Usuarios</a>
                 </div>
-            </div>
+            </nav>
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
