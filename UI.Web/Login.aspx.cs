@@ -36,7 +36,7 @@ namespace UI.Web
 			Usuario usuario = ul.GetOne(userName);
 			ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
 			List<ModuloUsuario> modulosUsuarios = mul.GetByUserID(usuario.ID);
-			//Session.Add("Modulos", modulosUsuarios);
+			Session["ID"] = usuario.ID;
 			Session["Modulos"] = modulosUsuarios;
         }
     }
