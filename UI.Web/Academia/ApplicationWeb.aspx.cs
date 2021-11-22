@@ -66,7 +66,7 @@ namespace UI.Web
 
         virtual protected bool Validar() { return false; }
 
-        protected void Page_Load(object sender, EventArgs e)
+        virtual protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {

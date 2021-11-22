@@ -27,6 +27,15 @@ namespace UI.Web
 
         private Comision Entity { get; set; }
 
+        protected override void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LoadGrid();
+                EstablecerPermisos();
+            }
+        }
+
         protected override void LoadGrid()
         {
             gridView.DataSource = Logic.GetAll();
@@ -225,6 +234,36 @@ namespace UI.Web
         {
             DescripcionValidacion.Visible = false;
             AnioEspecialidadValidacion.Visible = false;
+        }
+
+        private void EstablecerPermisos()
+        {
+            List<ModuloUsuario> modulosUsuario = Session["Modulos"] as List<ModuloUsuario>;
+
+            foreach (ModuloUsuario mu in modulosUsuario)
+            {
+                if (mu.DescripcionModulo == "Comisiones")
+                {
+                    if (!mu.PermiteAlta)
+                    {
+                        nuevoLinkButton.Visible = false;
+                    }
+
+                    if (!mu.PermiteBaja)
+                    {
+                        eliminarLinkButton.Visible = false;
+                    }
+
+                    if (!mu.PermiteModificacion)
+                    {
+                        editarLinkButton.Visible = false;
+                    }
+
+                    return;
+                }
+                
+            }
+            Response.Redirect("~/Academia/Default.aspx");
         }
     }
 }

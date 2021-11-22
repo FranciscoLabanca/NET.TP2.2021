@@ -92,6 +92,36 @@ namespace Data.Database
             return usr;
         }
 
+        public bool ValidarUsuario(string nombreUsuario, string clave)
+        {
+            string lookupPassword = null;
+
+            try
+            {
+                OpenConnection();
+                SqlCommand cmd = new SqlCommand("select clave from usuarios where nombre_usuario = @nombre_usuario", sqlConn);
+                cmd.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = nombreUsuario;
+                lookupPassword = (string)cmd.ExecuteScalar();
+                cmd.Dispose();
+            }
+            catch(Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar los datos de usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            if(lookupPassword == null)
+            {
+                return false;
+            }
+
+            return (string.Compare(lookupPassword, clave, false) == 0);
+        }
+
         public Usuario GetOne(int ID)
         {
             //return Usuarios.Find(delegate(Usuario u) { return u.ID == ID; });
@@ -191,7 +221,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.EMail;
-                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());              
+                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());            
             }
             catch(Exception Ex)
             {

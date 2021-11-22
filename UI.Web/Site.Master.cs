@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security;
 
 namespace UI.Web
 {
@@ -11,7 +12,15 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                EsconderMenu();
+            }
+        }
 
+        protected void EsconderMenu()
+        {
+            menuSuperior.Visible = false;
         }
     }
 }

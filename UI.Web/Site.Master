@@ -36,7 +36,7 @@
             <!--<asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource"></asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server"/>-->
             <nav class="navbar fixed-top navbar-dark bg-dark">
-                <div class="navbar-header">
+                <div class="navbar-header" runat="server" id="menuSuperior">
                     <a class="navbar-brand" runat="server" href="./Academia/Default.aspx">Home</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Comisiones.aspx">Comisiones</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Cursos.aspx">Cursos</a>
@@ -46,6 +46,7 @@
                     <a class="navbar-brand" runat="server" href="./Academia/Personas.aspx">Personas</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Planes.aspx">Planes</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Usuarios.aspx">Usuarios</a>
+                    <asp:HyperLink CssClass="navbar-brand" runat="server" ID="LogOutLabel" NavigateUrl="~/Logout.aspx">LogOut</asp:HyperLink>
                 </div>
             </nav>
         </div>

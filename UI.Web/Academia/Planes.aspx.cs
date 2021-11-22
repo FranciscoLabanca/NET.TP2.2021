@@ -25,6 +25,44 @@ namespace UI.Web
             }
         }
 
+        protected override void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LoadGrid();
+                EstablecerPermisos();
+            }
+        }
+
+        private void EstablecerPermisos()
+        {
+            List<ModuloUsuario> modulosUsuario = Session["Modulos"] as List<ModuloUsuario>;
+
+            foreach (ModuloUsuario mu in modulosUsuario)
+            {
+                if (mu.DescripcionModulo == "Personas")
+                {
+                    if (!mu.PermiteAlta)
+                    {
+                        nuevoLinkButton.Visible = false;
+                    }
+
+                    if (!mu.PermiteBaja)
+                    {
+                        eliminarLinkButton.Visible = false;
+                    }
+
+                    if (!mu.PermiteModificacion)
+                    {
+                        editarLinkButton.Visible = false;
+                    }
+
+                    return;
+                }
+
+            }
+            Response.Redirect("~/Academia/Default.aspx");
+        }
         private Plan Entity { get; set; }
 
         protected override void LoadGrid()

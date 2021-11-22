@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <div class="container">
         <div class="jumbotron">
-            <h1 ID="BienvenidosLabel" Class="center-block">¡Bienvenidos al Sistema Academia!</h1>
+            <h1 ID="BienvenidosLabel" Class="center-block">¡Bienvenido al Sistema Academia!</h1>
         </div>
     </div>
 </asp:Content>

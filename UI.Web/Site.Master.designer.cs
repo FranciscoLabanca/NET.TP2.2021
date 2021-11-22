@@ -51,6 +51,24 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource;
 
         /// <summary>
+        /// Control menuSuperior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuSuperior;
+
+        /// <summary>
+        /// Control LogOutLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LogOutLabel;
+
+        /// <summary>
         /// Control bodyContentPlaceHolder.
         /// </summary>
         /// <remarks>
