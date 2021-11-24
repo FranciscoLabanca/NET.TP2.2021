@@ -24,6 +24,42 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCursos;
 
         /// <summary>
+        /// TextBoxAlumnoSeleccionado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAlumnoSeleccionado;
+
+        /// <summary>
+        /// DropDownListCondicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListCondicion;
+
+        /// <summary>
+        /// TextBoxNota control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNota;
+
+        /// <summary>
+        /// ButtonAceptar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAceptar;
+
+        /// <summary>
         /// GridViewAlumnos control.
         /// </summary>
         /// <remarks>
@@ -31,5 +67,32 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewAlumnos;
+
+        /// <summary>
+        /// HayCambiosSinGuardarError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HayCambiosSinGuardarError;
+
+        /// <summary>
+        /// ButtonGuardarCambios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonGuardarCambios;
+
+        /// <summary>
+        /// ButtonCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelar;
     }
 }

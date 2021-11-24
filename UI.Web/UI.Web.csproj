@@ -214,6 +214,8 @@
     <Compile Include="Materias.aspx.designer.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistroNotas\CursosResponse.cs" />
+    <Compile Include="Models\RegistroNotas\InscripcionResponse.cs" />
     <Compile Include="Modulos.aspx.cs">
       <DependentUpon>Modulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
