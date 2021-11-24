@@ -17,7 +17,7 @@ namespace UI.Web
         private readonly PersonaLogic _PersonaLogic = new PersonaLogic();
         private readonly AlumnoInscripcionLogic _AlumnoInscripcionLogic = new AlumnoInscripcionLogic();
 
-        protected new void Page_Load(object sender, EventArgs e)
+        protected override void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {

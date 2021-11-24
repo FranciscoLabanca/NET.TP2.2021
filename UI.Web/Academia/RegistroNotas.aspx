@@ -9,19 +9,18 @@
                     <asp:ListItem Selected="True">Seleccione un curso</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col">
+            <div class="col-8">
 
                 <label for="TextBoxAlumnoSeleccionado">Alumno Seleccionado: </label>
                 <asp:TextBox ID="TextBoxAlumnoSeleccionado" runat="server" Height="20px" ReadOnly="True" Width="150px"></asp:TextBox>
-                <label for="TextBoxNota">Condicion: 
+                <label for="TextBoxNota">Condicion: </label>
                 <asp:DropDownList ID="DropDownListCondicion" runat="server" Height="20px" Width="100px">
                     <asp:ListItem>Cursando</asp:ListItem>
                     <asp:ListItem>Libre</asp:ListItem>
                     <asp:ListItem>Regular</asp:ListItem>
                     <asp:ListItem>Promovido</asp:ListItem>
                 </asp:DropDownList>
-                Nota: </label>
-
+                <label for:"TextBoxNota"> Nota: </label>
                 <asp:TextBox ID="TextBoxNota" type="number" min="0" max="10" runat="server" Height="20px" Width="50px" MaxLength="2"></asp:TextBox>
                 <asp:Button ID="ButtonAceptar" runat="server" CssClass="btn btn-primary btn-sm" Text="Aceptar" OnClick="ButtonAceptar_Click" />
 

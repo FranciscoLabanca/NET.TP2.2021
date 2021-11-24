@@ -46,7 +46,7 @@
                     <a class="navbar-brand" runat="server" href="./Academia/Personas.aspx">Personas</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Planes.aspx">Planes</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Usuarios.aspx">Usuarios</a>
-                    <a class="navbar-brand" runat="server" href="RegistroNotas.aspx">Registrar Notas</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/RegistroNotas.aspx">Registrar Notas</a>
                     <asp:HyperLink CssClass="navbar-brand" runat="server" ID="LogOutLabel" NavigateUrl="~/Logout.aspx">LogOut</asp:HyperLink>
                 </div>
             </nav>
