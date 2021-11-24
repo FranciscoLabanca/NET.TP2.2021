@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
+    [Serializable]
     public class AlumnoInscripcion : BusinessEntity
     {
     	private string _Condicion;
