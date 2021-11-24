@@ -14,7 +14,9 @@ namespace UI.Web
     public partial class RegistroNotas : ApplicationWeb
     {
         private readonly CursoLogic _CursoLogic = new CursoLogic();
+        private readonly DocenteCursoLogic _DocenteCursoLogic = new DocenteCursoLogic();
         private readonly PersonaLogic _PersonaLogic = new PersonaLogic();
+        private readonly UsuarioLogic _UsuarioLogic = new UsuarioLogic();
         private readonly AlumnoInscripcionLogic _AlumnoInscripcionLogic = new AlumnoInscripcionLogic();
 
         protected override void Page_Load(object sender, EventArgs e)
@@ -23,13 +25,24 @@ namespace UI.Web
             {
                 ViewState["InscripcionesAGuardar"] = new List<AlumnoInscripcion>();
 
-                IEnumerable listaCursos = _CursoLogic.GetAll().Select(c => new CursosResponse { ID = c.ID, Descripcion = $"{c.Materia} - {c.Comision} - {c.AnioCalendario}" }).Prepend(new CursosResponse { ID = 0, Descripcion = "Seleccione un Curso" }).ToList();
+                IEnumerable listaCursos = ObtenerCursos();//_CursoLogic.GetAll().Select(c => new CursosResponse { ID = c.ID, Descripcion = $"{c.Materia} - {c.Comision} - {c.AnioCalendario}" }).Prepend(new CursosResponse { ID = 0, Descripcion = "Seleccione un Curso" }).ToList();
                 DropDownListCursos.DataSource = listaCursos;
                 DropDownListCursos.DataTextField = "Descripcion";
                 DropDownListCursos.DataValueField = "ID";
                 DropDownListCursos.DataBind();
             }
 
+        }
+
+        private List<CursosResponse> ObtenerCursos()
+        {
+            Usuario usuarioActual = _UsuarioLogic.GetOne((int)Session["ID"]);
+            List<CursosResponse> listaCursos = (from curso in _CursoLogic.GetAll()
+                                                join asignacionACurso in _DocenteCursoLogic.GetAll() on curso.ID equals asignacionACurso.IDCurso
+                                                where asignacionACurso.IDDocente == usuarioActual.IDPersona
+                                                select new CursosResponse { ID = curso.ID, Descripcion = $"{curso.Materia} - {curso.Comision} - {curso.AnioCalendario}" })
+                                                .Prepend(new CursosResponse { ID = 0, Descripcion = "Seleccione un Curso" }).ToList();
+            return listaCursos;
         }
 
         protected void DropDownListCursos_SelectedIndexChanged(object sender, EventArgs e)
