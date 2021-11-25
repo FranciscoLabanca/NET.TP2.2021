@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistroNotas.aspx.cs" Inherits="UI.Web.RegistroNotas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+    <asp:Panel ID="titlePanel" runat="server" CssClass="align-content-center">
+        <h1 style="text-align: center">Registro de Notas</h1>
+    </asp:Panel>
     <p></p>
     <div class="container">
         <div class="row">
