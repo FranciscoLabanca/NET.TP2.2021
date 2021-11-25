@@ -4,24 +4,24 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <asp:Label AssociatedControlID="DropDownListCursos" runat="server">Curso: </asp:Label>
-                <asp:DropDownList ID="DropDownListCursos" runat="server" Height="20px" Width="350px" OnSelectedIndexChanged="DropDownListCursos_SelectedIndexChanged" AutoPostBack="True">
+                <asp:Label CssClass="col-form-label" AssociatedControlID="DropDownListCursos" runat="server">Curso: </asp:Label>
+                <asp:DropDownList CssClass="form-control" ID="DropDownListCursos" runat="server" OnSelectedIndexChanged="DropDownListCursos_SelectedIndexChanged" AutoPostBack="True" Style="display: inline-block; width:100%;" >
                     <asp:ListItem Selected="True">Seleccione un curso</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="col-8">
 
-                <label for="TextBoxAlumnoSeleccionado">Alumno Seleccionado: </label>
-                <asp:TextBox ID="TextBoxAlumnoSeleccionado" runat="server" Height="20px" ReadOnly="True" Width="150px"></asp:TextBox>
-                <label for="TextBoxNota">Condicion: </label>
-                <asp:DropDownList ID="DropDownListCondicion" runat="server" Height="20px" Width="100px">
+                <label CssClass="col-form-label" for="TextBoxAlumnoSeleccionado">Alumno Seleccionado: </label>
+                <asp:TextBox CssClass="form-control" ID="TextBoxAlumnoSeleccionado" runat="server" ReadOnly="True" Style="display: inline-block; width:150px;"></asp:TextBox>
+                <label CssClass="col-form-label" for="TextBoxNota">Condicion: </label>
+                <asp:DropDownList CssClass="form-control form-control" ID="DropDownListCondicion" runat="server" Style="display: inline-block; width:140px;">
                     <asp:ListItem>Cursando</asp:ListItem>
                     <asp:ListItem>Libre</asp:ListItem>
                     <asp:ListItem>Regular</asp:ListItem>
                     <asp:ListItem>Promovido</asp:ListItem>
                 </asp:DropDownList>
-                <label for:"TextBoxNota"> Nota: </label>
-                <asp:TextBox ID="TextBoxNota" type="number" min="0" max="10" runat="server" Height="20px" Width="50px" MaxLength="2"></asp:TextBox>
+                <label CssClass="col-form-label" for:"TextBoxNota">Nota: </label>
+                <asp:TextBox CssClass="form-control" ID="TextBoxNota" type="number" min="0" max="10" runat="server" MaxLength="2" Style="display: inline-block; width:65px;"></asp:TextBox>
                 <asp:Button ID="ButtonAceptar" runat="server" CssClass="btn btn-primary btn-sm" Text="Aceptar" OnClick="ButtonAceptar_Click" />
 
 

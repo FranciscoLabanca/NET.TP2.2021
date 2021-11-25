@@ -25,7 +25,7 @@ namespace UI.Web
             {
                 ViewState["InscripcionesAGuardar"] = new List<AlumnoInscripcion>();
 
-                IEnumerable listaCursos = ObtenerCursos();//_CursoLogic.GetAll().Select(c => new CursosResponse { ID = c.ID, Descripcion = $"{c.Materia} - {c.Comision} - {c.AnioCalendario}" }).Prepend(new CursosResponse { ID = 0, Descripcion = "Seleccione un Curso" }).ToList();
+                IEnumerable listaCursos = ObtenerCursos();
                 DropDownListCursos.DataSource = listaCursos;
                 DropDownListCursos.DataTextField = "Descripcion";
                 DropDownListCursos.DataValueField = "ID";
