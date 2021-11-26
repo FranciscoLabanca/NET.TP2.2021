@@ -37,6 +37,8 @@ namespace UI.Web
 			ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
 			List<ModuloUsuario> modulosUsuarios = mul.GetByUserID(usuario.ID);
 			Session["ID"] = usuario.ID;
+			Session["Nombre"] = usuario.Nombre;
+			Session["Apellido"] = usuario.Apellido;
 			Session["Modulos"] = modulosUsuarios;
         }
     }

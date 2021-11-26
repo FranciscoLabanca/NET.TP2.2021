@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+    <asp:Panel ID="titlePanel" runat="server" CssClass="align-content-center">
+        <h1 style="text-align: center">Usuarios</h1>
+    </asp:Panel>
     <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" CssClass="table table-hover">
             <Columns>
@@ -16,18 +19,6 @@
     </asp:Panel>
 
     <asp:Panel ID="formPanel" Visible="false" runat="server">
-        <!--<asp:Label ID="nombreLabel" runat="server" Text="Nombre: "></asp:Label>
-        <asp:TextBox ID="nombreTextBox" runat="server" OnTextChanged="nombreTextBox_TextChanged" Enabled="false"></asp:TextBox>
-        <asp:Label ID="validacionNombre" runat="server" Visible="false">El nombre no puede estar vacio</asp:Label>
-        <br />
-        <asp:Label ID="apellidoLabel" runat="server" Text="Apellido: "></asp:Label>
-        <asp:TextBox ID="apellidoTextBox" runat="server" OnTextChanged="apellidoTextBox_TextChanged" Enabled="false"></asp:TextBox>
-        <asp:Label ID="validacionApellido" runat="server" Visible="false">El apellido no puede estar vacio</asp:Label>
-        <br />
-        <asp:Label ID="emailLabel" runat="server" Text="EMail: " Enabled="false"></asp:Label>
-        <asp:TextBox ID="emailTextBox" runat="server" OnTextChanged="emailTextBox_TextChanged" Enabled="False"></asp:TextBox>
-        <asp:Label ID="validacionMail" runat="server" Visible="false">El mail es inválido</asp:Label>-->
-
         <div class="container">
             <div class="row">
                 <div>

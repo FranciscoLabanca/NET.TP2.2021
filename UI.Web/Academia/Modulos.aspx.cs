@@ -191,7 +191,7 @@ namespace UI.Web
 
             foreach (ModuloUsuario mu in modulosUsuario)
             {
-                if (mu.DescripcionModulo == "Modulos")
+                if (mu.DescripcionModulo == "Permisos")
                 {
                     if (!mu.PermiteAlta)
                     {

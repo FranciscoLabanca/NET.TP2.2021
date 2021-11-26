@@ -39,7 +39,7 @@ namespace UI.Web
 
             foreach (ModuloUsuario mu in modulosUsuario)
             {
-                if (mu.DescripcionModulo == "Personas")
+                if (mu.DescripcionModulo == "Usuarios")
                 {
                     if (!mu.PermiteAlta)
                     {
@@ -198,6 +198,8 @@ namespace UI.Web
             emailTextBox.Text = string.Empty;*/
             habilitadoCheckBox.Checked = false;
             nombreUsuarioTextBox.Text = string.Empty;
+            claveTextBox.Text = string.Empty;
+            repetirClaveTextBox.Text = string.Empty;
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
@@ -254,7 +256,7 @@ namespace UI.Web
             return flag;
         }
 
-        protected void nombreTextBox_TextChanged(object sender, EventArgs e)
+        /*protected void nombreTextBox_TextChanged(object sender, EventArgs e)
         {
             //validacionNombre.Visible = false;
         }
@@ -267,7 +269,7 @@ namespace UI.Web
         protected void emailTextBox_TextChanged(object sender, EventArgs e)
         {
             //validacionMail.Visible = false;
-        }
+        }*/
 
         protected void nombreUsuarioTextBox_TextChanged(object sender, EventArgs e)
         {
