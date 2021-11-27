@@ -11,7 +11,14 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            nombreLiteral.Text = Session["Nombre"].ToString() + " " + Session["Apellido"].ToString();
+            if(Session["Nombre"] == null || Session["Apellido"] == null)
+            {
+                Response.Redirect("~/Logout.aspx");
+            }
+            else
+            {
+                nombreLiteral.Text = Session["Nombre"].ToString() + " " + Session["Apellido"].ToString();
+            }         
         }
     }
 }
