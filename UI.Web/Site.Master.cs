@@ -22,5 +22,10 @@ namespace UI.Web
         {
             menuSuperior.Visible = false;
         }
+
+        protected void menuDDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect(menuDDL.SelectedValue);
+        }
     }
 }
