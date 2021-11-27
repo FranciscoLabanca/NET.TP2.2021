@@ -20,72 +20,62 @@
 
     <asp:Panel ID="formPanel" Visible="false" runat="server">
         <div class="container">
-            <div class="row">
-                <div>
-                    <div class="col-md-1">
-                        <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: " CssClass="form-label"></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
+            <div class="row m-1">
+                <div class="col-md-1">
+                    <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
+                </div>
+            </div>
+            <div class="row m-1">
+                <div class="col-md-1">
+                    <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="nombreUsuarioTextBox" runat="server" OnTextChanged="nombreUsuarioTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" role="alert" runat="server" id="NombreUsuarioValidacion" visible="false">
+                        El nombre de usuario no puede estar vacio
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div>
-                    <div class="col-md-1">
-                        <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: " CssClass="form-label"></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:TextBox ID="nombreUsuarioTextBox" runat="server" OnTextChanged="nombreUsuarioTextBox_TextChanged" AutoPostBack="true" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="alert alert-danger" role="alert" runat="server" id="NombreUsuarioValidacion" visible="false">
-                            El nombre de usuario no puede estar vacio
-                        </div>
+            <div class="row m-1">
+                <div class="col-md-1">
+                    <asp:Label ID="claveLabel" runat="server" Text="Clave: " CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server" OnTextChanged="claveTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" role="alert" runat="server" id="ClaveValidacion" visible="false">
+                        La clave no puede estar vacía
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div>
-                    <div class="col-md-1">
-                        <asp:Label ID="claveLabel" runat="server" Text="Clave: " CssClass="form-label"></asp:Label>
+            <div class="row m-1">
+                <div class="col-md-1">
+                    <asp:Label ID="repetirClaveLabel" runat="server" Text="RepetirClave" CssClass="form-label"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server" OnTextChanged="repetirClaveTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" role="alert" runat="server" id="RepetirClaveValidacion" visible="false">
+                        La clave no puede estar vacía
                     </div>
-                    <div class="col-md-2">
-                        <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server" OnTextChanged="claveTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="alert alert-danger" role="alert" runat="server" id="ClaveValidacion" visible="false">
-                            La clave no puede estar vacía
-                        </div>
+                    <div class="alert alert-danger" role="alert" runat="server" id="ClavesIgualesValidacion" visible="false">
+                        Las claves no coinciden
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div>
-                    <div class="col-md-1">
-                        <asp:Label ID="repetirClaveLabel" runat="server" Text="RepetirClave" CssClass="form-label"></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server" OnTextChanged="repetirClaveTextBox_TextChanged" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="alert alert-danger" role="alert" runat="server" id="RepetirClaveValidacion" visible="false">
-                            La clave no puede estar vacía
-                        </div>
-                        <div class="alert alert-danger" role="alert" runat="server" id="ClavesIgualesValidacion" visible="false">
-                            Las claves no coinciden
-                        </div>
-                    </div>
+            <div class="row m-1">
+                <div class="col-md-1">
+                    <asp:Label ID="personaLabel" runat="server" Text="Persona: " CssClass="form-label"></asp:Label>
                 </div>
-            </div>
-            <div class="row">
-                <div>
-                    <div class="col-md-1">
-                        <asp:Label ID="personaLabel" runat="server" Text="Persona: " CssClass="form-label"></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:DropDownList ID="personaDDL" runat="server" OnSelectedIndexChanged="personaDDL_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
-                    </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="personaDDL" runat="server" OnSelectedIndexChanged="personaDDL_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
         </div>
