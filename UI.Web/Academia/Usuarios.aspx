@@ -25,7 +25,7 @@
                     <div class="col-md-1">
                         <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: " CssClass="form-label"></asp:Label>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-11">
                         <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <div class="col-md-1">
                         <asp:Label ID="personaLabel" runat="server" Text="Persona: " CssClass="form-label"></asp:Label>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-11">
                         <asp:DropDownList ID="personaDDL" runat="server" OnSelectedIndexChanged="personaDDL_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
                     </div>
                 </div>

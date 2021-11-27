@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="Academia\ApplicationWeb.aspx" />
     <Content Include="Academia\Comisiones.aspx" />
+    <Content Include="Academia\ModulosUsuarios.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="Academia\ApplicationWeb.aspx.designer.cs">
       <DependentUpon>ApplicationWeb.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Academia\ModulosUsuarios.aspx.cs">
+      <DependentUpon>ModulosUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Academia\ModulosUsuarios.aspx.designer.cs">
+      <DependentUpon>ModulosUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

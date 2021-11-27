@@ -43,6 +43,7 @@
                     <a class="navbar-brand" runat="server" href="./Academia/Especialidades.aspx">Especialidades</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Materias.aspx">Materias</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Modulos.aspx">Modulos</a>
+                    <a class="navbar-brand" runat="server" href="./Academia/ModulosUsuarios.aspx">Modulos por Usuario</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Personas.aspx">Personas</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Planes.aspx">Planes</a>
                     <a class="navbar-brand" runat="server" href="./Academia/Usuarios.aspx">Usuarios</a>
