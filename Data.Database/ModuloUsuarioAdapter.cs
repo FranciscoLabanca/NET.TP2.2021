@@ -146,7 +146,7 @@ namespace Data.Database
             return mu;
         }
 
-        protected void Delete(int ID)
+        public void Delete(int ID)
         {
             try
             {

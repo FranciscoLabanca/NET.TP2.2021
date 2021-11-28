@@ -35,27 +35,37 @@
             </asp:ScriptManager>
             <!--<asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource"></asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server"/>-->
-            <nav class="navbar fixed-top navbar-dark bg-dark">
-                <div class="navbar-header" runat="server" id="menuSuperior">
-                    <a class="navbar-brand" runat="server" href="./Academia/Default.aspx">Home</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Comisiones.aspx">Comisiones</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Cursos.aspx">Cursos</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Especialidades.aspx">Especialidades</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Materias.aspx">Materias</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Modulos.aspx">Modulos</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Personas.aspx">Personas</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Planes.aspx">Planes</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/Usuarios.aspx">Usuarios</a>
-                    <a class="navbar-brand" runat="server" href="./Academia/RegistroNotas.aspx">Registrar Notas</a>
-                    <asp:HyperLink CssClass="navbar-brand" runat="server" ID="LogOutLabel" NavigateUrl="~/Logout.aspx">LogOut</asp:HyperLink>
-                </div>
-            </nav>
-            
+            <div class="row">
+                <nav class="navbar fixed-top navbar-dark bg-dark">
+                    <div class="navbar-header" runat="server" id="menuSuperior">
+                        <div class="navbar-brand">
+                            <asp:DropDownList runat="server" ID="menuDDL" OnSelectedIndexChanged="menuDDL_SelectedIndexChanged" CssClass="dropdown" AutoPostBack="true">
+                                <asp:ListItem>Menú</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Comisiones.aspx">Comisiones</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Cursos.aspx">Cursos</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Especialidades.aspx">Especialidades</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Materias.aspx">Materias</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Modulos.aspx">Modulos</asp:ListItem>
+                                <asp:ListItem Value="/Academia/ModulosUsuarios.aspx">Permisos por Usuario</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Personas.aspx">Personas</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Planes.aspx">Planes</asp:ListItem>
+                                <asp:ListItem Value="/Academia/Usuarios.aspx">Usuarios</asp:ListItem>
+                                <asp:ListItem Value="/Academia/RegistroNotas.aspx">Registro Notas</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        
+                        <a class="navbar-brand" runat="server" href="./Academia/Default.aspx">Principal</a>
+                        <asp:HyperLink CssClass="navbar-brand" runat="server" ID="LogOutLabel" NavigateUrl="~/Logout.aspx">LogOut</asp:HyperLink>
+                    </div>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="container body-content">
+                    <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div> 
+            </div>
         </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>        
     </form>
 </body>
 </html>

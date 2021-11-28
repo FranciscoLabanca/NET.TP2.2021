@@ -81,6 +81,16 @@ namespace Business.Entities
         	}
         }
 
+        private string _NombreApellido;
+
+        public string NombreApellido
+        {
+            get
+            {
+                return _Nombre + " " + _Apellido;
+            }
+        }
+
         public int IDPersona { set; get; }
     }
 }
