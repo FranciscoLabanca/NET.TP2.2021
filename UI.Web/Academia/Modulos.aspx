@@ -32,6 +32,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="ejecutaLabel" runat="server" Text="Ejecuta: "></asp:Label>
+                </div>
+                <div class="col-md-11">
+                    <asp:DropDownList runat="server" ID="ejecutaDDL" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
         </div>
     </asp:Panel>
 

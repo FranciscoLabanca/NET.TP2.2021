@@ -25,6 +25,7 @@ namespace UI.Web
             {
                 try
                 {
+                    EstablecerPermisos();
                     ViewState["InscripcionesAGuardar"] = new List<AlumnoInscripcion>();                                    
                     IEnumerable listaCursos = ObtenerCursos();                
                     DropDownListCursos.DataSource = listaCursos;
@@ -39,6 +40,20 @@ namespace UI.Web
                 }
             }
 
+        }
+
+        private void EstablecerPermisos()
+        {
+            List<ModuloUsuario> modulosUsuario = Session["Modulos"] as List<ModuloUsuario>;
+
+            foreach (ModuloUsuario mu in modulosUsuario)
+            {
+                if (mu.DescripcionModulo == "Registro de Notas")
+                {
+                    return;
+                }
+            }
+            Response.Redirect("~/Academia/Default.aspx");
         }
 
         private List<CursosResponse> ObtenerCursos()
