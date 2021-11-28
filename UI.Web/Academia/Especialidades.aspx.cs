@@ -39,16 +39,24 @@ namespace UI.Web
 
         override protected void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
-            gridView.DataBind();
-            gridActionPanel.Visible = true;
-            formActionPanel.Visible = false;
+            try
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+                gridActionPanel.Visible = true;
+                formActionPanel.Visible = false;
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected override void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
-            descripcionTextBox.Text = Entity.Descripcion;
+            try
+            {
+                Entity = Logic.GetOne(id);
+                descripcionTextBox.Text = Entity.Descripcion;
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         private void LoadEntity(Especialidad especialidad)
@@ -68,36 +76,43 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                switch (FormMode)
+                if (Validar())
                 {
-                    case FormModes.Alta:
-                        Entity = new Especialidad();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                    switch (FormMode)
+                    {
+                        case FormModes.Alta:
+                            Entity = new Especialidad();
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Modificacion:
-                        Entity = new Especialidad();
-                        Entity.ID = SelectedID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Modificacion:
+                            Entity = new Especialidad();
+                            Entity.ID = SelectedID;
+                            Entity.State = BusinessEntity.States.Modified;
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Baja:
-                        DeleteEntity(SelectedID);
-                        LoadGrid();
-                        break;
+                        case FormModes.Baja:
+                            DeleteEntity(SelectedID);
+                            LoadGrid();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                    EsconderValidaciones();
+                    formPanel.Visible = false;
                 }
-                EsconderValidaciones();
-                formPanel.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
             }
         }
 
@@ -210,6 +225,12 @@ namespace UI.Web
 
             }
             Response.Redirect("~/Academia/Default.aspx");
+        }
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
+
+            LabelError.Visible = true;
         }
     }
 }

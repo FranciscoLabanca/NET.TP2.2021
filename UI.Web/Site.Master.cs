@@ -9,7 +9,7 @@ using System.Security;
 namespace UI.Web
 {
     public partial class Site : System.Web.UI.MasterPage
-    {
+    {        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
@@ -17,7 +17,7 @@ namespace UI.Web
                 EsconderMenu();
             }
         }
-
+        
         protected void EsconderMenu()
         {
             menuSuperior.Visible = false;

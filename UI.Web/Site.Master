@@ -50,6 +50,7 @@
                     <asp:HyperLink CssClass="navbar-brand" runat="server" ID="LogOutLabel" NavigateUrl="~/Logout.aspx">LogOut</asp:HyperLink>
                 </div>
             </nav>
+            
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
