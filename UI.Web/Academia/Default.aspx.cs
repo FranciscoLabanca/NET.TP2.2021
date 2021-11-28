@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Business.Entities;
+using Business.Logic;
 
 namespace UI.Web
 {
@@ -18,7 +20,7 @@ namespace UI.Web
             else
             {
                 nombreLiteral.Text = Session["Nombre"].ToString() + " " + Session["Apellido"].ToString();
-            }         
+            }
         }
     }
 }

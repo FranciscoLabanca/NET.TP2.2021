@@ -149,6 +149,7 @@ namespace UI.Web.Academia
                 default:
                     break;
             }
+            ReLoadSession((int)Session["ID"]);
             formPanel.Visible = false;
         }
 
@@ -218,6 +219,13 @@ namespace UI.Web.Academia
                 FormMode = FormModes.Modificacion;
                 LoadForm(SelectedID);
             }
+        }
+
+        private void ReLoadSession(int ID)
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            List<ModuloUsuario> modulosUsuarios = mul.GetByUserID(ID);
+            Session["Modulos"] = modulosUsuarios;
         }
     }
 }
