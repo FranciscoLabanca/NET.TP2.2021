@@ -58,7 +58,6 @@ namespace UI.Web.Academia
 
                     return;
                 }
-
             }
             Response.Redirect("~/Academia/Default.aspx");
         }

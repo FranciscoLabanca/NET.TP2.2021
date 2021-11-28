@@ -37,7 +37,8 @@ namespace Business.Entities
             Cursos,
             Planes,
             Materias,
-            Especialidades
+            Especialidades,
+            RegistroNotas
         }
     }
 }

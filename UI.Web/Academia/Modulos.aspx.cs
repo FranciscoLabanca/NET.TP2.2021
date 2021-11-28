@@ -66,6 +66,7 @@ namespace UI.Web
             {
                 Entity = Logic.GetOne(id);
                 descripcionTextBox.Text = Entity.Descripcion;
+                ejecutaDDL.SelectedValue = Enum.GetNames(typeof(Modulo.ListaModulos)).ToString();
             }
             catch (Exception ex) { ManejarError(ex); }
         }
@@ -79,6 +80,7 @@ namespace UI.Web
                 formActionPanel.Visible = true;
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
+                LoadEjecutaDDL();
                 LoadForm(SelectedID);
             }
         }
@@ -86,6 +88,7 @@ namespace UI.Web
         private void LoadEntity(Modulo modulo)
         {
             modulo.Descripcion = descripcionTextBox.Text;
+            modulo.Ejecuta = (Modulo.ListaModulos)Enum.Parse(typeof(Modulo.ListaModulos), (string)ejecutaDDL.SelectedValue);
         }
 
         private void SaveEntity(Modulo modulo)
@@ -143,6 +146,7 @@ namespace UI.Web
         protected override void EnableForm(bool enable)
         {
             descripcionTextBox.Enabled = enable;
+            ejecutaDDL.Enabled = enable;
         }
 
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
@@ -155,6 +159,7 @@ namespace UI.Web
                 formPanel.Visible = true;
                 FormMode = FormModes.Baja;
                 EnableForm(false);
+                LoadEjecutaDDL();
                 LoadForm(SelectedID);
             }
         }
@@ -166,6 +171,7 @@ namespace UI.Web
             EsconderValidaciones();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
+            LoadEjecutaDDL();
             ClearForm();
             EnableForm(true);
         }
@@ -234,6 +240,12 @@ namespace UI.Web
             LabelError.Text = $"{exc.Message}.";
 
             LabelError.Visible = true;
+        }
+
+        private void LoadEjecutaDDL()
+        {
+            ejecutaDDL.DataSource = Enum.GetNames(typeof(Modulo.ListaModulos));
+            ejecutaDDL.DataBind();
         }
     }
 }
