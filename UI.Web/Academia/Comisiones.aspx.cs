@@ -38,22 +38,33 @@ namespace UI.Web
 
         protected override void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
-            gridView.DataBind();
-            gridActionPanel.Visible = true;
-            formActionPanel.Visible = false;
+            try
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+                gridActionPanel.Visible = true;
+                formActionPanel.Visible = false;
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected override void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
-            descripcionTextBox.Text = Entity.Descripcion;
-            anioEspecialidadTextBox.Text = Entity.AnioEspecialidad.ToString();
-            PlanLogic pl = new PlanLogic();
-            Plan plan = pl.GetOne(Entity.IDPlan);
-            especialidadDDL.SelectedValue = plan.IDEspecialidad.ToString();
-            LoadPlanDDL();
-            planDDL.SelectedValue = Entity.IDPlan.ToString();
+            try
+            {
+                Entity = Logic.GetOne(id);
+                descripcionTextBox.Text = Entity.Descripcion;
+                anioEspecialidadTextBox.Text = Entity.AnioEspecialidad.ToString();
+                PlanLogic pl = new PlanLogic();
+                Plan plan = pl.GetOne(Entity.IDPlan);
+                especialidadDDL.SelectedValue = plan.IDEspecialidad.ToString();
+                LoadPlanDDL();
+                planDDL.SelectedValue = Entity.IDPlan.ToString();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         private void LoadEntity(Comision com)
@@ -75,55 +86,67 @@ namespace UI.Web
 
         private void LoadEspecialidadDDL()
         {
-            EspecialidadLogic el = new EspecialidadLogic();
-            especialidadDDL.DataSource = el.GetAll();
-            especialidadDDL.DataTextField = "Descripcion";
-            especialidadDDL.DataValueField = "ID";
-            especialidadDDL.DataBind();
+            try
+            {
+                EspecialidadLogic el = new EspecialidadLogic();
+                especialidadDDL.DataSource = el.GetAll();
+                especialidadDDL.DataTextField = "Descripcion";
+                especialidadDDL.DataValueField = "ID";
+                especialidadDDL.DataBind();
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         private void LoadPlanDDL()
         {
-            PlanLogic pl = new PlanLogic();
-            planDDL.DataSource = pl.GetByIdEspecialidad(int.Parse(especialidadDDL.SelectedValue));
-            planDDL.DataTextField = "Descripcion";
-            planDDL.DataValueField = "ID";
-            planDDL.DataBind();
+            try
+            {
+                PlanLogic pl = new PlanLogic();
+                planDDL.DataSource = pl.GetByIdEspecialidad(int.Parse(especialidadDDL.SelectedValue));
+                planDDL.DataTextField = "Descripcion";
+                planDDL.DataValueField = "ID";
+                planDDL.DataBind();
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                switch (FormMode)
+                if (Validar())
                 {
-                    case FormModes.Alta:
-                        Entity = new Comision();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                    switch (FormMode)
+                    {
+                        case FormModes.Alta:
+                            Entity = new Comision();
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Modificacion:
-                        Entity = new Comision();
-                        Entity.ID = SelectedID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Modificacion:
+                            Entity = new Comision();
+                            Entity.ID = SelectedID;
+                            Entity.State = BusinessEntity.States.Modified;
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Baja:
-                        DeleteEntity(SelectedID);
-                        LoadGrid();
-                        break;
+                        case FormModes.Baja:
+                            DeleteEntity(SelectedID);
+                            LoadGrid();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                    EsconderValidaciones();
+                    formPanel.Visible = false;
                 }
-                EsconderValidaciones();
-                formPanel.Visible = false;
             }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected override void EnableForm(bool enable)
@@ -264,6 +287,12 @@ namespace UI.Web
                 
             }
             Response.Redirect("~/Academia/Default.aspx");
+        }
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
+
+            LabelError.Visible = true;
         }
     }
 }

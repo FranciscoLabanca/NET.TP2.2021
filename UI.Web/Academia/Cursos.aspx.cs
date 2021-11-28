@@ -38,34 +38,53 @@ namespace UI.Web
 
         protected override void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
-            gridView.DataBind();
-            gridActionPanel.Visible = true;
-            formActionPanel.Visible = false;
+            try
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+                gridActionPanel.Visible = true;
+                formActionPanel.Visible = false;
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected override void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
-            AnioCalendarioTextBox.Text = Entity.AnioCalendario.ToString();
-            CupoTextBox.Text = Entity.Cupo.ToString();
-            LoadEspecialidadDDL();
+            try
+            {
+                Entity = Logic.GetOne(id);
+                AnioCalendarioTextBox.Text = Entity.AnioCalendario.ToString();
+                CupoTextBox.Text = Entity.Cupo.ToString();
+                LoadEspecialidadDDL();
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         private void LoadEspecialidadDDL()
         {
-            EspecialidadDDL.DataSource = new EspecialidadLogic().GetAll();
-            EspecialidadDDL.DataTextField = "Descripcion";
-            EspecialidadDDL.DataValueField = "ID";
-            EspecialidadDDL.DataBind();
+            try
+            {
+                EspecialidadDDL.DataSource = new EspecialidadLogic().GetAll();
+                EspecialidadDDL.DataTextField = "Descripcion";
+                EspecialidadDDL.DataValueField = "ID";
+                EspecialidadDDL.DataBind();
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         private void LoadPlanDDL(int id)
         {
-            PlanDDL.DataSource = new PlanLogic().GetByIdEspecialidad(id);
-            PlanDDL.DataTextField = "Descripcion";
-            PlanDDL.DataValueField = "ID";
-            PlanDDL.DataBind();
+            try
+            {
+                PlanDDL.DataSource = new PlanLogic().GetByIdEspecialidad(id);
+                PlanDDL.DataTextField = "Descripcion";
+                PlanDDL.DataValueField = "ID";
+                PlanDDL.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         protected void EspecialidadDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,18 +94,32 @@ namespace UI.Web
 
         private void LoadComisionDDL(int id)
         {
-            ComisionDDL.DataSource = new ComisionLogic().GetByIdPlan(id);
-            ComisionDDL.DataTextField = "Descripcion";
-            ComisionDDL.DataValueField = "ID";
-            ComisionDDL.DataBind();
+            try
+            {
+                ComisionDDL.DataSource = new ComisionLogic().GetByIdPlan(id);
+                ComisionDDL.DataTextField = "Descripcion";
+                ComisionDDL.DataValueField = "ID";
+                ComisionDDL.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         private void LoadMateriaDDL(int id)
         {
-            MateriaDDL.DataSource = new MateriaLogic().GetByIdPlan(id);
-            MateriaDDL.DataTextField = "Descripcion";
-            MateriaDDL.DataValueField = "ID";
-            MateriaDDL.DataBind();
+            try
+            {
+                MateriaDDL.DataSource = new MateriaLogic().GetByIdPlan(id);
+                MateriaDDL.DataTextField = "Descripcion";
+                MateriaDDL.DataValueField = "ID";
+                MateriaDDL.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         protected void PlanDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,37 +148,41 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                switch (FormMode)
+                if (Validar())
                 {
-                    case FormModes.Alta:
-                        Entity = new Curso();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                    switch (FormMode)
+                    {
+                        case FormModes.Alta:
+                            Entity = new Curso();
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Modificacion:
-                        Entity = new Curso();
-                        Entity.ID = SelectedID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Modificacion:
+                            Entity = new Curso();
+                            Entity.ID = SelectedID;
+                            Entity.State = BusinessEntity.States.Modified;
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Baja:
-                        DeleteEntity(SelectedID);
-                        LoadGrid();
-                        break;
+                        case FormModes.Baja:
+                            DeleteEntity(SelectedID);
+                            LoadGrid();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                    EsconderValidaciones();
+                    formPanel.Visible = false;
                 }
-                EsconderValidaciones();
-                formPanel.Visible = false;
             }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected override void EnableForm(bool enable)
@@ -286,6 +323,12 @@ namespace UI.Web
 
             }
             Response.Redirect("~/Academia/Default.aspx");
+        }
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
+
+            LabelError.Visible = true;
         }
     }
 }

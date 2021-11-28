@@ -67,10 +67,17 @@ namespace UI.Web
 
         override protected void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
-            gridView.DataBind();
-            gridActionPanel.Visible = true;
-            formActionPanel.Visible = false;
+            try
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+                gridActionPanel.Visible = true;
+                formActionPanel.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,10 +87,17 @@ namespace UI.Web
 
         override protected void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
-            habilitadoCheckBox.Checked = Entity.Habilitado;
-            nombreUsuarioTextBox.Text = Entity.NombreUsuario;
-            personaDDL.SelectedValue = Entity.IDPersona.ToString();
+            try
+            {
+                Entity = Logic.GetOne(id);
+                habilitadoCheckBox.Checked = Entity.Habilitado;
+                nombreUsuarioTextBox.Text = Entity.NombreUsuario;
+                personaDDL.SelectedValue = Entity.IDPersona.ToString();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -101,13 +115,20 @@ namespace UI.Web
 
         private void LoadEntity(Usuario usuario)
         {
-            Persona per = new PersonaLogic().GetOne(int.Parse(personaDDL.SelectedValue));
-            usuario.Nombre = per.Nombre;
-            usuario.Apellido = per.Apellido;
-            usuario.EMail = per.Email;
-            usuario.NombreUsuario = nombreUsuarioTextBox.Text;
-            usuario.Clave = claveTextBox.Text;
-            usuario.Habilitado = habilitadoCheckBox.Checked;
+            try
+            {
+                Persona per = new PersonaLogic().GetOne(int.Parse(personaDDL.SelectedValue));
+                usuario.Nombre = per.Nombre;
+                usuario.Apellido = per.Apellido;
+                usuario.EMail = per.Email;
+                usuario.NombreUsuario = nombreUsuarioTextBox.Text;
+                usuario.Clave = claveTextBox.Text;
+                usuario.Habilitado = habilitadoCheckBox.Checked;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         private void SaveEntity(Usuario usuario)
@@ -117,36 +138,43 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                switch (FormMode)
+                if (Validar())
                 {
-                    case FormModes.Baja:
-                        DeleteEntity(SelectedID);
-                        LoadGrid();
-                        break;
+                    switch (FormMode)
+                    {
+                        case FormModes.Baja:
+                            DeleteEntity(SelectedID);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Modificacion:
-                        Entity = new Usuario();
-                        Entity.ID = SelectedID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Modificacion:
+                            Entity = new Usuario();
+                            Entity.ID = SelectedID;
+                            Entity.State = BusinessEntity.States.Modified;
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Alta:
-                        Entity = new Usuario();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Alta:
+                            Entity = new Usuario();
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                    EsconderValidaciones();
+                    formPanel.Visible = false;
                 }
-                EsconderValidaciones();
-                formPanel.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
             }            
         }
 
@@ -290,10 +318,14 @@ namespace UI.Web
 
         private void LoadPersonaDDL()
         {
-            personaDDL.DataSource = new PersonaLogic().GetAll();
-            personaDDL.DataTextField = "Apellido";
-            personaDDL.DataValueField = "ID";
-            personaDDL.DataBind();
+            try
+            {
+                personaDDL.DataSource = new PersonaLogic().GetAll();
+                personaDDL.DataTextField = "Apellido";
+                personaDDL.DataValueField = "ID";
+                personaDDL.DataBind();
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected void personaDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -308,6 +340,13 @@ namespace UI.Web
             ClaveValidacion.Visible = false;
             ClavesIgualesValidacion.Visible = false;
             RepetirClaveValidacion.Visible = false;
+        }
+
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
+
+            LabelError.Visible = true;
         }
     }
 }

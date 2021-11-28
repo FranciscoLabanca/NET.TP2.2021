@@ -67,17 +67,31 @@ namespace UI.Web
 
         protected override void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
-            gridView.DataBind();
-            gridActionPanel.Visible = true;
-            formActionPanel.Visible = false;
+            try
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+                gridActionPanel.Visible = true;
+                formActionPanel.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         protected override void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
-            descripcionTextBox.Text = Entity.Descripcion;
-            especialidadDDL.SelectedValue = Entity.IDEspecialidad.ToString();
+            try
+            {
+                Entity = Logic.GetOne(id);
+                descripcionTextBox.Text = Entity.Descripcion;
+                especialidadDDL.SelectedValue = Entity.IDEspecialidad.ToString();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);                
+            }
         }
 
         private void LoadEntity(Plan plan)
@@ -98,45 +112,59 @@ namespace UI.Web
 
         private void LoadDropDownList()
         {
-            EspecialidadLogic el = new EspecialidadLogic();
-            especialidadDDL.DataSource = el.GetAll();
-            especialidadDDL.DataTextField = "Descripcion";
-            especialidadDDL.DataValueField = "ID";
-            especialidadDDL.DataBind();
+            try
+            {
+                EspecialidadLogic el = new EspecialidadLogic();
+                especialidadDDL.DataSource = el.GetAll();
+                especialidadDDL.DataTextField = "Descripcion";
+                especialidadDDL.DataValueField = "ID";
+                especialidadDDL.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                switch (FormMode)
+                if (Validar())
                 {
-                    case FormModes.Alta:
-                        Entity = new Plan();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                    switch (FormMode)
+                    {
+                        case FormModes.Alta:
+                            Entity = new Plan();
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Modificacion:
-                        Entity = new Plan();
-                        Entity.ID = SelectedID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Modificacion:
+                            Entity = new Plan();
+                            Entity.ID = SelectedID;
+                            Entity.State = BusinessEntity.States.Modified;
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Baja:
-                        DeleteEntity(SelectedID);
-                        LoadGrid();
-                        break;
+                        case FormModes.Baja:
+                            DeleteEntity(SelectedID);
+                            LoadGrid();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                    EsconderValidaciones();
+                    formPanel.Visible = false;
                 }
-                EsconderValidaciones();
-                formPanel.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
             }
         }
 
@@ -225,6 +253,13 @@ namespace UI.Web
         private void EsconderValidaciones ()
         {
             divValidacion.Visible = false;
+        }
+
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
+
+            LabelError.Visible = true;
         }
     }
 }

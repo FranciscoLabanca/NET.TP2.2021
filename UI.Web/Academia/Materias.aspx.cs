@@ -38,31 +38,43 @@ namespace UI.Web
 
         protected override void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
-            gridView.DataBind();
-            gridActionPanel.Visible = true;
-            formActionPanel.Visible = false;
+            try
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+                gridActionPanel.Visible = true;
+                formActionPanel.Visible = false;
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected override void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
-            descripcionTextBox.Text = Entity.Descripcion;
-            hsSemanalesTextBox.Text = Entity.HSSemanales.ToString();
-            hsTotalesTextBox.Text = Entity.HSTotales.ToString();
-            LoadEspecialidadDDL();
-            if(Entity.Descripcion != null)
+            try
             {
-                SetPlan();
+                Entity = Logic.GetOne(id);
+                descripcionTextBox.Text = Entity.Descripcion;
+                hsSemanalesTextBox.Text = Entity.HSSemanales.ToString();
+                hsTotalesTextBox.Text = Entity.HSTotales.ToString();
+                LoadEspecialidadDDL();
+                if (Entity.Descripcion != null)
+                {
+                    SetPlan();
+                }
             }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         private void LoadEspecialidadDDL()
         {
-            especialidadDDL.DataSource = new EspecialidadLogic().GetAll();
-            especialidadDDL.DataTextField = "Descripcion";
-            especialidadDDL.DataValueField = "ID";
-            especialidadDDL.DataBind();
+            try
+            {
+                especialidadDDL.DataSource = new EspecialidadLogic().GetAll();
+                especialidadDDL.DataTextField = "Descripcion";
+                especialidadDDL.DataValueField = "ID";
+                especialidadDDL.DataBind();
+            }
+            catch (Exception ex) { ManejarError(ex); }
         }
 
         protected void especialidadDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,17 +84,31 @@ namespace UI.Web
 
         private void LoadPlanDDL()
         {
-            planDDL.DataSource = new PlanLogic().GetByIdEspecialidad(int.Parse(especialidadDDL.SelectedValue));
-            planDDL.DataTextField = "Descripcion";
-            planDDL.DataValueField = "ID";
-            planDDL.DataBind();
+            try
+            {
+                planDDL.DataSource = new PlanLogic().GetByIdEspecialidad(int.Parse(especialidadDDL.SelectedValue));
+                planDDL.DataTextField = "Descripcion";
+                planDDL.DataValueField = "ID";
+                planDDL.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         private void SetPlan()
         {
-            Plan plan = new PlanLogic().GetOne(Entity.IDPlan);
-            especialidadDDL.SelectedValue = plan.IDEspecialidad.ToString();
-            planDDL.SelectedValue = Entity.IDPlan.ToString();
+            try
+            {
+                Plan plan = new PlanLogic().GetOne(Entity.IDPlan);
+                especialidadDDL.SelectedValue = plan.IDEspecialidad.ToString();
+                planDDL.SelectedValue = Entity.IDPlan.ToString();
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         private void LoadEntity(Materia materia)
@@ -105,36 +131,43 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                switch (FormMode)
+                if (Validar())
                 {
-                    case FormModes.Alta:
-                        Entity = new Materia();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                    switch (FormMode)
+                    {
+                        case FormModes.Alta:
+                            Entity = new Materia();
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Modificacion:
-                        Entity = new Materia();
-                        Entity.ID = SelectedID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
+                        case FormModes.Modificacion:
+                            Entity = new Materia();
+                            Entity.ID = SelectedID;
+                            Entity.State = BusinessEntity.States.Modified;
+                            LoadEntity(Entity);
+                            SaveEntity(Entity);
+                            LoadGrid();
+                            break;
 
-                    case FormModes.Baja:
-                        DeleteEntity(SelectedID);
-                        LoadGrid();
-                        break;
+                        case FormModes.Baja:
+                            DeleteEntity(SelectedID);
+                            LoadGrid();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                    EsconderValidaciones();
+                    formPanel.Visible = false;
                 }
-                EsconderValidaciones();
-                formPanel.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
             }
         }
 
@@ -286,6 +319,11 @@ namespace UI.Web
             }
             Response.Redirect("~/Academia/Default.aspx");
         }
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
 
+            LabelError.Visible = true;
+        }
     }
 }

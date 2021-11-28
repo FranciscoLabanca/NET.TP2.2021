@@ -4,6 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="titlePanel" runat="server" CssClass="align-content-center">
         <h1 style="text-align: center">Modulos</h1>
+        <p></p>
+        <asp:Label ID="LabelError" runat="server" CssClass="alert alert-danger" Visible="false"></asp:Label>
+        <p></p>
     </asp:Panel>
     <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" CssClass="table table-hover">

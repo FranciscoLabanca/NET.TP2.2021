@@ -23,13 +23,20 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-                ViewState["InscripcionesAGuardar"] = new List<AlumnoInscripcion>();
+                try
+                {
+                    ViewState["InscripcionesAGuardar"] = new List<AlumnoInscripcion>();                                    
+                    IEnumerable listaCursos = ObtenerCursos();                
+                    DropDownListCursos.DataSource = listaCursos;
+                    DropDownListCursos.DataTextField = "Descripcion";
+                    DropDownListCursos.DataValueField = "ID";
+                    DropDownListCursos.DataBind();
 
-                IEnumerable listaCursos = ObtenerCursos();
-                DropDownListCursos.DataSource = listaCursos;
-                DropDownListCursos.DataTextField = "Descripcion";
-                DropDownListCursos.DataValueField = "ID";
-                DropDownListCursos.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    ManejarError(ex);
+                }
             }
 
         }
@@ -47,8 +54,15 @@ namespace UI.Web
 
         protected void DropDownListCursos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarGridView();
-            GridViewAlumnos.SelectedIndex = -1;
+            try
+            {
+                CargarGridView();
+                GridViewAlumnos.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                ManejarError(ex);
+            }
         }
 
         private void CargarGridView()
@@ -122,8 +136,14 @@ namespace UI.Web
             }
             HayCambiosSinGuardarError.Visible = false;
         }
-    }
 
+        private void ManejarError(Exception exc)
+        {
+            LabelError.Text = $"{exc.Message}.";
+
+            LabelError.Visible = true;
+        }
+    }
 
 
 }
