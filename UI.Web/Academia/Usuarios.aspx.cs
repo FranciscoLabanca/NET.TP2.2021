@@ -118,6 +118,7 @@ namespace UI.Web
             try
             {
                 Persona per = new PersonaLogic().GetOne(int.Parse(personaDDL.SelectedValue));
+                usuario.IDPersona = per.ID;
                 usuario.Nombre = per.Nombre;
                 usuario.Apellido = per.Apellido;
                 usuario.EMail = per.Email;
